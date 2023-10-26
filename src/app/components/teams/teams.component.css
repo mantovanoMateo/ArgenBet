@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+}
+
+.col{
+    height: 700px;
+}
+
+.card-header{
+    background-color: #212529;
+    color: white;
+}
+
+.teamData{
+    display: inline-block;
+}
+.betBtn{
+    float: right;
+}
+
+.row{
+    background-color: #c7c7c7;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.listItem:hover{
+    background-color: #e6e6e6;
+    cursor: pointer;
+}

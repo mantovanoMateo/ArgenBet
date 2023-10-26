@@ -1,18 +1,21 @@
 <div class="navBar">
     <ul class="nav justify-content-center">
         <li class="nav-item">
-            <a class="nav-link" href="#"><b>Inicio</b></a>
+            <a class="nav-link" [routerLink]="['/mainMenu/defaultMenu']" routerLinkActive="active" href="#"><b>Inicio</b></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#"><b>Equipos</b></a>
+            <a class="nav-link" [routerLink]="['/mainMenu/teams']" routerLinkActive="active" href="#"><b>Equipos</b></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#"><b>Mis Apuestas</b></a>
+            <a class="nav-link" [routerLink]="['/mainMenu/mybets']" routerLinkActive="active" href="#"><b>Mis Apuestas</b></a>
         </li>
     </ul>
 </div>
-<app-defautl-menu></app-defautl-menu>
+
+<router-outlet></router-outlet>
+
 <!--
+    <app-defautl-menu></app-defautl-menu>
     <router-outlet></router-outlet>
 
 <div class="row">
