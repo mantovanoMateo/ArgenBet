@@ -1,6 +1,5 @@
 .card{
     margin: auto;
-    margin-top: 50px;
     max-width: 500px;
     padding: 20px;
     height: 500px;
@@ -21,4 +20,13 @@ input:focus{
 
 *{
     color: white;
+}
+
+.logInBackGround{
+    padding-top: 100px;
+    background-repeat: no-repeat;
+    background-image: url(https://wallpapercave.com/wp/wp3972164.jpg);
+    background-position: 50% 50%;
+    margin: auto;
+    height: 720px;
 }
