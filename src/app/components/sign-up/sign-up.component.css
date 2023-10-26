@@ -1,0 +1,30 @@
+.card{
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 700px;
+    padding: 20px;
+    background-color: rgb(32, 32, 32);
+}
+
+input{
+    background-color: rgb(32, 32, 32);
+    color: white;
+    border-color: rgb(97, 97, 97);
+}
+
+input:focus{
+    background-color: rgb(32, 32, 32) ;
+    color: white;
+    border-color: rgb(97, 97, 97);
+}
+
+*{
+    color: white;
+}
+
+select{
+    background-color: rgb(32, 32, 32);
+    color: white;
+    border-color: rgb(97, 97, 97);
+}
