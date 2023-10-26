@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+}
+
+.col{
+    height: 700px;
+}
+
+.card-header{
+    background-color: #212529;
+    color: white;
+}
+.separator{
+    margin-top: 3px;
+    height: 1px;
+    background-color: #212529;
+    max-width: 150px;
+}
+.teamsData{
+    display: inline-block;
+}
+.betBtn{
+    float: right;
+    margin-top: 6px;
+}
+.fixture{
+    max-height: 50px;
+}
+
+.row{
+    background-color: #c7c7c7;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.betBody:hover{
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
