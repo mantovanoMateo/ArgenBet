@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TournamentsService } from 'src/app/services/tournaments.service';
 
 @Component({
   selector: 'app-defautl-menu',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./defautl-menu.component.css']
 })
 export class DefautlMenuComponent {
+  private tournaments =new Array<String>;
+  constructor(private tournamentService: TournamentsService){ }
+  
+  ngOnInit(){
+    this.tournaments=this.tournamentService.Tournaments;
+  }
 
+  get Tournaments(){
+    return this.tournaments;
+  }
 }

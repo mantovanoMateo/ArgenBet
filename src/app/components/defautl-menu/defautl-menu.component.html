@@ -1,8 +1,12 @@
+<!---->
 <div class="row">
     <div class="col-3">
         <div class="card h-100">
             <div class="card-header">Torneos</div>
             <div class="card-body">
+                    <div class="tournament" *ngFor="let tournament of Tournaments">
+                        {{tournament}}
+                    </div>
             </div>
         </div>
     </div>
@@ -41,4 +45,5 @@
             </div>
         </div>
     </div>
+    
 </div>

@@ -31,9 +31,27 @@
     background-color: #c7c7c7;
     padding-top: 30px;
     padding-bottom: 30px;
+    margin: 0;
+
 }
 
 .betBody:hover{
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+.card{
+    margin: 5px;
+}
+
+.tournament{
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.tournament:hover{
     background-color: #e6e6e6;
     cursor: pointer;
 }

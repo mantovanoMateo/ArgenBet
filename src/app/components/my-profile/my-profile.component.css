@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+}
+
+li{
+    margin: auto 25px;
+}
+.nav-link{
+    color: orangered;
+    font-size: larger;
+}
+
+a:hover{
+    color: white;
+}
+
+a:focus{
+    color: white;
+}
+
+.navBar{
+    background-color: #212529;
+}
+
+.col{
+    height: 700px;
+}
+
+.myProfileBackground{
+    padding-top: 100px;
+    background-repeat: no-repeat;
+    background-image: url(https://wallpapercave.com/wp/wp3972164.jpg);
+    background-position: 50% 50%;
+    margin: auto;
+    height: 720px;
+}

@@ -1,20 +1,31 @@
 <div class="navBar">
     <ul class="nav justify-content-center">
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/mainMenu/defaultMenu']" routerLinkActive="active" href="#"><b>Inicio</b></a>
+            <a class="nav-link" [routerLink]="['/mainMenu/defaultMenu']" routerLinkActive="active"
+                href="#"><b>Inicio</b></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" [routerLink]="['/mainMenu/teams']" routerLinkActive="active" href="#"><b>Equipos</b></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/mainMenu/mybets']" routerLinkActive="active" href="#"><b>Mis Apuestas</b></a>
+            <a class="nav-link" [routerLink]="['/mainMenu/mybets']" routerLinkActive="active" href="#"><b>Mis
+                    Apuestas</b></a>
         </li>
     </ul>
 </div>
 
-<router-outlet></router-outlet>
-
+    <router-outlet></router-outlet>
 <!--
+<div class="col-3">
+    <div class="card h-100">
+        <div class="card-header">Mi Seleccion</div>
+        <div class="card-body">
+            <p class="card-text">Aca ira el listado de las apuestas que estamos realizando previas de abonar</p>
+        </div>
+    </div>
+</div>
+
+
     <app-defautl-menu></app-defautl-menu>
     <router-outlet></router-outlet>
 

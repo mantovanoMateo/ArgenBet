@@ -9,6 +9,9 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { DefautlMenuComponent } from './components/defautl-menu/defautl-menu.component';
 import { TeamsComponent } from './components/teams/teams.component';
 import { MyBetsComponent } from './components/my-bets/my-bets.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { TeamListComponent } from './components/team-list/team-list.component';
+import { TeamDetailsComponent } from './components/team-details/team-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { MyBetsComponent } from './components/my-bets/my-bets.component';
     MainMenuComponent,
     DefautlMenuComponent,
     TeamsComponent,
-    MyBetsComponent
+    MyBetsComponent,
+    MyProfileComponent,
+    TeamListComponent,
+    TeamDetailsComponent
   ],
   imports: [
     BrowserModule,

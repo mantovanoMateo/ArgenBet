@@ -6,8 +6,7 @@
     height: 700px;
 }
 
-.card-header{
-    background-color: #212529;
+.card-header-bg-dark{
     color: white;
 }
 
@@ -27,4 +26,47 @@
 .listItem:hover{
     background-color: #e6e6e6;
     cursor: pointer;
+}
+
+.card{
+    margin: 5px;
+}
+
+.tournament{
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.tournament:hover{
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+.form{
+    width: 80px;
+}
+.ganancia{
+    font-size: small;
+}
+
+.card-footer{
+    display: flex;
+    align-items: center;
+}
+
+.benefit{
+    text-align: right;
+    margin-left: 12px;
+    display: block;
+}
+
+.card-text{
+    font-size: medium;
+}
+
+.betfinish{
+    display: block;
+    width: 280px;
 }

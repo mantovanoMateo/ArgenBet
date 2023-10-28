@@ -6,14 +6,22 @@ import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { DefautlMenuComponent } from './components/defautl-menu/defautl-menu.component';
 import { TeamsComponent } from './components/teams/teams.component';
 import { MyBetsComponent } from './components/my-bets/my-bets.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { TeamListComponent } from './components/team-list/team-list.component';
+import { TeamDetailsComponent } from './components/team-details/team-details.component';
 
 const routes: Routes = [
   {path: 'logIn', component:LogInComponent},
   {path: 'signUp', component:SignUpComponent},
+  {path: 'myProfile', component: MyProfileComponent},
   {path: 'mainMenu', component:MainMenuComponent,
    children:[
     {path: 'defaultMenu', component:DefautlMenuComponent},
-    {path: 'teams', component:TeamsComponent},
+    {path: 'teams', component:TeamsComponent,
+     children:[
+      {path: 'teamList', component: TeamListComponent},
+      {path: 'teamDetails', component: TeamDetailsComponent}
+     ]},
     {path: 'mybets', component:MyBetsComponent}
    ]
   },

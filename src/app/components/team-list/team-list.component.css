@@ -1,0 +1,12 @@
+.teamData{
+    display: inline-block;
+}
+
+.card{
+    margin: 5px;
+}
+
+.listItem:hover{
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
