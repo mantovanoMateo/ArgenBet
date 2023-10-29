@@ -1,0 +1,59 @@
+.wrapper {
+  height: 500px;
+  width: auto;
+  margin: 50px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 80%; /* Ajusta el ancho según tu preferencia */
+  margin: 0 auto; /* Centrar horizontalmente la tarjeta */
+  border: 1px solid white; /* Establecer el borde blanco */
+}
+.card-body {
+  align-items: center;
+}
+.card.text-white.bg-dark.mb-3 {
+  margin-top: 15px;
+  border: 1px solid white; /* Establecer el borde blanco */
+}
+
+.card-lg {
+  width: 50%; /* Ajusta el ancho según tu preferencia */
+  height: 200px; /* Ajusta el alto según tu preferencia */
+  margin: 0 auto; /* Centrar horizontalmente las tarjetas */
+}
+.card-lg-container .card-lg .card-header {
+  border-bottom: 1px solid white;
+  width: 100%; /* Establecer el borde blanco en la parte inferior del encabezado */
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 10px;
+}
+.card-lg-container {
+  width: 80%; /* Ajusta el ancho según tu preferencia */
+  height: 300px; /* Ajusta la altura según tu preferencia */
+  margin: 0 auto; /* Centrar horizontalmente las tarjetas */
+}
+
+.buttons button {
+  margin-left: 10px; /* Ajusta el margen según tu preferencia */
+}
+
+.balance {
+  text-align: center;
+}

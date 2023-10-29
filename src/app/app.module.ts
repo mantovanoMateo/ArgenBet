@@ -14,6 +14,7 @@ import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
 import { MyDataComponent } from './components/my-data/my-data.component';
 import { ActivityHistoryComponent } from './components/activity-history/activity-history.component';
+import { AtmComponent } from './components/atm/atm.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ActivityHistoryComponent } from './components/activity-history/activity
     TeamListComponent,
     TeamDetailsComponent,
     MyDataComponent,
-    ActivityHistoryComponent
+    ActivityHistoryComponent,
+    AtmComponent
   ],
   imports: [
     BrowserModule,

@@ -11,31 +11,41 @@ import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
 import { MyDataComponent } from './components/my-data/my-data.component';
 import { ActivityHistoryComponent } from './components/activity-history/activity-history.component';
+import { AtmComponent } from './components/atm/atm.component';
 
 const routes: Routes = [
-  {path: 'logIn', component:LogInComponent},
-  {path: 'signUp', component:SignUpComponent},
-  {path: 'myProfile', component: MyProfileComponent,
-    children:[
-      {path: 'myData', component: MyDataComponent},
-      {path: 'activityHistory', component: ActivityHistoryComponent}
-    ]},
-  {path: 'mainMenu', component:MainMenuComponent,
-   children:[
-    {path: 'defaultMenu', component:DefautlMenuComponent},
-    {path: 'teams', component:TeamsComponent,
-     children:[
-      {path: 'teamList', component: TeamListComponent},
-      {path: 'teamDetails', component: TeamDetailsComponent}
-     ]},
-    {path: 'mybets', component:MyBetsComponent}
-   ]
+  { path: 'logIn', component: LogInComponent },
+  { path: 'signUp', component: SignUpComponent },
+  {
+    path: 'myProfile',
+    component: MyProfileComponent,
+    children: [
+      { path: 'myData', component: MyDataComponent },
+      { path: 'activityHistory', component: ActivityHistoryComponent },
+      { path: 'atm', component: AtmComponent}
+    ],
   },
-  {path: '', redirectTo:'/mainMenu/defaultMenu', pathMatch: 'full'}
+  {
+    path: 'mainMenu',
+    component: MainMenuComponent,
+    children: [
+      { path: 'defaultMenu', component: DefautlMenuComponent },
+      {
+        path: 'teams',
+        component: TeamsComponent,
+        children: [
+          { path: 'teamList', component: TeamListComponent },
+          { path: 'teamDetails', component: TeamDetailsComponent },
+        ],
+      },
+      { path: 'mybets', component: MyBetsComponent },
+    ],
+  },
+  { path: '', redirectTo: '/mainMenu/defaultMenu', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
