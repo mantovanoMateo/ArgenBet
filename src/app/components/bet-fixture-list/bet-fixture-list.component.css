@@ -1,0 +1,23 @@
+.betBody:hover{
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+.fixture{
+    max-height: 50px;
+}
+
+.card{
+    margin: 20px;
+}
+
+.separator{
+    margin-top: 3px;
+    height: 1px;
+    background-color: #212529;
+    max-width: 150px;
+}
+
+.card-text{
+    margin: 0px;
+}

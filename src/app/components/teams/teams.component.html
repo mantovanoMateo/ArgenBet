@@ -4,7 +4,7 @@
             <div class="card-header text-bg-dark">Torneos</div>
             <div class="card-body">
                 <div class="tournament" *ngFor="let tournament of Tournaments">
-                   <a class="nav-link active" [routerLink]="['/mainMenu/teams/teamList']">{{tournament}}</a> 
+                    <a class="nav-link active" [routerLink]="['/mainMenu/teams/teamList']">{{tournament}}</a>
                 </div>
             </div>
         </div>
@@ -39,16 +39,17 @@
                             <p class="ganancia">Ganancia potencial</p>
                             <p>$importe</p>
                         </div>
-
                     </div>
                 </div>
             </div>
             <div class="card-footer text-bg-dark">
                 <div class="betfinish">
-                    <p>Importe total</p>
-                    <p>Ganancia potencial</p>
+                    <div class="totalBet">
+                        <p>$Importe total</p>
+                        <p>$Ganancia potencial</p>
+                    </div>
                     <div class="betBtn">
-                        <a href="#" class="btn btn-primary">Apostar</a>
+                        <a href="#" class="btn btn-outline-success">Apostar</a>
                     </div>
                 </div>
             </div>

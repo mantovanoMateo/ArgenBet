@@ -3,13 +3,9 @@
 }
 
 .col{
-    height: 700px;
+    min-height: 700px;
 }
 
-.card-header{
-    background-color: #212529;
-    color: white;
-}
 .separator{
     margin-top: 3px;
     height: 1px;
@@ -19,10 +15,7 @@
 .teamsData{
     display: inline-block;
 }
-.betBtn{
-    float: right;
-    margin-top: 6px;
-}
+
 .fixture{
     max-height: 50px;
 }
@@ -54,4 +47,43 @@
 .tournament:hover{
     background-color: #e6e6e6;
     cursor: pointer;
+}
+
+.card-footer{
+    display: flex;
+    align-items: center;
+}
+
+.ganancia{
+    font-size: small;
+}
+
+.benefit{
+    text-align: right;
+    margin-left: 12px;
+    display: block;
+}
+
+.card-text{
+    font-size: medium;
+    color: black;
+}
+
+.form{
+    width: 80px;
+}
+
+.betfinish{
+    display: block;
+    width: 280px;
+}
+
+.betBtn{
+    margin-top: 0;
+    display: inline-block;
+}
+
+.totalBet{
+    display: inline-block;
+    justify-content: space-between;
 }

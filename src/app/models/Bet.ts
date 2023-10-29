@@ -6,4 +6,5 @@ export class Bet{
     betValue: number=0;
     benefit: number=0;
     userId: number=0;
+    betStatus: string='';
 }
