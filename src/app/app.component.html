@@ -1,8 +1,8 @@
-
 <nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" [routerLink]="['']" routerLinkActive="active">
-      <img class="logo" src="../assets/argen bet logo 6.png" alt="" width="260" height="70px" class="d-inline-block align-text-top">
+      <img class="logo" src="../assets/argen bet logo 6.png" alt="" width="260" height="70px"
+        class="d-inline-block align-text-top">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
       aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
@@ -17,13 +17,29 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['/logIn']" routerLinkActive="active" aria-current="page" href="#">Iniciar Sesion</a>
+            <h2>Nombre de Usuario</h2>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['/signUp']" routerLinkActive="active" aria-current="page" href="#">Registrarme</a>
+            <h3>Saldo total $xxxx</h3>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['/myProfile']" routerLinkActive="active" aria-current="page" href="#">Ajustes</a>
+            <h4>Saldo retirable $xxxx</h4>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/logIn']" routerLinkActive="active" aria-current="page"
+              href="#">Iniciar Sesion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/signUp']" routerLinkActive="active" aria-current="page"
+              href="#">Registrarme</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/myProfile/myData']" routerLinkActive="active"
+              aria-current="page" href="#">Ajustes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/myProfile/myData']" routerLinkActive="active"
+              aria-current="page" href="#">Depositar</a>
           </li>
         </ul>
       </div>

@@ -1,0 +1,21 @@
+.card{
+    width: 1000px;
+    margin: auto;
+    min-height: 400px;
+}
+
+.collapse{
+    width: 900px;
+    margin: auto;
+}
+
+.accordion{
+    margin: auto;
+    --bs-accordion-bg:#212529;
+    --bs-accordion-btn-bg: #212529;
+    --bs-accordion-btn-color: white;
+    --bs-accordion-active-bg: #333941;
+    --bs-accordion-active-color: white;
+    --bs-accordion-btn-focus-box-shadow: none;
+    --bs-accordion-border-color: rgb(82, 82, 82);
+}   

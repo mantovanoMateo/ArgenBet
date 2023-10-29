@@ -12,6 +12,8 @@ import { MyBetsComponent } from './components/my-bets/my-bets.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
+import { MyDataComponent } from './components/my-data/my-data.component';
+import { ActivityHistoryComponent } from './components/activity-history/activity-history.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { TeamDetailsComponent } from './components/team-details/team-details.com
     MyBetsComponent,
     MyProfileComponent,
     TeamListComponent,
-    TeamDetailsComponent
+    TeamDetailsComponent,
+    MyDataComponent,
+    ActivityHistoryComponent
   ],
   imports: [
     BrowserModule,
