@@ -30,10 +30,6 @@ body{
     background-color: #c7c7c7;
 }
 
-.card-header{
-    background-color: #212529;
-    color: white;
-}
 .separator{
     margin-top: 3px;
     height: 1px;
@@ -68,4 +64,42 @@ body{
 
 .card{
     margin: 5px;
+}
+
+.card-footer{
+    display: flex;
+    align-items: center;
+}
+
+.ganancia{
+    font-size: small;
+}
+
+.benefit{
+    text-align: right;
+    margin-left: 12px;
+    display: block;
+}
+
+.card-text{
+    font-size: medium;
+}
+
+.form{
+    width: 80px;
+}
+
+.betfinish{
+    display: block;
+    width: 280px;
+}
+
+.betBtn{
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.totalBet{
+    display: inline-block;
+    justify-content: space-between;
 }

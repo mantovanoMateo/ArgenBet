@@ -11,19 +11,36 @@ import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamDetailsComponent } from './components/team-details/team-details.component';
 import { MyDataComponent } from './components/my-data/my-data.component';
 import { ActivityHistoryComponent } from './components/activity-history/activity-history.component';
+
+
+import { BetFixtureComponent } from './components/bet-fixture/bet-fixture.component';
+import { BetFixtureListComponent } from './components/bet-fixture-list/bet-fixture-list.component';
 import { AtmComponent } from './components/atm/atm.component';
 
 const routes: Routes = [
-  { path: 'logIn', component: LogInComponent },
-  { path: 'signUp', component: SignUpComponent },
-  {
-    path: 'myProfile',
-    component: MyProfileComponent,
-    children: [
-      { path: 'myData', component: MyDataComponent },
-      { path: 'activityHistory', component: ActivityHistoryComponent },
-      { path: 'atm', component: AtmComponent}
-    ],
+  {path: 'logIn', component:LogInComponent},
+  {path: 'signUp', component:SignUpComponent},
+  {path: 'myProfile', component: MyProfileComponent,
+    children:[
+      {path: 'myData', component: MyDataComponent},
+      {path: 'activityHistory', component: ActivityHistoryComponent},
+      {path: 'atm', component: AtmComponent}
+    ]},
+  {path: 'mainMenu', component:MainMenuComponent,
+   children:[
+    {path: 'defaultMenu', component:DefautlMenuComponent,
+      children:[
+        {path: 'fixtureList', component: BetFixtureListComponent},
+        {path: 'fixture', component: BetFixtureComponent}
+      ]},
+    {path: 'teams', component:TeamsComponent,
+     children:[
+      {path: 'teamList', component: TeamListComponent},
+      {path: 'teamDetails', component: TeamDetailsComponent}
+     ]},
+    {path: 'mybets', component:MyBetsComponent}
+   ]
+
   },
   {
     path: 'mainMenu',

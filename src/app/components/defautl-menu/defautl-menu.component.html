@@ -2,48 +2,59 @@
 <div class="row">
     <div class="col-3">
         <div class="card h-100">
-            <div class="card-header">Torneos</div>
+            <div class="card-header text-bg-dark">Torneos</div>
             <div class="card-body">
-                    <div class="tournament" *ngFor="let tournament of Tournaments">
-                        {{tournament}}
-                    </div>
+                <div class="tournament" *ngFor="let tournament of Tournaments">
+                    <a class="nav-link active" [routerLink]="['/mainMenu/defaultMenu/fixtureList']">{{tournament}}</a>
+                </div>
             </div>
         </div>
     </div>
     <div class="col">
         <div class="card h-100">
-            <div class="card-header">Proximos Eventos</div>
+            <div class="card-header text-bg-dark">Proximos Eventos</div>
             <div class="card-body">
-                <div class="card">
-                    <div class="card-header">
-                        CONMEBOL Libertadores - 04/11/2023
-                    </div>
-                    <div class="betBody">
-                        <div class="card-body">
-                            <div class="fixture">
-                                <div class="teamsData">
-                                    <p class="card-text">Boca Juniors</p>
-                                    <div class="separator"></div>
-                                    <p class="card-text">F.C Fluminense</p>
-                                    <br>
-                                </div>
-                                <div class="betBtn">
-                                    <a href="#" class="btn btn-primary">Apostar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <router-outlet></router-outlet>
             </div>
         </div>
     </div>
     <div class="col-3">
         <div class="card h-100">
-            <div class="card-header">Mi Seleccion</div>
+            <div class="card-header text-bg-dark">Mi Seleccion</div>
             <div class="card-body">
-                <p class="card-text">Aca ira el listado de las apuestas que estamos realizando previas de abonar</p>
+                <div class="card text-bg-light mb-3">
+                    <div class="card-header">Equipo1/Equipo2</div>
+                    <div class="card-body">
+                        <p class="card-text">Nombre de apuesta</p>
+                        <p class="card-text"><b>Valor elegido</b></p>
+                        <p><b>3.0</b></p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary">-</button>
+                            <input type="number" class="form">
+                            <button type="button" class="btn btn-secondary">+</button>
+                        </div>
+                        <br>
+                        <div class="benefit">
+                            <p class="ganancia">Ganancia potencial</p>
+                            <p>$importe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-bg-dark">
+                <div class="betfinish">
+                    <div class="totalBet">
+                        <p>$Importe total</p>
+                        <p>$Ganancia potencial</p>
+                    </div>
+                    <div class="betBtn">
+                        <a href="#" class="btn btn-outline-success">Apostar</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    
+
 </div>

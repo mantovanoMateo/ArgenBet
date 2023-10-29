@@ -15,6 +15,9 @@ import { TeamDetailsComponent } from './components/team-details/team-details.com
 import { MyDataComponent } from './components/my-data/my-data.component';
 import { ActivityHistoryComponent } from './components/activity-history/activity-history.component';
 import { AtmComponent } from './components/atm/atm.component';
+import { BetFixtureComponent } from './components/bet-fixture/bet-fixture.component';
+import { BetFixtureListComponent } from './components/bet-fixture-list/bet-fixture-list.component';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { AtmComponent } from './components/atm/atm.component';
     TeamDetailsComponent,
     MyDataComponent,
     ActivityHistoryComponent,
+    BetFixtureComponent,
+    BetFixtureListComponent,
     AtmComponent
   ],
   imports: [

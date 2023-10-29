@@ -70,3 +70,13 @@
     display: block;
     width: 280px;
 }
+
+.betBtn{
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.totalBet{
+    display: inline-block;
+    justify-content: space-between;
+}
