@@ -10,7 +10,7 @@ export class CartService {
   private betList=new Array<Bet>();
   private totalBet=Number;
 
-  constructor(betService: BetService) { }
+  constructor(private betService: BetService) { }
 
   add(bet: Bet){
     this.betList.push(bet);
@@ -23,12 +23,12 @@ export class CartService {
     this.betList.splice(indexOfObject,1);
   }
 
-  modify(){
-    
-  }
-
   confirmBet(){
-    
+    this.betList.forEach(bet=>{
+      this.betService.addBet(bet)
+        .then((Response)=>{console.log('carge una bet')})
+        .catch((error)=>{console.log('no anduve')});
+    }) 
   }
 
   
