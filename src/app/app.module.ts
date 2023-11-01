@@ -17,7 +17,8 @@ import { ActivityHistoryComponent } from './components/activity-history/activity
 import { AtmComponent } from './components/atm/atm.component';
 import { BetFixtureComponent } from './components/bet-fixture/bet-fixture.component';
 import { BetFixtureListComponent } from './components/bet-fixture-list/bet-fixture-list.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { BetFixtureListComponent } from './components/bet-fixture-list/bet-fixtu
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,8 +5,8 @@
     <br>
     <form class="logInStyle">
       <div class="mb-3">
-        <label for="usernameInput" class="form-label">Username</label>
-        <input type="text" class="form-control" id="usernameInput">
+        <label for="mail" class="form-label">mail</label>
+        <input type="text" class="form-control" id="mail" name="mail" [(ngModel)]="mail">
       </div>
       <br>
       <div class="mb-3">
@@ -14,10 +14,11 @@
         <input type="password" class="form-control" id="InputPassword1">
       </div>
       <br>
-      <button type="submit" class="btn btn-outline-success">Iniciar Sesion</button>
+      <button type="submit" class="btn btn-outline-success" (click)="validateEmail(mail)">Iniciar Sesion</button>
       <br>
       <br>
-      <button type="submit" class="btn btn-outline-success">Registrarse</button>
+      <a class="nav-link active" [routerLink]="['/signUp']" routerLinkActive="active" aria-current="page"
+      href="#"><button type="submit" class="btn btn-outline-success">Registrarse</button></a>
     </form>
   </div>
 </div>

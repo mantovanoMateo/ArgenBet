@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+
+import { Component,OnInit, Input } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-log-in',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class LogInComponent {
 
+    @Input()
+    mail: string=''
+    password: string=''
+
+    constructor(private userService: UserService ){}
+    ngOnInit(){}
+
+    validateEmail(mail: string){
+      this.userService.getByEmail(mail)
+      .then(response=>{
+        console.log(response)
+      })
+      .catch(error=>{console.log('no anduve')});
+    }
 }
