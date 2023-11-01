@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./bet-fixture-list.component.css']
 })
 export class BetFixtureListComponent {
-
+    fixtures: any[]=[];
 }

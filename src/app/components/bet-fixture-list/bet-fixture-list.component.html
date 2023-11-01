@@ -36,18 +36,18 @@
         </a>
     </div>
 </div>
-<div class="card">
+<div *ngFor="let fixture of fixtures" class="card">
     <div class="card-header text-bg-dark">
-        CONMEBOL Libertadores - 04/11/2023
+        {{fixture.league.name}} {{fixture.fixture.date}}
     </div>
     <div class="betBody">
-        <a class="nav-link active" [routerLink]="['/mainMenu/defaultMenu/fixture']" routerLinkActive="active">
+        <a class="nav-link active" id="{{fixture.fixture.id}}" [routerLink]="['/mainMenu/defaultMenu/fixture']" routerLinkActive="active">
             <div class="card-body">
                 <div class="fixture">
                     <div class="teamsData">
-                        <p class="card-text">Boca Juniors</p>
+                        <p class="card-text">{{fixture.teams.home.name}}</p>
                         <div class="separator"></div>
-                        <p class="card-text">F.C Fluminense</p>
+                        <p class="card-text">{{fixture.teams.away.name}}</p>
                         <br>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Bet } from 'src/app/models/Bet';
 
 @Component({
   selector: 'app-my-bets',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-bets.component.css']
 })
 export class MyBetsComponent {
-
+  bets=new Array<Bet>;
 }
