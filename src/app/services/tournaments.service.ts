@@ -15,8 +15,28 @@ export class TournamentsService {
   })
 
   private options={headers: this.headers};
-  private tournaments=['Premier League','Ligue 1','La liga','Serie A','Eredivisie','Bundesliga','MLS','Liga Profesional de Fulbo Argentino','Brasilerao','Primera Colombia','Primera B Argentina','CONMEBOL Libertadores','CONMEBOL Sudamericana','UEFA Champions League','UEFA Europa League','Copa Argentina','Copa America','Clasificatoria Mundial'];
+  private tournaments=[{'name':'Premier League','id':39},
+                       {'name':'Ligue 1','id':61},
+                       {'name':'La liga','id':140} ,
+                       {'name':'Serie A','id':135},
+                       {'name':'Eredivisie','id':88},
+                       {'name':'Bundesliga','id':78},
+                       {'name':'MLS','id':253},
+                       {'name':'Liga Profesional de Fulbo Argentino','id':128},
+                       {'name':'Brasilerao','id':71},
+                       {'name':'Primera Colombia','id':239},
+                       {'name':'Primera B Argentina','id':131},
+                       {'name':'CONMEBOL Libertadores','id':13},
+                       {'name':'CONMEBOL Sudamericana','id':11},
+                       {'name':'UEFA Champions League','id':2},
+                       {'name':'UEFA Europa League','id':3},
+                       {'name':'Copa Argentina','id':130},
+                       {'name':'Copa America','id':9},
+                       {'name':'Clasificatoria Mundial','id':37}
+                      ];
   private actualTournamentTeams: any[]=[];
+  private actualLeague=0;
+  private actualTeam=0;
   constructor(private http : HttpClient) { }
   
   get Tournaments(){
@@ -59,5 +79,21 @@ export class TournamentsService {
 
   get teams(){
     return this.actualTournamentTeams;
+  }
+
+  setCurrentLeauge(leagueId: number){
+    this.actualLeague=leagueId;
+  }
+
+  get CurrentLeague(){
+    return this.actualLeague;
+  }
+
+  setActualTeam(TeamId : number){
+    this.actualTeam=TeamId;
+  }
+
+  get CurrentTeam(){
+    return this.actualTeam;
   }
 }

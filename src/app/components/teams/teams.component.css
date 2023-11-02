@@ -2,8 +2,8 @@
     margin: 0;
 }
 
-.col{
-    height: 700px;
+.col-6{
+    min-height: 700px;
 }
 
 .card-header-bg-dark{

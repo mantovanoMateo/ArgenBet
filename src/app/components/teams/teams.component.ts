@@ -7,7 +7,7 @@ import { TournamentsService } from 'src/app/services/tournaments.service';
   styleUrls: ['./teams.component.css']
 })
 export class TeamsComponent {
-  private tournaments =new Array<String>;
+  private tournaments =new Array<any>;
   constructor(private tournamentService: TournamentsService){ }
   
   ngOnInit(){
@@ -18,7 +18,7 @@ export class TeamsComponent {
     return this.tournaments;
   }
 
-  getTournamentTeams(){
-
+  getTournamentTeams(leagueId :number){
+    this.tournamentService.setCurrentLeauge(leagueId);
   }
 }

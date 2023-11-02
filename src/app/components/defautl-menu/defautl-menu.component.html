@@ -5,7 +5,7 @@
             <div class="card-header text-bg-dark">Torneos</div>
             <div class="card-body">
                 <div class="tournament" *ngFor="let tournament of Tournaments">
-                    <a class="nav-link active" [routerLink]="['/mainMenu/defaultMenu/fixtureList']">{{tournament}}</a>
+                    <a class="nav-link active" [routerLink]="['/mainMenu/defaultMenu/fixtureList']">{{tournament.name}}</a>
                 </div>
             </div>
         </div>
