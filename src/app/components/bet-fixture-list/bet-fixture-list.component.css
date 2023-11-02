@@ -21,3 +21,17 @@
 .card-text{
     margin: 0px;
 }
+
+.fixtureTeamLogo{
+    height: 35px;
+    width: 35px;
+    margin-right: 10px;
+}
+
+.teamData{
+    display: flex;
+}
+
+.card-body{
+    height: 100px;
+}

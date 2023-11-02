@@ -41,13 +41,20 @@
         {{fixture.league.name}} {{fixture.fixture.date}}
     </div>
     <div class="betBody">
-        <a class="nav-link active" id="{{fixture.fixture.id}}" [routerLink]="['/mainMenu/defaultMenu/fixture']" routerLinkActive="active">
+        <a class="nav-link active" id="{{fixture.fixture.id}}" [routerLink]="['/mainMenu/defaultMenu/fixture']"
+            routerLinkActive="active">
             <div class="card-body">
                 <div class="fixture">
                     <div class="teamsData">
-                        <p class="card-text">{{fixture.teams.home.name}}</p>
+                        <div class="teamData">
+                            <img class="fixtureTeamLogo" src="" alt="">
+                            <p class="card-text">{{fixture.teams.home.name}}</p>
+                        </div>
                         <div class="separator"></div>
-                        <p class="card-text">{{fixture.teams.away.name}}</p>
+                        <div class="teamData">
+                            <img class="fixtureTeamLogo" src="" alt="">
+                            <p class="card-text">{{fixture.teams.away.name}}</p>
+                        </div>
                         <br>
                     </div>
                 </div>
