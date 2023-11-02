@@ -19,6 +19,7 @@ import { BetFixtureComponent } from './components/bet-fixture/bet-fixture.compon
 import { BetFixtureListComponent } from './components/bet-fixture-list/bet-fixture-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
