@@ -13,13 +13,18 @@ export class TeamListComponent {
   constructor(private tournamentService: TournamentsService){}
 
   ngOnInit(){
-    this.tournamentService.getTournamentTeams(140)
+    this.tournamentService.getTournamentTeams(this.tournamentService.CurrentLeague)
     .then((response)=>{
       this.tournamentService.setTeams(response)
       console.log(response);
+      this.teams=this.tournamentService.teams;
     })
     .catch((error)=>{
       console.log(error);   
     })
+  }
+
+  setActualTeam(teamId :number){
+    this.tournamentService.setActualTeam(teamId);
   }
 }
