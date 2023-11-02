@@ -16,6 +16,7 @@ import { ActivityHistoryComponent } from './components/activity-history/activity
 import { BetFixtureComponent } from './components/bet-fixture/bet-fixture.component';
 import { BetFixtureListComponent } from './components/bet-fixture-list/bet-fixture-list.component';
 import { AtmComponent } from './components/atm/atm.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const routes: Routes = [
   {path: 'logIn', component:LogInComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
     children:[
       {path: 'myData', component: MyDataComponent},
       {path: 'activityHistory', component: ActivityHistoryComponent},
-      {path: 'atm', component: AtmComponent}
+      {path: 'atm', component: AtmComponent},
+      {path: 'settings', component : SettingsComponent}
     ]},
   {path: 'mainMenu', component:MainMenuComponent,
    children:[
