@@ -8,7 +8,8 @@ export class TournamentsService {
 
   private apiFixtureOdds='https://v3.football.api-sports.io/odds?fixture=';
   private apiGetFixture='https://v3.football.api-sports.io/fixtures?id=';
-  private apiKey='38fdbc96520dd2740eff02efcd4ada0b';
+  private apiKey='38fdbc96520dd2740eff02efcd4ada0b';//ya usamos todas el dia 2/11
+  private apiKey2='a3ddfc2f662520e998b7fcf1b17e59d3';
   private headers = new HttpHeaders({
     'x-rapidapi-host':'v3.football.api-sports.io',
     'x-rapidapi-key': this.apiKey
@@ -43,13 +44,39 @@ export class TournamentsService {
     return this.tournaments;
   }
 
+  getActualDate(){
+    let date= new Date();
+    let fromDate='';
+    let day='';
+    if(date.getDate()<10){
+      day='0'+date.getDate();
+    }else{
+      day=date.getDate().toString();
+    }
+    fromDate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+day;
+    return fromDate;
+  }
+
+  getToDate(){
+    let toDate='';
+    let date=new Date();
+    date.setDate(date.getDate()+13);
+    let day='';
+    if(date.getDate()<10){
+      day='0'+date.getDate().toString();
+    }
+
+    toDate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+    return toDate;
+  }
+
   getFixtureOdds(id: number): Promise<any>{
     return this.http.get(this.apiFixtureOdds+id,this.options)
     .toPromise();
   }
 
-  getTournamentNextFixtures(leagueId: number,fromDate: String, toDate: String){
-    return this.http.get('https://v3.football.api-sports.io/fixtures?league='+leagueId+'&season=2023&from='+fromDate+'&to='+toDate,this.options)
+  getTournamentNextFixtures(leagueId: number){
+    return this.http.get('https://v3.football.api-sports.io/fixtures?league='+leagueId+'&season=2023&from='+this.getActualDate()+'&to='+this.getToDate(),this.options)
     .toPromise();
   }
 
@@ -58,8 +85,8 @@ export class TournamentsService {
     .toPromise();
   }
 
-  getTeamNextFixtures(teamId: number,fromDate: String, toDate: String){
-    return this.http.get('https://v3.football.api-sports.io/fixtures?team='+teamId+'&season=2023&from='+fromDate+'&to='+toDate,this.options)
+  getTeamNextFixtures(teamId: number){
+    return this.http.get('https://v3.football.api-sports.io/fixtures?team='+teamId+'&season=2023&from='+this.getActualDate()+'&to='+this.getToDate(),this.options)
     .toPromise();
   }
 
