@@ -17,4 +17,8 @@ export class TeamsComponent {
   get Tournaments(){
     return this.tournaments;
   }
+
+  getTournamentTeams(){
+
+  }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { TournamentsService } from 'src/app/services/tournaments.service';
 
 @Component({
   selector: 'app-team-list',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class TeamListComponent {
 
+  teams: any[]=[];
+
+  constructor(private tournamentService: TournamentsService){}
+
+  ngOnInit(){
+    this.tournamentService.getTournamentTeams(140)
+    .then((response)=>{
+      this.tournamentService.setTeams(response)
+      console.log(response);
+    })
+    .catch((error)=>{
+      console.log(error);   
+    })
+  }
 }

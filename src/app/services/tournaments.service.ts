@@ -16,6 +16,7 @@ export class TournamentsService {
 
   private options={headers: this.headers};
   private tournaments=['Premier League','Ligue 1','La liga','Serie A','Eredivisie','Bundesliga','MLS','Liga Profesional de Fulbo Argentino','Brasilerao','Primera Colombia','Primera B Argentina','CONMEBOL Libertadores','CONMEBOL Sudamericana','UEFA Champions League','UEFA Europa League','Copa Argentina','Copa America','Clasificatoria Mundial'];
+  private actualTournamentTeams: any[]=[];
   constructor(private http : HttpClient) { }
   
   get Tournaments(){
@@ -43,7 +44,20 @@ export class TournamentsService {
   }
 
   getTeamData(teamId: number){
-    return this.http.get('https://v3.football.api-sports.io/teams?id='+teamId)
+    return this.http.get('https://v3.football.api-sports.io/teams?id='+teamId,this.options)
     .toPromise();
+  }
+
+  getTournamentTeams(leagueId: number){
+    return this.http.get('https://v3.football.api-sports.io/teams?league='+leagueId+'&season=2023',this.options)
+    .toPromise();
+  }
+
+  setTeams(teams: any){
+    this.actualTournamentTeams=teams.response;
+  }
+
+  get teams(){
+    return this.actualTournamentTeams;
   }
 }
