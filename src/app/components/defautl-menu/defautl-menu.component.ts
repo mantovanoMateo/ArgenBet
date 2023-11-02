@@ -7,7 +7,7 @@ import { TournamentsService } from 'src/app/services/tournaments.service';
   styleUrls: ['./defautl-menu.component.css']
 })
 export class DefautlMenuComponent {
-  private tournaments =new Array<String>;
+  private tournaments =new Array<any>;
   constructor(private tournamentService: TournamentsService){ }
   
   ngOnInit(){

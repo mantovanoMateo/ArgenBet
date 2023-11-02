@@ -4,12 +4,12 @@
             <div class="card-header text-bg-dark">Torneos</div>
             <div class="card-body">
                 <div class="tournament" *ngFor="let tournament of Tournaments">
-                    <a class="nav-link active" [routerLink]="['/mainMenu/teams/teamList']">{{tournament}}</a>
+                    <a class="nav-link active" (click)="getTournamentTeams(tournament.id)" [routerLink]="['/mainMenu/teams/teamList']">{{tournament.name}}</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col-6">
         <div class="card h-100">
             <div class="card-header text-bg-dark">Equipos</div>
             <div class="card-body">
