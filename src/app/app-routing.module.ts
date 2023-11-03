@@ -41,25 +41,7 @@ const routes: Routes = [
       {path: 'teamDetails', component: TeamDetailsComponent}
      ]},
     {path: 'mybets', component:MyBetsComponent}
-   ]
-
-  },
-  {
-    path: 'mainMenu',
-    component: MainMenuComponent,
-    children: [
-      { path: 'defaultMenu', component: DefautlMenuComponent },
-      {
-        path: 'teams',
-        component: TeamsComponent,
-        children: [
-          { path: 'teamList', component: TeamListComponent },
-          { path: 'teamDetails', component: TeamDetailsComponent },
-        ],
-      },
-      { path: 'mybets', component: MyBetsComponent },
-    ],
-  },
+   ]},
   { path: '', redirectTo: '/mainMenu/defaultMenu', pathMatch: 'full' },
 ];
 

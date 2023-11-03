@@ -1,1 +1,44 @@
-<p>settings works!</p>
+<div class="card">
+    <div class="card-header">
+      Mis Ajustes
+    </div>
+    <div class="card-body">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <label for="first-name">Nombre </label>
+            <input id="first-name" type="text" formControlName="firstName">
+
+            <label for="last-name">Apellido: </label>
+            <input id="last-name" type="text" formControlName="lastName">
+
+
+            <label for="dni">DNI: </label>
+            <input id="dni" type="text" formControlName="dni">
+
+
+            <label for="phone">Telefono: </label>
+            <input id="phone" type="text" formControlName="phone">
+
+
+            <label for="email">Email: </label>
+            <input id="email" type="text" formControlName="email">
+
+
+            <label for="gender">Genero: </label>
+            <input id="gender" type="text" formControlName="gender">
+
+
+            <label for="nationality">Nacionalidad: </label>
+            <input id="nationality" type="text" formControlName="nationality">
+
+
+            <label for="birthdate">Fecha de nacimiento: </label>
+            <input id="birthdate" type="text" formControlName="birthdate">
+
+
+            <label for="password">Contraseña: </label>
+            <input id="password" type="text" formControlName="password">
+
+            <button type="submit" [disabled]="!profileForm.valid">Aceptar</button>
+        </form>
+    </div>
+  </div>

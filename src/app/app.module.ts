@@ -18,7 +18,7 @@ import { AtmComponent } from './components/atm/atm.component';
 import { BetFixtureComponent } from './components/bet-fixture/bet-fixture.component';
 import { BetFixtureListComponent } from './components/bet-fixture-list/bet-fixture-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router';
 import { SettingsComponent } from './components/settings/settings.component';
 
@@ -45,7 +45,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
