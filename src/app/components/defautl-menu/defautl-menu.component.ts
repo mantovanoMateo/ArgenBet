@@ -17,4 +17,8 @@ export class DefautlMenuComponent {
   get Tournaments(){
     return this.tournaments;
   }
+
+  setActualTournament(leagueId:number){
+    this.tournamentService.setCurrentLeauge(leagueId);
+  }
 }
