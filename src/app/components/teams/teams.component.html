@@ -4,7 +4,7 @@
             <div class="card-header text-bg-dark">Torneos</div>
             <div class="card-body">
                 <div class="tournament" *ngFor="let tournament of Tournaments">
-                    <a class="nav-link active" (click)="getTournamentTeams(tournament.id)" [routerLink]="['/mainMenu/teams/teamList']">{{tournament.name}}</a>
+                    <a class="nav-link active" [routerLink]="['/mainMenu/teams/teamList/',tournament.id]">{{tournament.name}}</a>
                 </div>
             </div>
         </div>

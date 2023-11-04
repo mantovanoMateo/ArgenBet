@@ -15,6 +15,7 @@ export class BetFixtureListComponent {
     ngOnInit(){
       this.tournamentService.getTournamentNextFixtures(this.tournamentService.CurrentLeague)
       .then((Response)=>{
+        console.log(Response);
         this.response=Response;
         this.fixtures=this.response.response;
       })

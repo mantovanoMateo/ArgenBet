@@ -21,4 +21,8 @@ export class TeamsComponent {
   getTournamentTeams(leagueId :number){
     this.tournamentService.setCurrentLeauge(leagueId);
   }
+
+  navigate(id: number){
+    location.href='/mainMenu/teams/teamList/'+id;
+  }
 }

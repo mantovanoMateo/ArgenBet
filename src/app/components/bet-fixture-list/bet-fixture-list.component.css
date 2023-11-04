@@ -19,17 +19,29 @@
 }
 
 .card-text{
-    margin: 0px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: larger;
 }
 
 .fixtureTeamLogo{
-    height: 35px;
-    width: 35px;
-    margin-right: 10px;
+    height: 65px;
+    width: 65px;
+    margin: 3px;
+}
+.teamsData{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
 }
 
 .teamData{
     display: flex;
+    
+}
+
+.vs{
+    margin-top: 15px;
 }
 
 .card-body{

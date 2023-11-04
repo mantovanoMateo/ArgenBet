@@ -1,3 +1,4 @@
+<!--
 <div class="card">
     <div class="card-header text-bg-dark">
         CONMEBOL Libertadores - 04/11/2023
@@ -8,34 +9,17 @@
                 <div class="fixture">
                     <div class="teamsData">
                         <p class="card-text">Boca Juniors</p>
-                        <div class="separator"></div>
+                        <img class="fixtureTeamLogo" src="" alt="">
+                        <h4 class="vs">VS</h4>
+                        <img class="fixtureTeamLogo" src="" alt="">
                         <p class="card-text">F.C Fluminense</p>
-                        <br>
                     </div>
                 </div>
             </div>
         </a>
     </div>
 </div>
-<div class="card">
-    <div class="card-header text-bg-dark">
-        CONMEBOL Libertadores - 04/11/2023
-    </div>
-    <div class="betBody">
-        <a class="nav-link active" [routerLink]="['/mainMenu/defaultMenu/fixture']" routerLinkActive="active">
-            <div class="card-body">
-                <div class="fixture">
-                    <div class="teamsData">
-                        <p class="card-text">Boca Juniors</p>
-                        <div class="separator"></div>
-                        <p class="card-text">F.C Fluminense</p>
-                        <br>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
+-->
 <div *ngFor="let fixture of fixtures" class="card">
     <div class="card-header text-bg-dark">
         {{fixture.league.name}} {{fixture.fixture.date}}
@@ -47,15 +31,14 @@
                 <div class="fixture">
                     <div class="teamsData">
                         <div class="teamData">
-                            <img class="fixtureTeamLogo" src="" alt="">
+                            <img class="fixtureTeamLogo" src="{{fixture.teams.home.logo}}" alt="">
                             <p class="card-text">{{fixture.teams.home.name}}</p>
                         </div>
-                        <div class="separator"></div>
+                        <h4 class="vs">VS</h4>
                         <div class="teamData">
-                            <img class="fixtureTeamLogo" src="" alt="">
                             <p class="card-text">{{fixture.teams.away.name}}</p>
+                            <img class="fixtureTeamLogo" src="{{fixture.teams.away.logo}}" alt="">
                         </div>
-                        <br>
                     </div>
                 </div>
             </div>
