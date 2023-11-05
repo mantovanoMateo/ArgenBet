@@ -10,4 +10,5 @@ export class User
     nationality: string='';
     birthdate: Date=new Date;
     password: string='';
+    balance: number =0;
 }

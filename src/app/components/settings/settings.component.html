@@ -1,44 +1,107 @@
 <div class="card">
-    <div class="card-header">
-      Mis Ajustes
-    </div>
-    <div class="card-body">
-        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-            <label for="first-name">Nombre </label>
-            <input id="first-name" type="text" formControlName="firstName">
+  <div class="card-header text-bg-dark">Mis Ajustes</div>
+  <div class="card-body text-bg-dark">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col">
+          <label for="first-name" class="form-label">Nombre </label>
+          <input
+            id="first-name"
+            class="form-control"
+            type="text"
+            formControlName="firstName"
+          />
+        </div>
 
-            <label for="last-name">Apellido: </label>
-            <input id="last-name" type="text" formControlName="lastName">
+        <div class="col">
+          <label for="last-name" class="form-label">Apellido: </label>
+          <input
+            id="last-name"
+            class="form-control"
+            type="text"
+            formControlName="lastName"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <label for="dni" class="form-label">DNI: </label>
+          <input
+            id="dni"
+            class="form-control"
+            type="text"
+            formControlName="dni"
+          />
+        </div>
+        <div class="col">
+          <label for="phone" class="form-label">Telefono: </label>
+          <input
+            id="phone"
+            class="form-control"
+            type="text"
+            formControlName="phone"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <label for="email" class="form-label">Email: </label>
+          <input
+            id="email"
+            class="form-control"
+            type="text"
+            formControlName="email"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="gender" class="form-label">Genero: </label>
+          <select id="inputGender" class="form-select" formControlName="gender">
+            <option>Masculino</option>
+            <option>Femenino</option>
+            <option>Otro</option>
 
+          </select>
+        </div>
 
-            <label for="dni">DNI: </label>
-            <input id="dni" type="text" formControlName="dni">
-
-
-            <label for="phone">Telefono: </label>
-            <input id="phone" type="text" formControlName="phone">
-
-
-            <label for="email">Email: </label>
-            <input id="email" type="text" formControlName="email">
-
-
-            <label for="gender">Genero: </label>
-            <input id="gender" type="text" formControlName="gender">
-
-
-            <label for="nationality">Nacionalidad: </label>
-            <input id="nationality" type="text" formControlName="nationality">
-
-
-            <label for="birthdate">Fecha de nacimiento: </label>
-            <input id="birthdate" type="text" formControlName="birthdate">
-
-
-            <label for="password">Contraseña: </label>
-            <input id="password" type="text" formControlName="password">
-
-            <button type="submit" [disabled]="!profileForm.valid">Aceptar</button>
-        </form>
-    </div>
+        <div class="col">
+          <label for="password" class="form-label">Contraseña: </label>
+          <input
+            id="password"
+            class="form-control"
+            type="password"
+            formControlName="password"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col">
+          <label for="nationality" class="form-label">Nacionalidad: </label>
+          <input
+            id="nationality"
+            class="form-control"
+            type="text"
+            formControlName="nationality"
+          />
+        </div>
+        <div class="col">
+          <label for="birthdate" class="form-label"
+            >Fecha de nacimiento:
+          </label>
+          <input
+            id="birthdate"
+            class="form-control"
+            type="text"
+            formControlName="birthdate"
+          />
+        </div>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-outline-success" [disabled]="!profileForm.valid">Confirmar</button>
+    </form>
   </div>
+</div>
