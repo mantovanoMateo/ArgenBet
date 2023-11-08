@@ -25,17 +25,17 @@ export class UserService {
   }
 
   getBetHistory(): Promise<any>{
-    return this.http.get(this.apiBetHistory+this.user.id)
+    return this.http.get(this.apiBetHistory+3)
     .toPromise();
   }
 
   getPendingBets(): Promise<any>{
-    return this.http.get(this.apiPendingBets+this.user.id)
+    return this.http.get(this.apiPendingBets+3)
     .toPromise();
   }
 
   getTransactions(): Promise<any>{
-    return this.http.get(this.apiTransactionHistory+this.user.id)
+    return this.http.get(this.apiTransactionHistory+3)
     .toPromise();
   }
 

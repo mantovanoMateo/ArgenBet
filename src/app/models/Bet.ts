@@ -1,6 +1,7 @@
 export class Bet{
     id: number=0;
     fixtureId: number=0;
+    headToHead: string='';
     type: string='';
     selection: string='';
     betValue: number=0;

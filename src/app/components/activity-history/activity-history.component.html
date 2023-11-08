@@ -1,52 +1,48 @@
 <div class="card text-bg-dark mb-3">
-  <div class="card-header"><h2>Historial de actividad</h2></div>
+  <div class="card-header">
+    <h2>Historial de actividad</h2>
+  </div>
   <div class="card-body">
     <div class="accordion" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button
-            class="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
-            aria-expanded="true"
-            aria-controls="collapseOne"
-          >
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
             Historial de apuestas
           </button>
         </h2>
-        <div
-          id="collapseOne"
-          class="accordion-collapse collapse show"
-          data-bs-parent="#accordionExample"
-        >
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <table class="table table-dark table-striped">
               <thead>
                 <tr>
                   <th scope="col">#</th>
+                  <th scope="col">Partido</th>
                   <th scope="col">Tipo</th>
-                  <th scope="col">valor apostado</th>
                   <th scope="col">Seleccion</th>
+                  <th scope="col">valor apostado</th>
+                  <th scope="col">Posible ganancia</th>
+                  <th scope="col">Estado</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <td>Boca - River</td>
+                  <td>match winner</td>
+                  <td>Home</td>
+                  <td>$5000</td>
+                  <td>$2000</td>
+                  <td>NS</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
+                <tr *ngFor="let bet of betsHistory">
+                  <th scope="row">{{bet.id}}</th>
+                  <td>{{bet.headToHead}}</td>
+                  <td>{{bet.type}}</td>
+                  <td>{{bet.selection}}</td>
+                  <td>${{bet.betValue}}</td>
+                  <td>${{(bet.betValue*bet.benefit)-bet.betValue}}</td>
+                  <td>{{bet.betStatus}}</td>
                 </tr>
               </tbody>
             </table>
@@ -55,22 +51,12 @@
       </div>
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
-            aria-expanded="false"
-            aria-controls="collapseTwo"
-          >
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
             Historial de transacciones
           </button>
         </h2>
-        <div
-          id="collapseTwo"
-          class="accordion-collapse collapse"
-          data-bs-parent="#accordionExample"
-        >
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <table class="table table-dark table-striped">
               <thead>
