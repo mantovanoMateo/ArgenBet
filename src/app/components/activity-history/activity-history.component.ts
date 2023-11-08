@@ -21,5 +21,10 @@ export class ActivityHistoryComponent {
      // console.log('esto trajo el bet history');
      // console.log(Response);
    // })
+
+   this.userService.getTransactions()
+   .then((Response)=>{
+    this.transactionHistory=Response;
+   })
   }
 }

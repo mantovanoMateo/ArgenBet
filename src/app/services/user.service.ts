@@ -57,5 +57,16 @@ export class UserService {
     .toPromise();
   }
 
+  getUserBetBalance(){
+    return this.user.betBalance;
+  }
+
+  getUserBalance(){
+    return this.user.balance;
+  }
+
+  asignUser(user: User){
+    this.user=user;
+  }
 
 }
