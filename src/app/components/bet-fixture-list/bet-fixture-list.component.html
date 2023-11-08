@@ -25,7 +25,7 @@
         {{fixture.league.name}} {{fixture.fixture.date}}
     </div>
     <div class="betBody">
-        <a class="nav-link active" id="{{fixture.fixture.id}}" [routerLink]="['/mainMenu/defaultMenu/fixture']"
+        <a class="nav-link active" id="{{fixture.fixture.id}}" [routerLink]="['/mainMenu/defaultMenu/fixture/',fixture.fixture.id]"
             routerLinkActive="active">
             <div class="card-body">
                 <div class="fixture">

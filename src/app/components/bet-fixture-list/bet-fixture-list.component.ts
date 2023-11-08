@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TournamentsService } from 'src/app/services/tournaments.service';
 
+
 @Component({
   selector: 'app-bet-fixture-list',
   templateUrl: './bet-fixture-list.component.html',

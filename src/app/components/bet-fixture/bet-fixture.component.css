@@ -7,3 +7,18 @@
 .btn{
     margin: 5px;
 }
+
+.teamsData{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+}
+
+.teamData{
+    display: flex;
+    
+}
+
+.vs{
+    margin-top: 15px;
+}
