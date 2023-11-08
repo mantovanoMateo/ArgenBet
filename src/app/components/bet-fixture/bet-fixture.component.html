@@ -1,61 +1,27 @@
 <div class="card">
     <div class="card-header text-bg-dark">
-        CONMEBOL Libertadores - 04/11/2023
+        {{leagueName}}
     </div>
     <div class="card-body">
         <div class="fixture">
             <div class="teamsData">
-                <p class="card-text">Boca Juniors</p>
-                <div class="separator"></div>
-                <p class="card-text">F.C Fluminense</p>
-                <br>
-            </div>
-        </div>
-        <div class="card text-bg-light mb-3">
-            <div class="card-header text-bg-dark">Tipo de apuesta 1</div>
-            <div class="card-body">
-                <div class="bets">
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
+                <div class="teamData">
+                    <img class="fixtureTeamLogo" src="" alt="logo local">
+                    <p class="card-text">aca iria el nombre del local</p>
+                </div>
+                <h4 class="vs">VS</h4>
+                <div class="teamData">
+                    <p class="card-text">aca ira el nombre del visitante</p>
+                    <img class="fixtureTeamLogo" src="" alt="logo visitante">
                 </div>
             </div>
         </div>
-        <div class="card text-bg-light mb-3">
-            <div class="card-header text-bg-dark">Tipo de apuesta 2</div>
+        <div *ngFor="let bet of bets" class="card text-bg-light mb-3">
+            <div class="card-header text-bg-dark">{{bet.name}}</div>
             <div class="card-body">
                 <div class="bets">
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                </div>
-            </div>
-        </div>
-        <div class="card text-bg-light mb-3">
-            <div class="card-header text-bg-dark">Tipo de apuesta 3</div>
-            <div class="card-body">
-                <div class="bets">
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="button">Toggle button</button>
+                    <button (click)="onClick(value.value,value.odd,bet.name)" *ngFor="let value of bet.values" type="button" class="btn btn-outline-success"
+                        data-bs-toggle="button">{{value.value}} // {{value.odd}}</button>
                 </div>
             </div>
         </div>

@@ -31,7 +31,7 @@ const routes: Routes = [
     {path: 'defaultMenu', component:DefautlMenuComponent,
       children:[
         {path: 'fixtureList', component: BetFixtureListComponent},
-        {path: 'fixture', component: BetFixtureComponent}
+        {path: 'fixture/:id', component: BetFixtureComponent}
       ]},
     {path: 'teams', component:TeamsComponent,
      children:[

@@ -38,6 +38,7 @@ export class TournamentsService {
   private actualTournamentTeams: any[]=[];
   private actualLeague=0;
   private actualTeam=0;
+  private actualFixture=0;
   constructor(private http : HttpClient) { }
   
   get Tournaments(){
@@ -71,7 +72,7 @@ export class TournamentsService {
   }
 
   getFixtureOdds(id: number): Promise<any>{
-    return this.http.get(this.apiFixtureOdds+id,this.options)
+    return this.http.get(this.apiFixtureOdds+id+'&bookmaker=11',this.options)
     .toPromise();
   }
 
@@ -122,5 +123,13 @@ export class TournamentsService {
 
   get CurrentTeam(){
     return this.actualTeam;
+  }
+
+  get currentFixture(){
+    return this.actualFixture;
+  }
+
+  setActualFixture(fixtureId: number){
+    this.actualFixture=fixtureId;
   }
 }
