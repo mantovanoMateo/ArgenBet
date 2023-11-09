@@ -67,7 +67,7 @@ export class DefautlMenuComponent {
   }
 
   confirmBet(){
-    //this.cartService.confirmBet();
+    this.cartService.confirmBet();
   }
 
   getProfit(betedValue: number, benefit:number){

@@ -1,6 +1,6 @@
 <div class="card bg-dark text-white">
     <div class="card-header">
-        <h2 style="margin-left: 20px">Saldo total $000.00</h2>
+        <h2 style="margin-left: 20px">Saldo total ${{balance}}</h2>
         <div class="buttons">
             <button type="button" class="btn btn-outline">Depositar</button>
             <button type="button" class="btn btn-outline">Retirar</button>
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h2 class="balance">$0,00</h2>
+                        <h2 class="balance">${{getWithdrawableBalance()}}</h2>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h2 class="balance">$0,00</h2>
+                        <h2 class="balance">${{betBalance}}</h2>
                     </div>
                 </div>
             </div>

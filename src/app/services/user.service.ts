@@ -25,17 +25,17 @@ export class UserService {
   }
 
   getBetHistory(): Promise<any>{
-    return this.http.get(this.apiBetHistory+this.user.id)
+    return this.http.get(this.apiBetHistory+3)
     .toPromise();
   }
 
   getPendingBets(): Promise<any>{
-    return this.http.get(this.apiPendingBets+this.user.id)
+    return this.http.get(this.apiPendingBets+3)
     .toPromise();
   }
 
   getTransactions(): Promise<any>{
-    return this.http.get(this.apiTransactionHistory+this.user.id)
+    return this.http.get(this.apiTransactionHistory+3)
     .toPromise();
   }
 
@@ -57,5 +57,16 @@ export class UserService {
     .toPromise();
   }
 
+  getUserBetBalance(){
+    return this.user.betBalance;
+  }
+
+  getUserBalance(){
+    return this.user.balance;
+  }
+
+  asignUser(user: User){
+    this.user=user;
+  }
 
 }
