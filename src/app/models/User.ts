@@ -7,7 +7,8 @@ export class User
     phone: string='';
     email: string='';
     gender: string='';
-    nationality: string='';
+    balance: number=0.0;
+    betBalance: number=0.0;
     birthdate: Date=new Date;
     password: string='';
 }

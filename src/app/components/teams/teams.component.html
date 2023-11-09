@@ -19,7 +19,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="resetTotal()" class="btn btn-outline-danger" data-bs-dismiss="modal">Volver</button>
-                <button *ngIf="cartOK==true" type="button" class="btn btn-outline-success">Confirmar</button>
+                <button *ngIf="cartOK==true" (click)="confirmBet()" type="button" class="btn btn-outline-success">Confirmar</button>
             </div>
         </div>
     </div>
@@ -65,24 +65,11 @@
                             $
                             <input id="betValue{{bet.id}}" type="number" min="50" class="form">
                         </div>
-                        <!--
-                        <br>
-                        <div class="benefit">
-                            <p class="ganancia{{bet.id}}">Ganancia potencial</p>
-                            <p id="importeBet{{bet.id}}">$importe</p>
-                        </div>
-                        -->
                     </div>
                 </div>
             </div>
             <div class="card-footer text-bg-dark">
                 <div class="betfinish">
-                    <!--
-                    <div class="totalBet">
-                        <p>$Importe total</p>
-                        <p>$Ganancia potencial</p>
-                    </div>
-                    -->
                     <div class="betBtn">
                         <div class="betBtn">
                             <button type="button" (click)="verifyCart()" class="btn btn-outline-success"

@@ -43,9 +43,6 @@ body{
     float: right;
     margin-top: 6px;
 }
-.fixture{
-    max-height: 50px;
-}
 
 .row{
     background-color: #c7c7c7;
@@ -131,7 +128,4 @@ body{
     --bs-modal-color: white;
     --bs-modal-header-border-color: #474747;
     --bs-modal-footer-border-color: #212529;
- }
- .btn {
-    margin: 5px;
  }

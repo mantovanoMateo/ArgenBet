@@ -13,6 +13,12 @@ export class BetService {
   constructor(private http: HttpClient) { }
 
   addBet(bet : Bet){
+    let response: any;
+    this.http.get('http://localhost:8080/bets/lastId').toPromise()
+    .then((Response)=>{
+      response=Response;
+      bet.id=parseInt(response,10)+1;
+    })
     const httpOptions={
       headers:new HttpHeaders({'Content-Type':'application/json'})
     };
@@ -20,7 +26,7 @@ export class BetService {
       .toPromise();
   }
 
-  deletebet(betId: number){
+  deleteBet(betId: number){
     return this.http.delete(this.apiDeleteBet+betId).toPromise();
   }
 
@@ -28,7 +34,8 @@ export class BetService {
     const httpOptions={
       headers:new HttpHeaders({'Content-Type':'application/json'})
     };
-    return this.http.put(this.apiUpdateBet+bet.id,bet,httpOptions);
+    return this.http.put(this.apiUpdateBet+bet.id,bet,httpOptions)
+    .toPromise();
   }
   
 }
