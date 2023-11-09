@@ -60,3 +60,14 @@
 .balance {
   text-align: center;
 }
+.btn-group{
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+}
+input{
+  margin-bottom: 10px;
+}
+::placeholder{
+  color:white;
+}
