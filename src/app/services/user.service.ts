@@ -57,5 +57,23 @@ export class UserService {
     .toPromise();
   }
 
+  getUserBetBalance(){
+    return this.user.betBalance;
+  }
+
+  getUserBalance(){
+    return this.user.balance;
+  }
+
+  asignUser(user: User){
+    this.user=user;
+  }
+
+  modifyBetBalance(amount :number){
+    this.user.betBalance+=amount;
+    this.modifyUser().then((Response)=>{
+      console.log(Response);
+    })
+  }
 
 }

@@ -20,7 +20,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="resetTotal()" class="btn btn-outline-danger" data-bs-dismiss="modal">Volver</button>
-                <button *ngIf="cartOK==true" type="button" class="btn btn-outline-success">Confirmar</button>
+                <button *ngIf="cartOK==true" (click)="confirmBet()" type="button" class="btn btn-outline-success">Confirmar</button>
             </div>
         </div>
     </div>

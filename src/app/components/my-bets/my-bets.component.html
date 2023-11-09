@@ -20,7 +20,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="resetTotal()" class="btn btn-outline-danger" data-bs-dismiss="modal">Volver</button>
-                <button *ngIf="cartOK==true" type="button" class="btn btn-outline-success">Confirmar</button>
+                <button *ngIf="cartOK==true" (click)="confirmBet()" type="button" class="btn btn-outline-success">Confirmar</button>
             </div>
         </div>
     </div>
@@ -32,20 +32,20 @@
             <div class="card-body">
                 <div class="card">
                     <div class="card-header text-bg-dark">
-                        CONMEBOL Libertadores - 04/11/2023 - Ganador del Partido
+                        CONMEBOL Libertadores - 04/11/2023 - Ganador del Partido → Home
                     </div>
                     <div class="betBody">
                         <div class="card-body">
                             <div class="fixture">
                                 <div class="teamsData">
-                                    <p class="card-text">Boca Juniors</p>
-                                    <div class="separator"></div>
-                                    <p class="card-text">F.C Fluminense</p>
-                                    <br>
+                                    <p class="card-text">Beneficio → 5.0</p>
+                                    <p class="card-text">Valor apostado → $5000</p>
                                 </div>
                                 <div class="betBtn">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <input type="number" class="form">
+                                        <button type="button" class="btn btn-danger">X</button>
+                                        <input class="inputNewBetValue" type="number" min="1" class="form">
+                                        <button type="button" class="btn btn-success">✓</button>
                                     </div>
                                 </div>
                             </div>
@@ -54,22 +54,20 @@
                 </div>
                 <div *ngFor="let bet of myBets" class="card">
                     <div class="card-header text-bg-dark">
-                        CONMEBOL Libertadores - 04/11/2023 - Ganador del Partido
+                        {{bet.headToHead}}
                     </div>
                     <div class="betBody">
                         <div class="card-body">
                             <div class="fixture">
                                 <div class="teamsData">
-                                    <p class="card-text">Boca Juniors</p>
-                                    <div class="separator"></div>
-                                    <p class="card-text">F.C Fluminense</p>
-                                    <br>
+                                    <p class="card-text">Beneficio → {{bet.benefit}}</p>
+                                    <p class="card-text">Valor apostado → ${{bet.betValue}}</p>
                                 </div>
                                 <div class="betBtn">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-secondary">-</button>
-                                        <input type="number" class="form">
-                                        <button type="button" class="btn btn-secondary">+</button>
+                                        <button type="button" (click)="deleteBet(bet)" class="btn btn-danger">X</button>
+                                        <input id="newBetValue{{bet.id}}" class="inputNewBetValue" type="number" min="1" class="form">
+                                        <button type="button" (click)="updateBet(bet)" class="btn btn-success">✓</button>
                                     </div>
                                 </div>
                             </div>
@@ -101,24 +99,11 @@
                             $
                             <input id="betValue{{bet.id}}" type="number" min="50" class="form">
                         </div>
-                        <!--
-                        <br>
-                        <div class="benefit">
-                            <p class="ganancia{{bet.id}}">Ganancia potencial</p>
-                            <p id="importeBet{{bet.id}}">$importe</p>
-                        </div>
-                        -->
                     </div>
                 </div>
             </div>
             <div class="card-footer text-bg-dark">
                 <div class="betfinish">
-                    <!--
-                    <div class="totalBet">
-                        <p>$Importe total</p>
-                        <p>$Ganancia potencial</p>
-                    </div>
-                    -->
                     <div class="betBtn">
                         <button type="button" (click)="verifyCart()" class="btn btn-outline-success"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">

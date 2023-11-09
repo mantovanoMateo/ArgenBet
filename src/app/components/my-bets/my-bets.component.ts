@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Bet } from 'src/app/models/Bet';
+import { BetService } from 'src/app/services/bet.service';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-my-bets',
@@ -13,7 +15,7 @@ export class MyBetsComponent {
   cartOK=false;
   total: number=0;
 
-  constructor(private cartService: CartService){}
+  constructor(private betService: BetService,private userService: UserService,private cartService: CartService){}
 
   ngOnInit(){
     this.cartService.bets.subscribe(bets=>{
@@ -23,6 +25,10 @@ export class MyBetsComponent {
       this.total=total;
       console.log(total);
     })
+    this.userService.getPendingBets()
+    .then((Response)=>{
+      this.myBets=Response;
+    }) 
   }
 
   verifyCart() {
@@ -52,8 +58,29 @@ export class MyBetsComponent {
     }
   }
 
-  deleteBet (bet: Bet){
+  deleteBet(bet: Bet){
+    this.betService.deleteBet(bet.id).then((Response)=>{console.log('elimine la apuesta'+ Response)});
+    this.userService.modifyBetBalance(-(bet.betValue));
+    let index=this.myBets.findIndex((obj)=>{
+      return obj.id === bet.id;
+    });
+    this.myBets.splice(index,1);
+  }
+
+  deleteBetFromCart (bet: Bet){
     this.cartService.delete(bet);
+  }
+
+  updateBet(bet: Bet){
+    let input=document.getElementById('newBetValue'+bet.id) as HTMLInputElement;
+    let value=parseFloat(input.value);
+    let betVariation=value-bet.betValue;
+    bet.betValue=value;
+    this.betService.modifyBet(bet)
+    .then((Response)=>{
+      console.log(Response);
+    })
+    this.userService.modifyBetBalance(betVariation);
   }
 
   confirmBet(){
