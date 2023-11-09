@@ -9,6 +9,13 @@ import { UserService } from 'src/app/services/user.service';
 export class AtmComponent {
   betBalance: number=0;
   balance: number=0;
+  paymentMethods = [
+    { name: 'Tarjeta de crédito', selected: true },
+    { name: 'Tarjeta de débito', selected: false },
+    { name: 'Transferencia bancaria', selected: false },
+    { name: 'PayPal', selected: false },
+    { name: 'Mercado Pago', selected: false}
+  ];
   
   constructor(private userService :UserService){}
 
@@ -19,5 +26,10 @@ export class AtmComponent {
 
   getWithdrawableBalance(){
     return this.balance-this.betBalance;
+  }
+  updateSelectedPaymentMethod(selectedMethod: any) {
+    this.paymentMethods.forEach(method => {
+      method.selected = method === selectedMethod;
+    });
   }
 }

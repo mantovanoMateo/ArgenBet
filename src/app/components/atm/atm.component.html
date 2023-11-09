@@ -2,8 +2,12 @@
     <div class="card-header">
         <h2 style="margin-left: 20px">Saldo total ${{balance}}</h2>
         <div class="buttons">
-            <button type="button" class="btn btn-outline">Depositar</button>
-            <button type="button" class="btn btn-outline">Retirar</button>
+            <button type="button" class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#depositModal">
+                Depositar
+            </button>
+            <button type="button" class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#withdrawModal">
+                Retirar
+            </button>
         </div>
     </div>
     <div class="card-body">
@@ -35,3 +39,51 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="depositModal" tabindex="-1" aria-labelledby="depositModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="depositModalLabel">Opciones de depósito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-dark">
+                <div class="btn-group">
+                    <label *ngFor="let method of paymentMethods" class="btn btn-outline-success" [class.active]="method.selected">
+                      <input type="radio" name="paymentMethod" [checked]="method.selected" (change)="updateSelectedPaymentMethod(method)"> {{ method.name }}
+                    </label>
+                </div>
+                <input type="text" class="form-control bg-dark text-white" placeholder="Ingrese su CBU">
+                <input type="number" class="form-control bg-dark text-white" placeholder="Cantidad a depositar">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success">Depositar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="withdrawModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="withdrawModalLabel">Retirar dinero</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-dark">
+                    <h5>Indique su CBU</h5>
+                    <h5>Para poder retirar!</h5>
+                    <br>
+                <input type="text" class="form-control bg-dark text-white" placeholder="Ingrese su CBU">
+                <input type="number" class="form-control bg-dark text-white" placeholder="Cantidad a retirar" min=1> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success">Retirar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
