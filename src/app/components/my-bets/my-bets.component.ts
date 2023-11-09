@@ -59,7 +59,8 @@ export class MyBetsComponent {
   }
 
   deleteBet(bet: Bet){
-    this.betService.deleteBet(bet.id);
+    this.betService.deleteBet(bet.id).then((Response)=>{console.log('elimine la apuesta'+ Response)});
+    this.userService.modifyBetBalance(-(bet.betValue));
     let index=this.myBets.findIndex((obj)=>{
       return obj.id === bet.id;
     });
@@ -73,11 +74,13 @@ export class MyBetsComponent {
   updateBet(bet: Bet){
     let input=document.getElementById('newBetValue'+bet.id) as HTMLInputElement;
     let value=parseFloat(input.value);
+    let betVariation=value-bet.betValue;
     bet.betValue=value;
     this.betService.modifyBet(bet)
     .then((Response)=>{
       console.log(Response);
     })
+    this.userService.modifyBetBalance(betVariation);
   }
 
   confirmBet(){

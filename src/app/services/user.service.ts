@@ -69,4 +69,11 @@ export class UserService {
     this.user=user;
   }
 
+  modifyBetBalance(amount :number){
+    this.user.betBalance+=amount;
+    this.modifyUser().then((Response)=>{
+      console.log(Response);
+    })
+  }
+
 }
