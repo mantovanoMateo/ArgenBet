@@ -1,58 +1,31 @@
 <div class="card">
-    <!--{{Team.team.logo}} {{Team.team.name}}-->
-    <img class="clubLogo"
-        src="https://w7.pngwing.com/pngs/1008/873/png-transparent-boca-juniors-superliga-argentina-de-futbol-football-club-atletico-huracan-football-sport-heart-logo.png"
-        alt="">
-    <h2>Boca Juniors</h2>
-    <h3>Estadisticas</h3>
+    <img class="clubLogo" src="{{Team.team.logo}}" alt="">
+    <h2>{{Team.team.name}}</h2>
+    <h5>Ciudad</h5>
+    <p>{{Team.venue.city}}</p>
+    <h5>Estadio</h5>
+    <p>{{Team.venue.name}}</p>
+    <img class="stadiumImage" src="{{Team.venue.image}}" alt="imagen de estadio">
+    
     <h5>Proximos partidos</h5>
-    <div class="card">
-        <div class="card-header text-bg-dark">
-            CONMEBOL LIBERTADORES 04/11/2023
-        </div>
-        <div class="betBody">
-            <a class="nav-link active" [routerLink]="['/mainMenu/defaultMenu/fixture']" routerLinkActive="active">
-                <div class="card-body">
-                    <div class="fixture">
-                        <div class="teamsData">
-                            <div class="teamData">
-                                <img class="fixtureTeamLogo"
-                                    src="https://w7.pngwing.com/pngs/1008/873/png-transparent-boca-juniors-superliga-argentina-de-futbol-football-club-atletico-huracan-football-sport-heart-logo.png"
-                                    alt="">
-                                <p class="card-text">BOCA</p>
-                            </div>
-                            <div class="separator"></div>
-                            <div class="teamData">
-                                <img class="fixtureTeamLogo"
-                                    src="https://w7.pngwing.com/pngs/714/221/png-transparent-fluminense-hd-logo.png"
-                                    alt="">
-                                <p class="card-text">fulminense</p>
-                            </div>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
     <div *ngFor="let fixture of teamNextFixtures" class="card">
         <div class="card-header text-bg-dark">
             {{fixture.league.name}} {{fixture.fixture.date}}
         </div>
         <div class="betBody">
-            <a class="nav-link active" id="{{fixture.fixture.id}}" [routerLink]="['/mainMenu/defaultMenu/fixture']"
-                routerLinkActive="active">
+            <a class="nav-link active" id="{{fixture.fixture.id}}"
+                [routerLink]="['/mainMenu/defaultMenu/fixture/',fixture.fixture.id]" routerLinkActive="active">
                 <div class="card-body">
                     <div class="fixture">
                         <div class="teamsData">
                             <div class="teamData">
-                                <img class="fixtureTeamLogo" src="" alt="">
+                                <img class="fixtureTeamLogo" src="{{fixture.teams.home.logo}}" alt="">
                                 <p class="card-text">{{fixture.teams.home.name}}</p>
                             </div>
-                            <div class="separator"></div>
+                            <h4 class="vs">VS</h4>
                             <div class="teamData">
-                                <img class="fixtureTeamLogo" src="" alt="">
                                 <p class="card-text">{{fixture.teams.away.name}}</p>
+                                <img class="fixtureTeamLogo" src="{{fixture.teams.away.logo}}" alt="">
                             </div>
                             <br>
                         </div>

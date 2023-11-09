@@ -29,19 +29,41 @@ h2,h3,h5{
 }
 
 .card-text{
-    margin-top: 5px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: larger;
+}
+.fixtureTeamLogo{
+    height: 65px;
+    width: 65px;
+    margin: 3px;
 }
 
-.fixtureTeamLogo{
-    height: 35px;
-    width: 35px;
-    margin-right: 10px;
+.teamsData{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
 }
 
 .teamData{
     display: flex;
+    
+}
+
+.vs{
+    margin-top: 15px;
 }
 
 .card-body{
     height: 100px;
+}
+
+.stadiumImage{
+    width: 400px;
+    height: 300px;
+    margin: 30px auto;
+}
+
+p{
+    text-align: center;
 }
