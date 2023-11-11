@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { AppModule } from 'src/app/app.module';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class AtmComponent {
   betBalance: number=0;
   balance: number=0;
+  withdraw: boolean=true;
   paymentMethods = [
     { name: 'Tarjeta de crédito', selected: true },
     { name: 'Tarjeta de débito', selected: false },
@@ -31,5 +33,23 @@ export class AtmComponent {
     this.paymentMethods.forEach(method => {
       method.selected = method === selectedMethod;
     });
+  }
+
+  withdrawMoney(){
+    let input=document.getElementById('withdrawAmount') as HTMLInputElement;
+    let amount=parseFloat(input.value);
+    if(this.getWithdrawableBalance()-amount>=0){
+      this.userService.modifyBalance(amount);
+      this.balance-=amount;
+    }else{
+      this.withdraw=false;
+    }
+  }
+
+  depositMoney(){
+    let input=document.getElementById('moneyDeposit') as HTMLInputElement;
+    let amount=parseFloat(input.value);
+    this.userService.modifyBalance(amount);
+    this.balance+=amount;
   }
 }
