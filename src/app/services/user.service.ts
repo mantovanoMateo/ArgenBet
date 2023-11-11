@@ -76,4 +76,11 @@ export class UserService {
     })
   }
 
+  modifyBalance(amount : number){
+    this.user.balance+=amount;
+    this.modifyUser().then((Response)=>{
+      console.log(Response);
+    })
+  }
+
 }

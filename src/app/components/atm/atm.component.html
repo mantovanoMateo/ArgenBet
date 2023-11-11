@@ -54,11 +54,11 @@
                     </label>
                 </div>
                 <input type="text" class="form-control bg-dark text-white" placeholder="Ingrese su CBU">
-                <input type="number" class="form-control bg-dark text-white" placeholder="Cantidad a depositar">
+                <input type="number" id="moneyDeposit" class="form-control bg-dark text-white" placeholder="Cantidad a depositar">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success">Depositar</button>
+                <button type="button" (click)="depositMoney()" class="btn btn-success">Depositar</button>
             </div>
         </div>
     </div>
@@ -75,11 +75,12 @@
                     <h5>Para poder retirar!</h5>
                     <br>
                 <input type="text" class="form-control bg-dark text-white" placeholder="Ingrese su CBU">
-                <input type="number" class="form-control bg-dark text-white" placeholder="Cantidad a retirar" min=1> 
+                <input id="withdrawAmount" type="number" class="form-control bg-dark text-white" placeholder="Cantidad a retirar" min=1> 
             </div>
+            <p *ngIf="withdraw==false" class="warning">Saldo insuficiente</p>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success">Retirar</button>
+                <button type="button" (click)="withdrawMoney()" class="btn btn-success">Retirar</button>
             </div>
         </div>
     </div>
