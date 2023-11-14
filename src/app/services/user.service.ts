@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/User';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,20 @@ export class UserService {
   private onLine=false;
   private mail='';
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   }
+
+   getOnline(){
+    return this.onLine;
+   }
+
+   setOffLine(){
+    this.onLine=false;
+   }
+
+   setOnLine(){
+    this.onLine=true;
+   }
 
   getByEmail(mail: string): Promise<any>{
     return this.http.get(this.apiValidationEmailUrl+mail)
@@ -39,6 +53,16 @@ export class UserService {
     .toPromise();
   }
 
+  getWinBets(userId:number): Promise<any>{
+    return this.http.get('http://localhost:8080/user/statistics/win/'+userId)
+    .toPromise();
+  }
+
+  getLostBets(userId:number): Promise<any>{
+    return this.http.get('http://localhost:8080/user/statistics/lost/'+userId)
+    .toPromise();
+  }
+  
   addUser(): Promise<any>{
       const httpOptions={
         headers:new HttpHeaders({'Content-Type':'application/json'})
@@ -86,4 +110,10 @@ export class UserService {
   getUserData(){
     return this.user;
   }
+
+  userLogOut(){
+    this.user=new User;
+    this.onLine=false;
+  }
+  
 }
