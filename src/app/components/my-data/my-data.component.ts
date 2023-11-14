@@ -9,6 +9,8 @@ import { User } from 'src/app/models/User';
 })
 export class MyDataComponent {
   user:User=new User;
+  userWins=0;
+  userLoss=0;
   constructor(private userService: UserService){}
 
   ngOnInit(){
