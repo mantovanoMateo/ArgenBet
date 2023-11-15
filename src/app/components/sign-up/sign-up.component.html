@@ -3,15 +3,27 @@
     <h3><b>¡Crea tu cuenta, juga legal y seguro!</b></h3>
     <h3><b></b></h3>
     <br>
-    <form class="logInStyle">
+    <form class="logInStyle" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col">
           <label for="nameInput" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nameInput">
+          <input type="text" class="form-control" id="nameInput" formControlName="firstName">
+          <div *ngIf="signUpForm.get('firstName')?.hasError('required') && (signUpForm.get('firstName')?.touched || signUpForm.get('firstName')?.dirty)"
+          class="error-message">
+            El nombre es obligatorio.
+          </div>
+          <div *ngIf="signUpForm.get('firstName')?.hasError('onlyLetters') && (signUpForm.get('firstName')?.touched || signUpForm.get('firstName')?.dirty)"
+          class="error-message">
+            Ingresa un nombre válido (solo letras).
+          </div>
+          <div *ngIf="signUpForm.get('firstName')?.hasError('maxlength') && (signUpForm.get('firstName')?.touched || signUpForm.get('firstName')?.dirty)"
+           class="error-message">
+            El nombre no debe tener más de 50 caracteres.
+          </div>
         </div>
         <div class="col">
           <label for="lastNameInput" class="form-label">Apellido</label>
-          <input type="text" class="form-control" id="lastNameInput">
+          <input type="text" class="form-control" id="lastNameInput" formControlName="lastName">
         </div>
         <br>
       </div>
@@ -19,49 +31,44 @@
       <div class="row">
         <div class="col">
           <label for="DNIInput" class="form-label">DNI</label>
-          <input type="text" class="form-control" id="DNIInput">
+          <input type="text" class="form-control" id="DNIInput" formControlName="dni">
         </div>
         <div class="col">
           <label for="phoneInput" class="form-label">Telefono</label>
-          <input type="number" class="form-control" id="phoneInput">
+          <input type="number" class="form-control" id="phoneInput" formControlName="phone" min=0>
         </div>
       </div>
       <br>
       <div class="row">
         <div class="col">
           <label for="mailInput" class="form-label">Mail</label>
-          <input type="text" class="form-control" id="mailInput">
+          <input type="text" class="form-control" id="mailInput" formControlName="email">
         </div>
       </div>
       <br>
       <div class="row">
         <div class="col">
           <label for="inputGender" class="form-label">Genero</label>
-          <select id="inputGender" class="form-select">
-            <option selected>Elige</option>
-            <option>Hombre</option>
+          <select id="inputGender" class="form-select" formControlName="gender">
+            <option selected>Hombre</option>
             <option>Mujer</option>
             <option>Otro</option>
           </select>
         </div>
         <div class="col">
-          <label for="InputPassword1" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="InputPassword1">
+          <label for="InputPassword" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="passwordInput" formControlName="password">
         </div>
       </div>
       <br>
       <div class="row">
         <div class="col">
-          <label for="nationalityInput" class="form-label">Nacionalidad</label>
-          <input type="text" class="form-control" id="nationalityInput">
-        </div>
-        <div class="col">
-          <label for="InputPassword1" class="form-label">Fecha de nacimiento</label>
-          <input type="date" class="form-control" id="InputPassword1">
+          <label for="birthDateInput" class="form-label">Fecha de nacimiento</label>
+          <input type="date" class="form-control" id="birthDateInput" formControlName="birthDate">
         </div>
       </div>
       <br>
-      <button type="submit" class="btn btn-outline-success">Confirmar</button>
+      <button type="submit" class="btn btn-outline-success" [disabled]="!signUpForm.valid">Confirmar</button>
       <br>
     </form>
   </div>

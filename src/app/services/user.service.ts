@@ -63,7 +63,7 @@ export class UserService {
     .toPromise();
   }
   
-  addUser(): Promise<any>{
+  addUser(user:User): Promise<any>{
       const httpOptions={
         headers:new HttpHeaders({'Content-Type':'application/json'})
       };
