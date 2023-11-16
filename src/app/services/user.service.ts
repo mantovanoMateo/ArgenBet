@@ -17,6 +17,7 @@ export class UserService {
   private user=new User;
   private onLine=false;
   private mail='';
+
   
   constructor(private http: HttpClient) {
    }

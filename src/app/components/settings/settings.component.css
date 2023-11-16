@@ -1,0 +1,33 @@
+.card{
+    margin: auto;
+    max-width: 700px;
+    padding: 20px;
+    background-color: rgb(32, 32, 32);
+}
+
+input{
+    background-color: rgb(32, 32, 32);
+    color: white;
+    border-color: rgb(97, 97, 97);
+}
+
+input:focus{
+    background-color: rgb(32, 32, 32) ;
+    color: white;
+    border-color: rgb(97, 97, 97);
+}
+
+*{
+    color: white;
+}
+
+select{
+    background-color: rgb(32, 32, 32);
+    color: white;
+    border-color: rgb(97, 97, 97);
+}
+
+.error-message {
+    font-size: 12px;
+    color: orangered;
+  }

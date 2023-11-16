@@ -42,7 +42,7 @@
       </div>
       <br>
       <div class="row">
-        <div class="col">
+        <div  class="col" >
           <label for="DNIInput" class="form-label">DNI</label>
           <input type="text" class="form-control" id="DNIInput" formControlName="dni">
           <div *ngIf="signUpForm.get('dni')?.hasError('required') && (signUpForm.get('dni')?.touched || signUpForm.get('dni')?.dirty)" class="error-message">
@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <div class="col">
+        <div class="col" >
           <label for="phoneInput" class="form-label">Telefono</label>
           <input type="text" class="form-control" id="phoneInput" formControlName="phone" min=0>
           <div *ngIf="signUpForm.get('phone')?.hasError('required') && (signUpForm.get('phone')?.touched || signUpForm.get('phone')?.dirty)"class="error-message">
@@ -116,7 +116,7 @@
       </div>
       <br>
       <div class="row">
-        <div class="col">
+        <div  class="col">
           <label for="birthDateInput" class="form-label">Fecha de nacimiento</label>
           <input type="date" class="form-control" id="birthDateInput" formControlName="birthDate">
           <div *ngIf="signUpForm.get('birthDate')?.hasError('required') && (signUpForm.get('birthDate')?.touched || signUpForm.get('birthDate')?.dirty)" class="error-message">

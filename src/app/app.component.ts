@@ -25,4 +25,5 @@ export class AppComponent {
     this.loged=false;
     this.user=new User;
   }
+
 }
