@@ -21,4 +21,8 @@ export class BetFixtureListComponent {
         this.fixtures=this.response.response;
       })
     }
+
+    setActualFixture(fixture: any){
+      this.tournamentService.setFixture(fixture);
+    }
 }

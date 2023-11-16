@@ -1,31 +1,10 @@
-<!--
-<div class="card">
-    <div class="card-header text-bg-dark">
-        CONMEBOL Libertadores - 04/11/2023
-    </div>
-    <div class="betBody">
-        <a class="nav-link active" [routerLink]="['/mainMenu/defaultMenu/fixture']" routerLinkActive="active">
-            <div class="card-body">
-                <div class="fixture">
-                    <div class="teamsData">
-                        <p class="card-text">Boca Juniors</p>
-                        <img class="fixtureTeamLogo" src="" alt="">
-                        <h4 class="vs">VS</h4>
-                        <img class="fixtureTeamLogo" src="" alt="">
-                        <p class="card-text">F.C Fluminense</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
--->
+
 <div *ngFor="let fixture of fixtures" class="card">
     <div class="card-header text-bg-dark">
         {{fixture.league.name}} {{fixture.fixture.date}}
     </div>
     <div class="betBody">
-        <a class="nav-link active" id="{{fixture.fixture.id}}" [routerLink]="['/mainMenu/defaultMenu/fixture/',fixture.fixture.id]"
+        <a class="nav-link active" id="{{fixture.fixture.id}}" (click)="setActualFixture(fixture)" [routerLink]="['/mainMenu/defaultMenu/fixture/',fixture.fixture.id]"
             routerLinkActive="active">      
             <div class="card-body">
                 <div class="fixture">

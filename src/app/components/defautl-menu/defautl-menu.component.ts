@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { TournamentsService } from 'src/app/services/tournaments.service';
 import { Bet } from 'src/app/models/Bet';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-defautl-menu',
@@ -13,7 +14,8 @@ export class DefautlMenuComponent {
   bets: Bet[] = [];
   cartOK=false;
   total: number=0;
-  constructor(private tournamentService: TournamentsService, private cartService: CartService) { }
+  onLine: boolean=false;
+  constructor(private tournamentService: TournamentsService, private cartService: CartService, private userService: UserService) { }
 
   ngOnInit() {
     this.tournaments = this.tournamentService.Tournaments;
@@ -25,6 +27,7 @@ export class DefautlMenuComponent {
       this.total=total;
       console.log(total);
     })
+    this.onLine=this.userService.getOnline();
   }
 
   get Tournaments() {
@@ -57,11 +60,11 @@ export class DefautlMenuComponent {
       }
     })
     if (oneIsNull) {
-      console.log('no debes dejar apuestas sin valores');
+      //console.log('no debes dejar apuestas sin valores');
       this.cartOK=false;
     } else {
-      console.log('todas las bets tienen valor');
-      console.log(this.bets);
+      //console.log('todas las bets tienen valor');
+      //console.log(this.bets);
       this.cartOK=true; 
     }
   }

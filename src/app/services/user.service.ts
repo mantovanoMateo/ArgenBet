@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/User';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { BehaviorSubject } from 'rxjs';
+import { BetPaymentService } from './bet-payment.service';
+import { Bet } from '../models/Bet';
+import { BetService } from './bet.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +22,7 @@ export class UserService {
   private mail='';
 
   
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private betPaymentService: BetPaymentService, private betService: BetService) {
    }
 
    getOnline(){
@@ -32,6 +35,19 @@ export class UserService {
 
    setOnLine(){
     this.onLine=true;
+   }
+
+   userLogIn(mail :String, password: String){
+    let loged=false;
+    this.http.get('http://localhost:8080/users/login/'+mail+'/'+password)
+    .toPromise().then((Response:any)=>{
+      if(Response!=null){
+        loged=true;
+        this.onLine=true;
+        this.user=Response;
+      }
+    })
+    return loged;
    }
 
   getByEmail(mail: string): Promise<any>{
@@ -115,6 +131,46 @@ export class UserService {
   userLogOut(){
     this.user=new User;
     this.onLine=false;
+  }
+
+  verifyIfAlreadyBeted(bet:Bet){
+    let response:Bet[];
+    let exist: boolean=false;
+    this.getPendingBets()
+    .then((Response)=>{
+      response=Response;
+      response.forEach((betEx)=>{
+      if(betEx.typeId==bet.typeId && betEx.selection==bet.selection){
+        exist=true;
+      }
+    })
+    })
+    return exist;
+  }
+
+  checkAndPayBets(){
+    let response:Bet[];
+    let payOrNot='';
+    this.getPendingBets()
+    .then((Response)=>{
+      response=Response;
+      response.forEach((bet:Bet) => {
+        payOrNot=this.betPaymentService.betPaymentMaster(bet);
+        if(payOrNot=='WIN'){
+          this.user.betBalance-=bet.betValue;
+          this.user.balance+=((bet.betValue*bet.benefit)-bet.betValue);
+          bet.betStatus='WIN';
+          this.betService.modifyBet(bet);
+          this.modifyUser().then((Response)=>{console.log('pago una apuesta')});
+        }else if(payOrNot=='LOST'){
+          this.user.betBalance-=bet.betValue;
+          this.user.balance-=bet.betValue;
+          bet.betStatus='LOST';
+          this.betService.modifyBet(bet);
+          this.modifyUser().then((Response)=>{console.log('perdio una apuesta')});
+        }
+      });
+    })
   }
   
 }
