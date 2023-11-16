@@ -17,6 +17,7 @@ export class UserService {
   private user=new User;
   private onLine=false;
   private mail='';
+
   
   constructor(private http: HttpClient) {
    }
@@ -63,7 +64,7 @@ export class UserService {
     .toPromise();
   }
   
-  addUser(): Promise<any>{
+  addUser(user:User): Promise<any>{
       const httpOptions={
         headers:new HttpHeaders({'Content-Type':'application/json'})
       };

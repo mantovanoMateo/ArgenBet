@@ -3,18 +3,24 @@
     <h2><b>¡Hola!</b></h2>
     <h3>¡Ingresa tus datos para jugar ahora!</h3>
     <br>
-    <form class="logInStyle">
+    <form class="logInStyle" [formGroup]="logInForm" (ngSubmit)="onSubmit()">
       <div class="mb-3">
-        <label for="mail" class="form-label">mail</label>
-        <input type="text" class="form-control" id="mail" name="mail" [(ngModel)]="mail">
+        <label for="mailInput" class="form-label">Mail</label>
+        <input type="text" class="form-control" id="mailInput" formControlName="email">
+        <div *ngIf="logInForm.get('email')?.hasError('required') && (logInForm.get('email')?.touched || logInForm.get('email')?.dirty)" class="error-message">
+          El correo electrónico es obligatorio.
+        </div>
       </div>
       <br>
       <div class="mb-3">
         <label for="InputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="InputPassword1">
+        <input type="password" class="form-control" id="InputPassword1" formControlName="password">
+        <div *ngIf="logInForm.get('password')?.hasError('required') && (logInForm.get('password')?.touched || logInForm.get('password')?.dirty)" class="error-message">
+          La contraseña es obligatoria.
+        </div>
       </div>
       <br>
-      <button type="submit" class="btn btn-outline-success" (click)="validateEmail(mail)">Iniciar Sesion</button>
+      <button type="submit" class="btn btn-outline-success">Iniciar Sesion</button>
       <br>
       <br>
       <a class="nav-link active" [routerLink]="['/signUp']" routerLinkActive="active" aria-current="page"
