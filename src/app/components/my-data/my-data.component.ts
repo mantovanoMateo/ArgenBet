@@ -9,18 +9,9 @@ import { User } from 'src/app/models/User';
 })
 export class MyDataComponent {
   user:User=new User;
-  userWins=0;
-  userLoss=0;
   constructor(private userService: UserService){}
 
   ngOnInit(){
     this.user=this.userService.getUserData();
-    this.user.firstName='Mateo';
-    this.user.lastName='Mantovano';
-    this.user.dni='42322678';
-    this.user.balance=50000;
-    this.user.gender='Hombre';
-    this.user.phone='2235419207';
-    this.user.email='mantovanomateo@gmail.com'
   }
 }

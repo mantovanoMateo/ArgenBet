@@ -16,19 +16,19 @@ export class TeamDetailsComponent {
 
   ngOnInit(){
 
-    console.log(this.tournamentService.getToDate());
-    console.log('arriba de esto deberia estar la todate');
+    //console.log(this.tournamentService.getToDate());
+    //console.log('arriba de esto deberia estar la todate');
     this.tournamentService.getTeamData(this.tournamentService.CurrentTeam)
     .then((Response)=>{
-      console.log(Response);
+      //console.log(Response);
       this.response=Response;
       this.Team=this.response.response[0];
-      console.log(this.Team);
-      console.log('arriba de esto logueo el response del team')
+      //console.log(this.Team);
+      //console.log('arriba de esto logueo el response del team')
     })
     this.tournamentService.getTeamNextFixtures(this.tournamentService.CurrentTeam)
     .then((Response)=>{
-      console.log(Response);
+      //console.log(Response);
       this.response=Response;
       this.teamNextFixtures=this.response.response;
     })

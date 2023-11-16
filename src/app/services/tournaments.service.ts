@@ -23,17 +23,10 @@ export class TournamentsService {
                        {'name':'Eredivisie','id':88},
                        {'name':'Bundesliga','id':78},
                        {'name':'MLS','id':253},
-                       {'name':'Liga Profesional de Fulbo Argentino','id':128},
+                       {'name':'Liga Prof. de Futbol Argentino','id':128},
                        {'name':'Brasilerao','id':71},
                        {'name':'Primera Colombia','id':239},
-                       {'name':'Primera B Argentina','id':131},
-                       {'name':'CONMEBOL Libertadores','id':13},
-                       {'name':'CONMEBOL Sudamericana','id':11},
-                       {'name':'UEFA Champions League','id':2},
-                       {'name':'UEFA Europa League','id':3},
-                       {'name':'Copa Argentina','id':130},
-                       {'name':'Copa America','id':9},
-                       {'name':'Clasificatoria Mundial','id':37}
+                       {'name':'Primera B Argentina','id':131}
                       ];
   private actualTournamentTeams: any[]=[];
   private actualLeague=0;
@@ -138,7 +131,7 @@ export class TournamentsService {
     this.fixture=fixture;
   }
   
-  getFixture(fixture: any){
+  getFixture(){
     return this.fixture;
   }
 }

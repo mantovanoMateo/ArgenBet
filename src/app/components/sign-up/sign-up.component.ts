@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/User';
 import { CustomValidatorsService } from 'src/app/services/custom-validators.service';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent {
-  constructor(private userService: UserService, private customvalidator : CustomValidatorsService){}
+  constructor(private userService: UserService, private customvalidator : CustomValidatorsService, private router: Router){}
 
   signUpForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.maxLength(50),this.customvalidator.onlyLetters()]),
@@ -35,10 +36,11 @@ export class SignUpComponent {
       user.password = this.signUpForm.get('password')?.value!;
 
       const birthDateString: string = this.signUpForm.get('birthDate')?.value!;
-
+      
       if (birthDateString) {
         user.birthdate = new Date(birthDateString);
         this.userService.addUser(user);
+        this.router.navigate(['logIn'])
       }
     } else {
       console.error(

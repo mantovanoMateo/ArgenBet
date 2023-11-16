@@ -24,7 +24,7 @@ export class TeamsComponent {
     })
     this.cartService.total.subscribe(total => {
       this.total=total;
-      console.log(total);
+      //console.log(total);
     })
     this.onLine=this.userService.getOnline();
   }
@@ -67,11 +67,11 @@ export class TeamsComponent {
       }
     })
     if (oneIsNull) {
-      console.log('no debes dejar apuestas sin valores');
+      //console.log('no debes dejar apuestas sin valores');
       this.cartOK=false;
     } else {
-      console.log('todas las bets tienen valor');
-      console.log(this.bets);
+      //console.log('todas las bets tienen valor');
+      //console.log(this.bets);
       this.cartOK=true; 
     }
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Bet } from '../models/Bet';
 import { BetService } from './bet.service';
 import { BehaviorSubject } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class CartService {
   private totalBet: number=0;
   private _total: BehaviorSubject<number>;
 
-  constructor(private betService: BetService) {
+  constructor(private betService: BetService, private userService: UserService) {
     this._products=new BehaviorSubject<Bet[]>([]);
     this._total=new BehaviorSubject<number>(0);
    }
@@ -49,7 +50,9 @@ export class CartService {
   confirmBet(){
     this.betList.forEach(bet=>{
       this.betService.addBet(bet)
-        .then((Response)=>{console.log('carge una bet')})
+        .then((Response)=>{
+          this.userService.modifyBetBalance(bet.betValue);
+        })
         .catch((error)=>{console.log('no anduve')});
     })
     

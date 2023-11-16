@@ -19,13 +19,8 @@
             <h2>Bienvenido!</h2>
           </li>
           <li *ngIf="loged==true" class="nav-item">
+            <h2>Bienvenido!</h2>
             <h2>{{this.user.firstName}} {{this.user.lastName}}</h2>
-          </li>
-          <li *ngIf="loged==true" class="nav-item">
-            <h3>Saldo total ${{this.user.balance}}</h3>
-          </li>
-          <li *ngIf="loged==true" class="nav-item">
-            <h4>Saldo retirable ${{this.user.betBalance}}</h4>
           </li>
           <li *ngIf="loged==false" class="nav-item">
             <a class="nav-link active" [routerLink]="['/logIn']" routerLinkActive="active" aria-current="page"

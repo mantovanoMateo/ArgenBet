@@ -16,23 +16,23 @@ export class BetFixtureComponent {
   response: any;
   leagueName: string = '';
   fixture: any;
+  fixtureId=0;
 
   constructor(private tournamentService: TournamentsService, private route: ActivatedRoute, private cartService: CartService, private userService:UserService) { }
 
   ngOnInit() {
-    let fixtureId = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(fixtureId);
-    this.tournamentService.getFixtureOdds(fixtureId)
+    this.fixtureId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(this.fixtureId);
+    this.tournamentService.getFixtureOdds(this.fixtureId)
       .then((Response) => {
         this.response = Response;
         this.bets = this.response.response[0].bookmakers[0].bets;
         this.leagueName = this.response.response[0].league.name;
-        console.log(this.response.response[0].bookmakers[0].bets);
+        //console.log(this.response.response[0].bookmakers[0].bets);
       })
       .catch((error) => {
-        console.log('no anduve' + error)
       })
-      this.fixture=this.tournamentService.getFixture;
+      this.fixture=this.tournamentService.getFixture();
   }
 
   onClick(betValue: string, betPayment: number, betType: string, betTypeId: number){
@@ -40,8 +40,11 @@ export class BetFixtureComponent {
     bet.benefit=betPayment;
     bet.selection=betValue
     bet.type=betType;
+    bet.fixtureId=this.fixtureId;
+    bet.betStatus='NS';
     bet.typeId=betTypeId;
     bet.id=this.betId;
+    bet.userId=this.userService.getUserData().id;
     bet.headToHead=this.fixture.teams.home.name+' VS '+this.fixture.teams.away.name;
     if(!this.cartService.verifyIfBetExist(bet) && !this.userService.verifyIfAlreadyBeted(bet)){
       this.betId++;

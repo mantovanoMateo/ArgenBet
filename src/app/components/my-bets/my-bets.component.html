@@ -31,31 +31,9 @@
         <div class="card h-100">
             <div class="card-header text-bg-dark">Mis Apuestas</div>
             <div class="card-body">
-                <div class="card">
-                    <div class="card-header text-bg-dark">
-                        CONMEBOL Libertadores - 04/11/2023 - Ganador del Partido → Home
-                    </div>
-                    <div class="betBody">
-                        <div class="card-body">
-                            <div class="fixture">
-                                <div class="teamsData">
-                                    <p class="card-text">Beneficio → 5.0</p>
-                                    <p class="card-text">Valor apostado → $5000</p>
-                                </div>
-                                <div class="betBtn">
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-danger">X</button>
-                                        <input class="inputNewBetValue" type="number" min="1" class="form">
-                                        <button type="button" class="btn btn-success">✓</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div *ngFor="let bet of myBets" class="card">
                     <div class="card-header text-bg-dark">
-                        {{bet.headToHead}}
+                        {{bet.headToHead}} - {{bet.type}} → {{bet.selection}}
                     </div>
                     <div class="betBody">
                         <div class="card-body">

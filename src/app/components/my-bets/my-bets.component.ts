@@ -24,7 +24,7 @@ export class MyBetsComponent {
     })
     this.cartService.total.subscribe(total => {
       this.total=total;
-      console.log(total);
+      //console.log(total);
     })
     this.userService.getPendingBets()
     .then((Response)=>{
@@ -51,11 +51,11 @@ export class MyBetsComponent {
       }
     })
     if (oneIsNull) {
-      console.log('no debes dejar apuestas sin valores');
+      //console.log('no debes dejar apuestas sin valores');
       this.cartOK=false;
     } else {
-      console.log('todas las bets tienen valor');
-      console.log(this.bets);
+      //console.log('todas las bets tienen valor');
+      //console.log(this.bets);
       this.cartOK=true; 
     }
   }
@@ -80,7 +80,7 @@ export class MyBetsComponent {
     bet.betValue=value;
     this.betService.modifyBet(bet)
     .then((Response)=>{
-      console.log(Response);
+      //console.log(Response);
     })
     this.userService.modifyBetBalance(betVariation);
   }

@@ -9,9 +9,9 @@ export class CustomValidatorsService {
 
   onlyLetters(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
-      console.log('Control value:', control.value);
+      //console.log('Control value:', control.value);
       const valid = /^[a-zA-Z\s]+$/.test(control.value);
-      console.log('Is valid:', valid);
+      //console.log('Is valid:', valid);
       return valid ? null : { onlyLetters: { value: control.value } };
     };
   }

@@ -21,11 +21,11 @@ export class DefautlMenuComponent {
     this.tournaments = this.tournamentService.Tournaments;
     this.cartService.bets.subscribe(bets => {
       this.bets = bets;
-      console.log(bets);
+      //console.log(bets);
     })
     this.cartService.total.subscribe(total => {
       this.total=total;
-      console.log(total);
+      //console.log(total);
     })
     this.onLine=this.userService.getOnline();
   }
@@ -62,10 +62,10 @@ export class DefautlMenuComponent {
     if (oneIsNull) {
       //console.log('no debes dejar apuestas sin valores');
       this.cartOK=false;
-    } else {
-      //console.log('todas las bets tienen valor');
-      //console.log(this.bets);
-      this.cartOK=true; 
+    } else if(!oneIsNull && this.userService.getBetableBalance()>=this.total){
+      this.cartOK=true;
+    }else{
+      this.cartOK=false; 
     }
   }
 

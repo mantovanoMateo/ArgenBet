@@ -18,12 +18,13 @@ export class ActivityHistoryComponent {
     this.userService.getBetHistory()
       .then((Response) => {
         this.betsHistory = Response;
-        console.log('esto trajo el bet history');
-        console.log(Response);
+        //console.log('esto trajo el bet history');
+        //console.log(Response);
       })
 
     this.userService.getTransactions()
       .then((Response) => {
+        //console.log('esto trajo el transaction history');
         this.transactionHistory = Response;
       })
   }

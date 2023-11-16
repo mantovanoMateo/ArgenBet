@@ -9,15 +9,17 @@ import { User } from './models/User';
 })
 export class AppComponent {
 
-  loged: Boolean=true;
+  loged: Boolean=false;
   user: User=new User;
-  constructor(private userService: UserService){}
-
-  ngOnInit(){
-    this.user.lastName='Grillo';
-    this.user.firstName='Pepe';
-    this.user.betBalance=10000;
-    this.user.balance=20000;
+  constructor(private userService: UserService){
+    this.userService.obsOnline.subscribe(online=>{
+      this.loged=online;
+    })
+    this.userService.obsUser.subscribe(user=>{
+      console.log('holis')
+      this.user=user;
+      //console.log(user);
+    })
   }
 
   logOut(){

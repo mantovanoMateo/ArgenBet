@@ -23,7 +23,7 @@ export class SettingsComponent {
 
   onSubmit() {
     if (this.settingsForm.valid) {
-      let user = new User();
+      let user = this.userService.getUserData();
       user.firstName = this.settingsForm.get('firstName')?.value!;
       user.lastName = this.settingsForm.get('lastName')?.value!;
       user.phone = this.settingsForm.get('phone')?.value!;

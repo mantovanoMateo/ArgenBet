@@ -19,11 +19,23 @@ export class UserService {
   private apiUpdateUser='http://localhost:8080/users/update/';
   private user=new User;
   private onLine=false;
+  private _online: BehaviorSubject<boolean>;
+  private _user: BehaviorSubject<User>;
   private mail='';
 
   
   constructor(private http: HttpClient, private betPaymentService: BetPaymentService, private betService: BetService) {
-   }
+  this._online=new BehaviorSubject<boolean>(false); 
+  this._user=new BehaviorSubject<User>(this.user);
+  }
+
+  get obsUser(){
+    return this._user.asObservable();
+  }
+
+  get obsOnline(){
+    return this._online.asObservable();
+  }
 
    getOnline(){
     return this.onLine;
@@ -31,23 +43,17 @@ export class UserService {
 
    setOffLine(){
     this.onLine=false;
+    this._online.next(this.onLine);
    }
 
    setOnLine(){
     this.onLine=true;
+    this._online.next(this.onLine);
    }
 
    userLogIn(mail :String, password: String){
-    let loged=false;
-    this.http.get('http://localhost:8080/users/login/'+mail+'/'+password)
-    .toPromise().then((Response:any)=>{
-      if(Response!=null){
-        loged=true;
-        this.onLine=true;
-        this.user=Response;
-      }
-    })
-    return loged;
+    return this.http.get('http://localhost:8080/users/login/'+mail+'/'+password)
+     .toPromise();
    }
 
   getByEmail(mail: string): Promise<any>{
@@ -56,17 +62,17 @@ export class UserService {
   }
 
   getBetHistory(): Promise<any>{
-    return this.http.get(this.apiBetHistory+3)
+    return this.http.get(this.apiBetHistory+this.user.id)
     .toPromise();
   }
 
   getPendingBets(): Promise<any>{
-    return this.http.get(this.apiPendingBets+3)
+    return this.http.get(this.apiPendingBets+this.user.id)
     .toPromise();
   }
 
   getTransactions(): Promise<any>{
-    return this.http.get(this.apiTransactionHistory+3)
+    return this.http.get(this.apiTransactionHistory+this.user.id)
     .toPromise();
   }
 
@@ -84,7 +90,7 @@ export class UserService {
       const httpOptions={
         headers:new HttpHeaders({'Content-Type':'application/json'})
       };
-      return this.http.post(this.apiAddUser,this.user,httpOptions)
+      return this.http.post(this.apiAddUser,user,httpOptions)
       .toPromise();
   }
 
@@ -94,7 +100,12 @@ export class UserService {
   }
 
   modifyUser(): Promise<any>{
-    return this.http.put(this.apiUpdateUser+this.user.id,this.user)
+    //console.log(this.user);
+    this._user.next(this.user);
+    const httpOptions={
+      headers:new HttpHeaders({'Content-Type':'application/json'})
+    };
+    return this.http.put(this.apiUpdateUser+this.user.id,this.user,httpOptions)
     .toPromise();
   }
 
@@ -108,19 +119,21 @@ export class UserService {
 
   asignUser(user: User){
     this.user=user;
+    this.user.id=user.id;
+    this._user.next(this.user);
   }
 
   modifyBetBalance(amount :number){
     this.user.betBalance+=amount;
     this.modifyUser().then((Response)=>{
-      console.log(Response);
+      //console.log(Response);
     })
   }
 
   modifyBalance(amount : number){
     this.user.balance+=amount;
     this.modifyUser().then((Response)=>{
-      console.log(Response);
+      //console.log(Response);
     })
   }
 
@@ -146,6 +159,10 @@ export class UserService {
     })
     })
     return exist;
+  }
+
+  getBetableBalance(){
+    return this.user.balance-this.user.betBalance;
   }
 
   checkAndPayBets(){

@@ -26,15 +26,6 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Boca - River</td>
-                  <td>match winner</td>
-                  <td>Home</td>
-                  <td>$5000</td>
-                  <td>$2000</td>
-                  <td>NS</td>
-                </tr>
                 <tr *ngFor="let bet of betsHistory">
                   <th scope="row">{{bet.id}}</th>
                   <td>{{bet.headToHead}}</td>
@@ -67,11 +58,6 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Deposito</td>
-                  <td>$50000</td>
-                </tr>
                 <tr *ngFor="let transaction of transactionHistory">
                   <th scope="row">{{transaction.id}}</th>
                   <td>{{transaction.type}}</td>
