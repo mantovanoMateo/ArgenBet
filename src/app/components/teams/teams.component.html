@@ -6,20 +6,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <ul *ngIf="cartOK==true">
+                <ul *ngIf="cartOK==true && onLine==true">
                     <li *ngFor="let bet of bets">
                         <p>{{bet.type}} -> {{bet.selection}}</p>
                         <p>${{bet.betValue}} x {{bet.benefit}} (ganancia potencial) = ${{getProfit(bet.betValue,bet.benefit)}}</p> 
                     </li>
                 </ul>
-                <h3 *ngIf="cartOK==false">Por favor ingrese un a valor a todas sus apuestas!</h3>
+                <h3 *ngIf="cartOK==false && onLine==true">Por favor ingrese un a valor a todas sus apuestas!</h3>
+                <h3 *ngIf="onLine==false">Usted debe logearse para poder realizar apuestas!</h3>
                 <br>
-                <p *ngIf="cartOK==true">Su saldo es insuficiente, realice un deposito por favor!</p>
-                <h4 *ngIf="cartOK==true">Total: ${{total}}</h4>
+                <p *ngIf="cartOK==true && onLine==true">Su saldo es insuficiente, realice un deposito por favor!</p>
+                <h4 *ngIf="cartOK==true && onLine==true">Total: ${{total}}</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="resetTotal()" class="btn btn-outline-danger" data-bs-dismiss="modal">Volver</button>
-                <button *ngIf="cartOK==true" (click)="confirmBet()" type="button" class="btn btn-outline-success">Confirmar</button>
+                <button *ngIf="cartOK==true && onLine==true" (click)="confirmBet()" type="button" class="btn btn-outline-success">Confirmar</button>
             </div>
         </div>
     </div>
@@ -51,7 +52,7 @@
                 <div *ngFor="let bet of bets" class="card text-bg-light mb-3">
                     <div class="card-header">
                         <div class="betHeader">
-                            <p class="teams">Equipo1/Equipo2</p>
+                            <p class="teams">{{bet.headToHead}}</p>
                             <p (click)="deleteBet(bet)" class="deleteBtn">X</p>
                         </div>
                     </div>

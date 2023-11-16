@@ -3,6 +3,7 @@ import { TournamentsService } from 'src/app/services/tournaments.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { Bet } from 'src/app/models/Bet';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-bet-fixture',
@@ -14,8 +15,9 @@ export class BetFixtureComponent {
   betId=0;
   response: any;
   leagueName: string = '';
+  fixture: any;
 
-  constructor(private tournamentService: TournamentsService, private route: ActivatedRoute, private cartService: CartService) { }
+  constructor(private tournamentService: TournamentsService, private route: ActivatedRoute, private cartService: CartService, private userService:UserService) { }
 
   ngOnInit() {
     let fixtureId = Number(this.route.snapshot.paramMap.get('id'));
@@ -30,15 +32,20 @@ export class BetFixtureComponent {
       .catch((error) => {
         console.log('no anduve' + error)
       })
+      this.fixture=this.tournamentService.getFixture;
   }
 
-  onClick(betValue: string, betPayment: number, betType: string){
+  onClick(betValue: string, betPayment: number, betType: string, betTypeId: number){
     let bet=new Bet;
     bet.benefit=betPayment;
     bet.selection=betValue
     bet.type=betType;
+    bet.typeId=betTypeId;
     bet.id=this.betId;
-    this.betId++;
-    this.cartService.add(bet);
+    bet.headToHead=this.fixture.teams.home.name+' VS '+this.fixture.teams.away.name;
+    if(!this.cartService.verifyIfBetExist(bet) && !this.userService.verifyIfAlreadyBeted(bet)){
+      this.betId++;
+      this.cartService.add(bet);
+    }
   }
 }
