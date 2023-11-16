@@ -1,8 +1,7 @@
 .card{
     margin: auto;
-    max-width: 500px;
+    max-width: 700px;
     padding: 20px;
-    height: 500px;
     background-color: rgb(32, 32, 32);
 }
 
@@ -22,14 +21,12 @@ input:focus{
     color: white;
 }
 
-.logInBackGround{
-    padding-top: 100px;
-    background-repeat: no-repeat;
-    background-image: url(https://wallpapercave.com/wp/wp3972164.jpg);
-    background-position: 50% 50%;
-    margin: auto;
-    height: 720px;
+select{
+    background-color: rgb(32, 32, 32);
+    color: white;
+    border-color: rgb(97, 97, 97);
 }
+
 .error-message {
     font-size: 12px;
     color: orangered;

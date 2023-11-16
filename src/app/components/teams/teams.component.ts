@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TournamentsService } from 'src/app/services/tournaments.service';
 import { Bet } from 'src/app/models/Bet';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-teams',
@@ -13,7 +14,8 @@ export class TeamsComponent {
   bets:Bet[]=[];
   cartOK=false;
   total: number=0;
-  constructor(private tournamentService: TournamentsService, private cartService: CartService){ }
+  onLine=false;
+  constructor(private tournamentService: TournamentsService, private cartService: CartService, private userService: UserService){ }
   
   ngOnInit(){
     this.tournaments=this.tournamentService.Tournaments;
@@ -24,6 +26,7 @@ export class TeamsComponent {
       this.total=total;
       console.log(total);
     })
+    this.onLine=this.userService.getOnline();
   }
 
   get Tournaments(){

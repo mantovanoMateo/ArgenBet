@@ -35,3 +35,7 @@ select{
     margin: auto;
     height: 720px;
 }
+.error-message {
+    font-size: 12px;
+    color: orangered;
+  }

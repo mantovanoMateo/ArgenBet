@@ -14,6 +14,7 @@ export class MyBetsComponent {
   myBets=new Array<Bet>;
   cartOK=false;
   total: number=0;
+  onLine: boolean=false;
 
   constructor(private betService: BetService,private userService: UserService,private cartService: CartService){}
 
@@ -29,6 +30,7 @@ export class MyBetsComponent {
     .then((Response)=>{
       this.myBets=Response;
     }) 
+    this.onLine=this.userService.getOnline();
   }
 
   verifyCart() {

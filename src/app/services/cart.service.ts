@@ -58,6 +58,16 @@ export class CartService {
     
   }
 
+  verifyIfBetExist(bet : Bet){
+    let exist: boolean=false;
+    this.betList.forEach((betEx)=>{
+      if(betEx.typeId==bet.typeId && betEx.selection==bet.selection){
+        exist=true;
+      }
+    })
+    return exist;
+  }
+
   resetTotal(){
     this.totalBet=0;
     this._total.next(this.totalBet);

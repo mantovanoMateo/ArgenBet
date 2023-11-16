@@ -39,6 +39,7 @@ export class TournamentsService {
   private actualLeague=0;
   private actualTeam=0;
   private actualFixture=0;
+  private fixture:any;
   constructor(private http : HttpClient) { }
   
   get Tournaments(){
@@ -131,5 +132,13 @@ export class TournamentsService {
 
   setActualFixture(fixtureId: number){
     this.actualFixture=fixtureId;
+  }
+
+  setFixture(fixture: any){
+    this.fixture=fixture;
+  }
+  
+  getFixture(fixture: any){
+    return this.fixture;
   }
 }

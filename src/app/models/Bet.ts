@@ -3,6 +3,7 @@ export class Bet{
     fixtureId: number=0;
     headToHead: string='';
     type: string='';
+    typeId:number=0;
     selection: string='';
     betValue: number=0;
     benefit: number=0;

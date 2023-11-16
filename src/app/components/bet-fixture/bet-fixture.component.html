@@ -6,13 +6,13 @@
         <div class="fixture">
             <div class="teamsData">
                 <div class="teamData">
-                    <img class="fixtureTeamLogo" src="" alt="logo local">
-                    <p class="card-text">aca iria el nombre del local</p>
+                    <img class="fixtureTeamLogo" src="{{fixture.teams.home.logo}}" alt="logo local">
+                    <p class="card-text">{{fixture.teams.home.name}}</p>
                 </div>
                 <h4 class="vs">VS</h4>
                 <div class="teamData">
-                    <p class="card-text">aca ira el nombre del visitante</p>
-                    <img class="fixtureTeamLogo" src="" alt="logo visitante">
+                    <p class="card-text">{{fixture.teams.away.name}}</p>
+                    <img class="fixtureTeamLogo" src="{{fixture.teams.away.logo}}" alt="logo visitante">
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="card-header text-bg-dark">{{bet.name}}</div>
             <div class="card-body">
                 <div class="bets">
-                    <button (click)="onClick(value.value,value.odd,bet.name)" *ngFor="let value of bet.values" type="button" class="btn btn-outline-success"
+                    <button (click)="onClick(value.value,value.odd,bet.name,bet.id)" *ngFor="let value of bet.values" type="button" class="btn btn-outline-success"
                         data-bs-toggle="button">{{value.value}} // {{value.odd}}</button>
                 </div>
             </div>
