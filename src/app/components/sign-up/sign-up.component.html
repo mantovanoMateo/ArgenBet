@@ -9,7 +9,7 @@
           <label for="nameInput" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="nameInput" formControlName="firstName">
           <div *ngIf="signUpForm.get('firstName')?.hasError('required') && (signUpForm.get('firstName')?.touched || signUpForm.get('firstName')?.dirty)"
-          class="error-message">
+          class="error-message" >
             El nombre es obligatorio.
           </div>
           <div *ngIf="signUpForm.get('firstName')?.hasError('onlyLetters') && (signUpForm.get('firstName')?.touched || signUpForm.get('firstName')?.dirty)"
@@ -21,9 +21,22 @@
             El nombre no debe tener más de 50 caracteres.
           </div>
         </div>
+
         <div class="col">
           <label for="lastNameInput" class="form-label">Apellido</label>
           <input type="text" class="form-control" id="lastNameInput" formControlName="lastName">
+          <div *ngIf="signUpForm.get('lastName')?.hasError('required') && (signUpForm.get('lastName')?.touched || signUpForm.get('lastName')?.dirty)"
+          class="error-message" >
+            El apellido es obligatorio.
+          </div>
+          <div *ngIf="signUpForm.get('lastName')?.hasError('onlyLetters') && (signUpForm.get('lastName')?.touched || signUpForm.get('lastName')?.dirty)"
+          class="error-message">
+            Ingresa un apellido válido (solo letras).
+          </div>
+          <div *ngIf="signUpForm.get('lastName')?.hasError('maxlength') && (signUpForm.get('lastName')?.touched || signUpForm.get('lastName')?.dirty)"
+           class="error-message">
+            El apellido no debe tener más de 50 caracteres.
+          </div>
         </div>
         <br>
       </div>
@@ -32,10 +45,32 @@
         <div class="col">
           <label for="DNIInput" class="form-label">DNI</label>
           <input type="text" class="form-control" id="DNIInput" formControlName="dni">
+          <div *ngIf="signUpForm.get('dni')?.hasError('required') && (signUpForm.get('dni')?.touched || signUpForm.get('dni')?.dirty)" class="error-message">
+            El DNI es obligatorio.
+          </div>
+          <div *ngIf="signUpForm.get('dni')?.hasError('pattern') && (signUpForm.get('dni')?.touched || signUpForm.get('dni')?.dirty)"class="error-message">
+            El DNI solo puede contener números.
+          </div>
+          <div *ngIf="signUpForm.get('dni')?.hasError('maxlength') && (signUpForm.get('dni')?.touched || signUpForm.get('dni')?.dirty)"class="error-message">
+            El DNI no puede tener más de 8 caracteres.
+          </div>
+          <div *ngIf="signUpForm.get('dni')?.hasError('minlength') && (signUpForm.get('dni')?.touched || signUpForm.get('dni')?.dirty)"class="error-message">
+            El DNI debe tener al menos 7 caracteres.
+          </div>
         </div>
+
         <div class="col">
           <label for="phoneInput" class="form-label">Telefono</label>
-          <input type="number" class="form-control" id="phoneInput" formControlName="phone" min=0>
+          <input type="text" class="form-control" id="phoneInput" formControlName="phone" min=0>
+          <div *ngIf="signUpForm.get('phone')?.hasError('required') && (signUpForm.get('phone')?.touched || signUpForm.get('phone')?.dirty)"class="error-message">
+            El teléfono es obligatorio.
+          </div>
+          <div *ngIf="signUpForm.get('phone')?.hasError('pattern') && (signUpForm.get('phone')?.touched || signUpForm.get('phone')?.dirty)"class="error-message">
+            El teléfono solo puede contener números y el signo más (+).
+          </div>
+          <div *ngIf="signUpForm.get('phone')?.hasError('minlength') && (signUpForm.get('phone')?.touched || signUpForm.get('phone')?.dirty)"class="error-message">
+            El teléfono debe tener al menos 7 caracteres.
+          </div>
         </div>
       </div>
       <br>
@@ -43,6 +78,12 @@
         <div class="col">
           <label for="mailInput" class="form-label">Mail</label>
           <input type="text" class="form-control" id="mailInput" formControlName="email">
+          <div *ngIf="signUpForm.get('email')?.hasError('required') && (signUpForm.get('email')?.touched || signUpForm.get('email')?.dirty)" class="error-message">
+            El correo electrónico es obligatorio.
+          </div>
+          <div *ngIf="signUpForm.get('email')?.hasError('email') && (signUpForm.get('email')?.touched || signUpForm.get('email')?.dirty)" class="error-message">
+            Por favor, ingresa un correo electrónico válido.
+          </div>
         </div>
       </div>
       <br>
@@ -50,14 +91,27 @@
         <div class="col">
           <label for="inputGender" class="form-label">Genero</label>
           <select id="inputGender" class="form-select" formControlName="gender">
-            <option selected>Hombre</option>
-            <option>Mujer</option>
-            <option>Otro</option>
+            <option selected disabled hidden>Selecciona un género</option>
+            <option value="Hombre">Hombre</option>
+            <option value="Mujer">Mujer</option>
+            <option value="Otro">Otro</option>
           </select>
+          <div *ngIf="signUpForm.get('gender')?.hasError('required') && (signUpForm.get('gender')?.touched || signUpForm.get('gender')?.dirty)" class="error-message">
+            El género es obligatorio.
+          </div>
         </div>
         <div class="col">
           <label for="InputPassword" class="form-label">Contraseña</label>
           <input type="password" class="form-control" id="passwordInput" formControlName="password">
+          <div *ngIf="signUpForm.get('password')?.hasError('required') && (signUpForm.get('password')?.touched || signUpForm.get('password')?.dirty)" class="error-message">
+            La contraseña es obligatoria.
+          </div>
+          <div *ngIf="signUpForm.get('password')?.hasError('minlength') && (signUpForm.get('password')?.touched || signUpForm.get('password')?.dirty)" class="error-message">
+            La contraseña debe tener al menos 8 caracteres.
+          </div>
+          <div *ngIf="signUpForm.get('password')?.hasError('pattern') && (signUpForm.get('password')?.touched || signUpForm.get('password')?.dirty)" class="error-message">
+            La contraseña debe contener al menos una mayúscula, una minúscula, un número y un carácter especial.
+          </div>
         </div>
       </div>
       <br>
@@ -65,6 +119,16 @@
         <div class="col">
           <label for="birthDateInput" class="form-label">Fecha de nacimiento</label>
           <input type="date" class="form-control" id="birthDateInput" formControlName="birthDate">
+          <div *ngIf="signUpForm.get('birthDate')?.hasError('required') && (signUpForm.get('birthDate')?.touched || signUpForm.get('birthDate')?.dirty)" class="error-message">
+            La fecha de nacimiento es obligatoria.
+          </div>
+          <div *ngIf="signUpForm.get('birthDate')?.hasError('futureDate') && (signUpForm.get('birthDate')?.touched || signUpForm.get('birthDate')?.dirty)" class="error-message">
+            La fecha de nacimiento no puede ser en el futuro.
+          </div>
+          <div *ngIf="signUpForm.get('birthDate')?.hasError('invalidAge') && (signUpForm.get('birthDate')?.touched || signUpForm.get('birthDate')?.dirty)" class="error-message">
+            La edad debe estar entre 18 y 140 años.
+          </div>
+          
         </div>
       </div>
       <br>

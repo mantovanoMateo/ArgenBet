@@ -16,11 +16,11 @@ export class SignUpComponent {
     firstName: new FormControl('', [Validators.required, Validators.maxLength(50),this.customvalidator.onlyLetters()]),
     lastName: new FormControl('', [Validators.required, Validators.maxLength(50),this.customvalidator.onlyLetters()]),
     dni: new FormControl('', [Validators.required,Validators.pattern('^[0-9]+$'),Validators.maxLength(8),Validators.minLength(7)]),
-    phone: new FormControl('', [Validators.required, Validators.pattern('[+()0-9]+')]),
+    phone: new FormControl('', [Validators.required,Validators.pattern('[+0-9]+'),Validators.minLength(7)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     gender: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-    birthDate: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required,Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]),
+    birthDate: new FormControl('', [Validators.required, this.customvalidator.Older18andyounger140Validator(),this.customvalidator.dateOfBirthValidator()]),
   });
 
   onSubmit() {
