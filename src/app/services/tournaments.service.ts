@@ -59,9 +59,11 @@ export class TournamentsService {
     let day='';
     if(date.getDate()<10){
       day='0'+date.getDate().toString();
+    }else{
+      day=date.getDate().toString();
     }
 
-    toDate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+    toDate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+day;
     return toDate;
   }
 

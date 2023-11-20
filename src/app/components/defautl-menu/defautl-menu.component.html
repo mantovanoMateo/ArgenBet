@@ -1,5 +1,5 @@
 <!---->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -65,7 +65,7 @@
                     <div class="card-footer">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             $
-                            <input id="betValue{{bet.id}}" type="number" min="50" class="form">
+                            <input id="betValue{{bet.id}}" type="number" min="0" pattern="[0-9]+" class="form">
                         </div>
                     </div>
                 </div>

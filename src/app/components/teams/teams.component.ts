@@ -57,7 +57,7 @@ export class TeamsComponent {
     this.bets.forEach((bet) => {
       input = document.getElementById('betValue' + bet.id) as HTMLInputElement;
       value = parseFloat(input.value);
-      if (!Number.isNaN(value)) {
+      if (!Number.isNaN(value) && this.verifyValue(value.toString())) {
         indexOfObject = this.bets.findIndex((obj) => {
           return obj.id === bet.id;
         });
@@ -74,6 +74,14 @@ export class TeamsComponent {
       //console.log(this.bets);
       this.cartOK=true; 
     }
+  }
+
+  verifyValue(value: string){
+    let verify=false;
+    if(!value.indexOf('-') && !value.indexOf('+') &&!value.indexOf('.')){
+      verify=true;
+    }
+    return verify;
   }
 
   getProfit(betedValue: number, benefit:number){

@@ -2,7 +2,7 @@
     margin: auto;
     max-width: 500px;
     padding: 20px;
-    height: 500px;
+    min-height: 500px;
     background-color: rgb(32, 32, 32);
 }
 
