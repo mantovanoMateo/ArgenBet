@@ -15,6 +15,7 @@ export class TeamListComponent {
 
   ngOnInit(){
     let currentLeagueId=Number(this.route.snapshot.paramMap.get('id'));
+    /*
     //console.log('esta es la id q nos trae '+currentLeagueId);
     this.tournamentService.getTournamentTeams(currentLeagueId)
     .then((response)=>{
@@ -25,6 +26,10 @@ export class TeamListComponent {
     .catch((error)=>{
       //console.log(error);   
     })
+    */
+   this.tournamentService.Teams.subscribe(teams=>{
+    this.teams=teams;
+   })
   }
 
   setActualTeam(teamId :number){

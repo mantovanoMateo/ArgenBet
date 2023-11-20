@@ -91,4 +91,8 @@ export class DefautlMenuComponent {
   resetTotal(){
     this.cartService.resetTotal();
   }
+
+  setLeague(id : number){
+    this.tournamentService.setCurrentLeauge(id);
+  }
 }

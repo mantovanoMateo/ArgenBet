@@ -14,12 +14,17 @@ export class BetFixtureListComponent {
     constructor(private tournamentService: TournamentsService){}
 
     ngOnInit(){
+      /*
       this.tournamentService.getTournamentNextFixtures(this.tournamentService.CurrentLeague)
       .then((Response)=>{
         console.log(Response);
         this.response=Response;
         this.fixtures=this.response.response;
       })
+      */
+     this.tournamentService.Fixtures.subscribe(fixtures=>{
+      this.fixtures=fixtures;
+     })
     }
 
     setActualFixture(fixture: any){
