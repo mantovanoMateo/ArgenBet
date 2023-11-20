@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,14 @@ export class TournamentsService {
   private actualTeam=0;
   private actualFixture=0;
   private fixture:any;
-  constructor(private http : HttpClient) { }
+  private fixtures:any[]=[];
+  private _fixtures: BehaviorSubject<any[]>
+  private leagueTeams:any[]=[];
+  private _teams: BehaviorSubject<any[]>;
+  constructor(private http : HttpClient) { 
+    this._fixtures= new BehaviorSubject<any[]>([]);
+    this._teams= new BehaviorSubject<any[]>([]);
+  }
   
   get Tournaments(){
     return this.tournaments;
@@ -59,9 +67,11 @@ export class TournamentsService {
     let day='';
     if(date.getDate()<10){
       day='0'+date.getDate().toString();
+    }else{
+      day=date.getDate().toString();
     }
 
-    toDate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+    toDate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+day;
     return toDate;
   }
 
@@ -105,6 +115,20 @@ export class TournamentsService {
 
   setCurrentLeauge(leagueId: number){
     this.actualLeague=leagueId;
+    this.getTournamentNextFixtures(leagueId)
+      .then((response:any)=>{
+        this.fixtures=response.response;
+        this._fixtures.next(this.fixtures);
+      })
+  }
+
+  setCurrentLeagueTeams(leagueId: number){
+    this.actualLeague=leagueId;
+    this.getTournamentTeams(leagueId)
+      .then((response:any)=>{
+        this.leagueTeams=response.response;
+        this._teams.next(this.leagueTeams);
+      })
   }
 
   get CurrentLeague(){
@@ -133,5 +157,13 @@ export class TournamentsService {
   
   getFixture(){
     return this.fixture;
+  }
+
+  get Teams(){
+    return this._teams.asObservable();
+  }
+
+  get Fixtures(){
+    return this._fixtures.asObservable();
   }
 }

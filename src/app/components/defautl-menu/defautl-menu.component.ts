@@ -47,10 +47,11 @@ export class DefautlMenuComponent {
     let input;
     let indexOfObject = 0;
     let oneIsNull = false;
+    let re= new RegExp('\d')
     this.bets.forEach((bet) => {
       input = document.getElementById('betValue' + bet.id) as HTMLInputElement;
       value = parseFloat(input.value);
-      if (!Number.isNaN(value)) {
+      if (!Number.isNaN(value) && this.verifyValue(value.toString())) {
         indexOfObject = this.bets.findIndex((obj) => {
           return obj.id === bet.id;
         });
@@ -62,11 +63,19 @@ export class DefautlMenuComponent {
     if (oneIsNull) {
       //console.log('no debes dejar apuestas sin valores');
       this.cartOK=false;
-    } else if(!oneIsNull && this.userService.getBetableBalance()>=this.total){
+    } else if(!oneIsNull /*&& this.userService.getBetableBalance()>=this.total*/){
       this.cartOK=true;
     }else{
       this.cartOK=false; 
     }
+  }
+
+  verifyValue(value: string){
+    let verify=false;
+    if(!value.indexOf('-') && !value.indexOf('+') &&!value.indexOf('.')){
+      verify=true;
+    }
+    return verify;
   }
 
   confirmBet(){
@@ -81,5 +90,9 @@ export class DefautlMenuComponent {
 
   resetTotal(){
     this.cartService.resetTotal();
+  }
+
+  setLeague(id : number){
+    this.tournamentService.setCurrentLeauge(id);
   }
 }

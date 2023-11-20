@@ -49,6 +49,7 @@ export class CartService {
 
   confirmBet(){
     this.betList.forEach(bet=>{
+      bet.userId=this.userService.getUserData().id;
       this.betService.addBet(bet)
         .then((Response)=>{
           this.userService.modifyBetBalance(bet.betValue);

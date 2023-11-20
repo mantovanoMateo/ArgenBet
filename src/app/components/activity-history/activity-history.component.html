@@ -32,7 +32,7 @@
                   <td>{{bet.type}}</td>
                   <td>{{bet.selection}}</td>
                   <td>${{bet.betValue}}</td>
-                  <td>${{(bet.betValue*bet.benefit)-bet.betValue}}</td>
+                  <td>${{((bet.betValue*bet.benefit)-bet.betValue).toFixed(2)}}</td>
                   <td>{{bet.betStatus}}</td>
                 </tr>
               </tbody>
@@ -61,7 +61,7 @@
                 <tr *ngFor="let transaction of transactionHistory">
                   <th scope="row">{{transaction.id}}</th>
                   <td>{{transaction.type}}</td>
-                  <td>{{transaction.transactionTotal}}</td>
+                  <td>{{transaction.transactionTotal.toFixed(2)}}</td>
                 </tr>
               </tbody>
             </table>

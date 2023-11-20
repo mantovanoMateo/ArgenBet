@@ -22,7 +22,7 @@
       <br>
       <p id="alertNotValidLogIn"></p>
       <br>
-      <button type="submit" class="btn btn-outline-success">Iniciar Sesion</button>
+      <button type="submit" [disabled]="!logInForm.valid" class="btn btn-outline-success">Iniciar Sesion</button>
       <br>
       <br>
       <a class="nav-link active" [routerLink]="['/signUp']" routerLinkActive="active" aria-current="page"

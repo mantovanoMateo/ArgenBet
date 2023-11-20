@@ -1,4 +1,4 @@
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -32,7 +32,7 @@
             <div class="card-body">
                 <div class="tournament" *ngFor="let tournament of Tournaments">
                     <a class="nav-link active"
-                        [routerLink]="['/mainMenu/teams/teamList/',tournament.id]">{{tournament.name}}</a>
+                        (click)="setTeams(tournament.id)" [routerLink]="['/mainMenu/teams/teamList/',tournament.id]">{{tournament.name}}</a>
                 </div>
             </div>
         </div>
