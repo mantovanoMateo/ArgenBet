@@ -85,21 +85,22 @@
             Por favor, ingresa un correo electrónico válido.
           </div>
         </div>
+
+      <div class="col">
+        <label for="inputGender" class="form-label">Genero</label>
+        <select id="inputGender" class="form-select" formControlName="gender">
+          <option selected disabled hidden>Selecciona un género</option>
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <div *ngIf="signUpForm.get('gender')?.hasError('required') && (signUpForm.get('gender')?.touched || signUpForm.get('gender')?.dirty)" class="error-message">
+          El género es obligatorio.
+        </div>
       </div>
+    </div>
       <br>
       <div class="row">
-        <div class="col">
-          <label for="inputGender" class="form-label">Genero</label>
-          <select id="inputGender" class="form-select" formControlName="gender">
-            <option selected disabled hidden>Selecciona un género</option>
-            <option value="Hombre">Hombre</option>
-            <option value="Mujer">Mujer</option>
-            <option value="Otro">Otro</option>
-          </select>
-          <div *ngIf="signUpForm.get('gender')?.hasError('required') && (signUpForm.get('gender')?.touched || signUpForm.get('gender')?.dirty)" class="error-message">
-            El género es obligatorio.
-          </div>
-        </div>
         <div class="col">
           <label for="InputPassword" class="form-label">Contraseña</label>
           <input type="password" class="form-control" id="passwordInput" formControlName="password">
@@ -111,6 +112,19 @@
           </div>
           <div *ngIf="signUpForm.get('password')?.hasError('pattern') && (signUpForm.get('password')?.touched || signUpForm.get('password')?.dirty)" class="error-message">
             La contraseña debe contener al menos una mayúscula, una minúscula, un número y un carácter especial.
+          </div>
+        </div>
+        <div class="col">
+          <label for="InputConfirmPassword" class="form-label">Confirmar contraseña</label>
+          <input type="password" class="form-control" id="confirmPasswordInput" formControlName="confirmPassword">
+          <div *ngIf="signUpForm.get('confirmPassword')?.hasError('required') && (signUpForm.get('confirmPassword')?.touched || signUpForm.get('confirmPassword')?.dirty)" class="error-message">
+            La confirmación de contraseña es obligatoria.
+          </div>
+          <div *ngIf="signUpForm.get('confirmPassword')?.hasError('mismatch') && (signUpForm.get('confirmPassword')?.touched || signUpForm.get('confirmPassword')?.dirty)" class="error-message">
+            Las contraseñas no coinciden.
+          </div>
+          <div *ngIf="passwordsMatch && signUpForm.get('confirmPassword')?.value !== '' && (signUpForm.get('confirmPassword')?.touched || signUpForm.get('confirmPassword')?.dirty)" class="success-message">
+            Las contraseñas coinciden.
           </div>
         </div>
       </div>
