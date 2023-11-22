@@ -71,3 +71,13 @@ input{
 ::placeholder{
   color:white;
 }
+
+.qr{
+  margin-left: 145px;
+  margin-top: 10px;
+}
+
+p{
+  margin: 10px;
+  text-align: center;
+}
