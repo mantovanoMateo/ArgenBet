@@ -21,9 +21,9 @@ export class SignUpComponent {
   signUpForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.maxLength(50),this.customvalidator.onlyLetters()]),
     lastName: new FormControl('', [Validators.required, Validators.maxLength(50),this.customvalidator.onlyLetters()]),
-    dni: new FormControl('', [Validators.required,Validators.pattern('^[0-9]+$'),Validators.maxLength(8),Validators.minLength(7)]),
+    dni: new FormControl('', [Validators.required,Validators.pattern('^[0-9]+$'),Validators.maxLength(8),Validators.minLength(7)],this.customvalidator.existingDNIValidator()),
     phone: new FormControl('', [Validators.required,Validators.pattern('[+0-9]+'),Validators.minLength(7)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email], this.customvalidator.existingEmailValidator()),
     gender: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required,Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]),
     confirmPassword: new FormControl('',Validators.required),
@@ -60,6 +60,8 @@ export class SignUpComponent {
       takeUntil(this.destroy$)
     );
   }
+
+  
   onSubmit() {
     if (this.signUpForm.valid) {
       let user = new User();

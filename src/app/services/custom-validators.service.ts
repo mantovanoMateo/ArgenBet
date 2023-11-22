@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { UserService } from './user.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomValidatorsService {
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   onlyLetters(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
@@ -42,5 +44,24 @@ export class CustomValidatorsService {
       // Retorna null si la validación es exitosa
       return null;
     };}
-    
+    existingEmailValidator(): AsyncValidatorFn {
+      return (control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
+        return this.userService.getByEmail(control.value)
+        .then(
+          users => {
+            return users ? { "emailExists": true } : null;
+          }
+        );
+      };
+    }
+    existingDNIValidator(): AsyncValidatorFn {
+      return (control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
+        return this.userService.getByDni(control.value)
+        .then(
+          users => {
+            return users ? { "dniExists": true } : null;
+          }
+        );
+      };
+    }
 }
