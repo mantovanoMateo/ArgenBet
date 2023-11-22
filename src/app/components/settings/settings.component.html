@@ -72,22 +72,6 @@
         </div>
         <br>
         <div class="row">
-          <div class="col">
-            <label for="mailInput" class="form-label">Mail</label>
-            <input type="text" class="form-control" id="mailInput" formControlName="email">
-            <div *ngIf="settingsForm.get('email')?.hasError('required') && (settingsForm.get('email')?.touched || settingsForm.get('email')?.dirty)" class="error-message">
-              El correo electrónico es obligatorio.
-            </div>
-            <div *ngIf="settingsForm.get('email')?.hasError('email') && (settingsForm.get('email')?.touched || settingsForm.get('email')?.dirty)" class="error-message">
-              Por favor, ingresa un correo electrónico válido.
-            </div>
-            <div *ngIf="settingsForm.get('email')?.hasError('emailExists') && (settingsForm.get('email')?.touched || settingsForm.get('email')?.dirty)" class="error-message">
-              El correo electrónico ya se encuentra registrado. Por favor elige uno valido.
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
 
           <div class="col">
             <label for="InputPassword" class="form-label">Contraseña</label>

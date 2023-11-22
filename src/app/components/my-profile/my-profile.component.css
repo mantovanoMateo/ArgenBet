@@ -34,5 +34,5 @@ a:focus{
     background-size: cover;
     margin: auto;
     overflow: hidden; /* Evitar que el contenido desborde el contenedor */
-    min-height: 600px;
+    min-height: 800px;
 }
