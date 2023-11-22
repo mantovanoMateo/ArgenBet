@@ -20,7 +20,7 @@ export class SettingsComponent {
     firstName: new FormControl(this.userService.getUserData().firstName, [Validators.required, Validators.maxLength(50),this.customvalidator.onlyLetters()]),
     lastName: new FormControl(this.userService.getUserData().lastName, [Validators.required, Validators.maxLength(50),this.customvalidator.onlyLetters()]),
     phone: new FormControl(this.userService.getUserData().phone, [Validators.required,Validators.pattern('[+0-9]+'),Validators.minLength(7)]),
-    email: new FormControl(this.userService.getUserData().email, [Validators.required, Validators.email]),
+    email: new FormControl(this.userService.getUserData().email, [Validators.required, Validators.email, this.customvalidator.existingEmailValidator()]),
     gender: new FormControl(this.userService.getUserData().gender, [Validators.required]),
     password: new FormControl(this.userService.getUserData().password, [Validators.required,Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]),
     confirmPassword: new FormControl('',Validators.required),
