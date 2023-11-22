@@ -61,6 +61,11 @@ export class UserService {
     .toPromise();
   }
 
+  getByDni(dni: number): Promise<any>{
+    return this.http.get('http://localhost:8080/users/dni/'+dni)
+    .toPromise();
+  }
+
   getBetHistory(): Promise<any>{
     return this.http.get(this.apiBetHistory+this.user.id)
     .toPromise();
