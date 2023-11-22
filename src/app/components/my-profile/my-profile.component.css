@@ -33,6 +33,5 @@ a:focus{
     background-position: center center;
     background-size: cover;
     margin: auto;
-    height: 100vh; /* Usar el 100% de la altura de la ventana */
     overflow: hidden; /* Evitar que el contenido desborde el contenedor */
 }

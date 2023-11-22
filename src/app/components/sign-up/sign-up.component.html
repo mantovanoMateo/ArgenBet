@@ -57,7 +57,7 @@
           <div *ngIf="signUpForm.get('dni')?.hasError('minlength') && (signUpForm.get('dni')?.touched || signUpForm.get('dni')?.dirty)"class="error-message">
             El DNI debe tener al menos 7 caracteres.
           </div>
-          <div *ngIf="signUpForm.get('dni')?.hasError('existingEmailValidator') && (signUpForm.get('dni')?.touched || signUpForm.get('dni')?.dirty)"class="error-message">
+          <div *ngIf="signUpForm.get('dni')?.hasError('dniExists') && (signUpForm.get('dni')?.touched || signUpForm.get('dni')?.dirty)"class="error-message">
             El DNI ya se encuentra registrado
           </div>
         </div>
@@ -84,7 +84,7 @@
           <div *ngIf="signUpForm.get('email')?.hasError('required') && (signUpForm.get('email')?.touched || signUpForm.get('email')?.dirty)" class="error-message">
             El correo electrónico es obligatorio.
           </div>
-          <div *ngIf="signUpForm.get('email')?.hasError('existingEmailValidator') && (signUpForm.get('email')?.touched || signUpForm.get('email')?.dirty)" class="error-message">
+          <div *ngIf="signUpForm.get('email')?.hasError('emailExists') && (signUpForm.get('email')?.touched || signUpForm.get('email')?.dirty)" class="error-message">
             El correo electrónico ya se encuentra registrado.
           </div>
         </div>

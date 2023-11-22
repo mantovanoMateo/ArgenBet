@@ -2,6 +2,7 @@
     margin: auto;
     max-width: 700px;
     padding: 20px;
+    margin-bottom: 30px;
     background-color: rgb(32, 32, 32);
 }
 
@@ -34,7 +35,7 @@ select{
     background-position: center center;
     background-size: cover;
     margin: auto;
-    height: 100vh; /* Usar el 100% de la altura de la ventana */
+    
     overflow: hidden; /* Evitar que el contenido desborde el contenedor */
   }
   
