@@ -7,70 +7,11 @@
         <li class="nav-item">
             <a class="nav-link" [routerLink]="['/mainMenu/teams']" routerLinkActive="active" href="#"><b>Equipos</b></a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="online==true" class="nav-item">
             <a class="nav-link" [routerLink]="['/mainMenu/mybets']" routerLinkActive="active" href="#"><b>Mis
                     Apuestas</b></a>
         </li>
     </ul>
 </div>
 
-    <router-outlet></router-outlet>
-<!--
-<div class="col-3">
-    <div class="card h-100">
-        <div class="card-header">Mi Seleccion</div>
-        <div class="card-body">
-            <p class="card-text">Aca ira el listado de las apuestas que estamos realizando previas de abonar</p>
-        </div>
-    </div>
-</div>
-
-
-    <app-defautl-menu></app-defautl-menu>
-    <router-outlet></router-outlet>
-
-<div class="row">
-    <div class="col-3">
-        <div class="card h-100">
-            <div class="card-header">Torneos</div>
-            <div class="card-body">
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100">
-            <div class="card-header">Proximos Eventos</div>
-            <div class="card-body">
-                <div class="card">
-                    <div class="card-header">
-                        CONMEBOL Libertadores - 04/11/2023
-                    </div>
-                    <div class="betBody">
-                        <div class="card-body">
-                            <div class="fixture">
-                                <div class="teamsData">
-                                    <p class="card-text">Boca Juniors</p>
-                                    <div class="separator"></div>
-                                    <p class="card-text">F.C Fluminense</p>
-                                    <br>
-                                </div>
-                                <div class="betBtn">
-                                    <a href="#" class="btn btn-primary">Apostar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-3">
-        <div class="card h-100">
-            <div class="card-header">Mi Seleccion</div>
-            <div class="card-body">
-                <p class="card-text">Aca ira el listado de las apuestas que estamos realizando previas de abonar</p>
-            </div>
-        </div>
-    </div>
-</div>
- -->
+<router-outlet></router-outlet>

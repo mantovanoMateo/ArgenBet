@@ -16,6 +16,7 @@ import { ActivityHistoryComponent } from './components/activity-history/activity
 import { BetFixtureComponent } from './components/bet-fixture/bet-fixture.component';
 import { BetFixtureListComponent } from './components/bet-fixture-list/bet-fixture-list.component';
 import { AtmComponent } from './components/atm/atm.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const routes: Routes = [
   {path: 'logIn', component:LogInComponent},
@@ -24,45 +25,30 @@ const routes: Routes = [
     children:[
       {path: 'myData', component: MyDataComponent},
       {path: 'activityHistory', component: ActivityHistoryComponent},
-      {path: 'atm', component: AtmComponent}
+      {path: 'atm', component: AtmComponent},
+      {path: 'settings',component: SettingsComponent}
     ]},
   {path: 'mainMenu', component:MainMenuComponent,
    children:[
     {path: 'defaultMenu', component:DefautlMenuComponent,
       children:[
         {path: 'fixtureList', component: BetFixtureListComponent},
-        {path: 'fixture', component: BetFixtureComponent}
+        {path: 'fixture/:id', component: BetFixtureComponent}
       ]},
     {path: 'teams', component:TeamsComponent,
      children:[
-      {path: 'teamList', component: TeamListComponent},
+      {path: 'teamList/:id', component: TeamListComponent},
       {path: 'teamDetails', component: TeamDetailsComponent}
      ]},
     {path: 'mybets', component:MyBetsComponent}
-   ]
-
-  },
-  {
-    path: 'mainMenu',
-    component: MainMenuComponent,
-    children: [
-      { path: 'defaultMenu', component: DefautlMenuComponent },
-      {
-        path: 'teams',
-        component: TeamsComponent,
-        children: [
-          { path: 'teamList', component: TeamListComponent },
-          { path: 'teamDetails', component: TeamDetailsComponent },
-        ],
-      },
-      { path: 'mybets', component: MyBetsComponent },
-    ],
-  },
+   ]},
   { path: '', redirectTo: '/mainMenu/defaultMenu', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    onSameUrlNavigation:'reload'
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -25,7 +25,6 @@
     padding-top: 30px;
     padding-bottom: 30px;
     margin: 0;
-
 }
 
 .betBody:hover{
@@ -87,3 +86,34 @@
     display: inline-block;
     justify-content: space-between;
 }
+
+.deleteBtn{
+    margin-left: 100px;
+}
+
+.deleteBtn:hover{
+    cursor: pointer;
+}
+
+.betHeader{
+    display: flex;
+}
+.modal {
+    position: absolute;
+    top: 10px;
+    right: 100px;
+    bottom: 0;
+    left: 30%;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+    width: 1000px;
+
+    --bs-modal-bg: #212529;
+    --bs-modal-color: white;
+    --bs-modal-header-border-color: #474747;
+    --bs-modal-footer-border-color: #212529;
+ }
+ .btn {
+    margin: 5px;
+ }

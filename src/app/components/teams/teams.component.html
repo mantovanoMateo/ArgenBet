@@ -1,15 +1,43 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Verificacion de Apuesta</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul *ngIf="cartOK==true && onLine==true">
+                    <li *ngFor="let bet of bets">
+                        <p>{{bet.type}} -> {{bet.selection}}</p>
+                        <p>${{bet.betValue}} x {{bet.benefit}} (ganancia potencial) = ${{getProfit(bet.betValue,bet.benefit)}}</p> 
+                    </li>
+                </ul>
+                <h3 *ngIf="cartOK==false && onLine==true">Por favor ingrese un a valor a todas sus apuestas!</h3>
+                <h3 *ngIf="onLine==false">Usted debe logearse para poder realizar apuestas!</h3>
+                <br>
+                <p *ngIf="cartOK==true && onLine==true">Su saldo es insuficiente, realice un deposito por favor!</p>
+                <h4 *ngIf="cartOK==true && onLine==true">Total: ${{total}}</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="resetTotal()" class="btn btn-outline-danger" data-bs-dismiss="modal">Volver</button>
+                <button *ngIf="cartOK==true && onLine==true" (click)="confirmBet()" type="button" class="btn btn-outline-success">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-3">
         <div class="card h-100">
             <div class="card-header text-bg-dark">Torneos</div>
             <div class="card-body">
                 <div class="tournament" *ngFor="let tournament of Tournaments">
-                    <a class="nav-link active" (click)="getTournamentTeams()" [routerLink]="['/mainMenu/teams/teamList']">{{tournament}}</a>
+                    <a class="nav-link active"
+                        (click)="setTeams(tournament.id)" [routerLink]="['/mainMenu/teams/teamList/',tournament.id]">{{tournament.name}}</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col">
+    <div class="col-6">
         <div class="card h-100">
             <div class="card-header text-bg-dark">Equipos</div>
             <div class="card-body">
@@ -21,35 +49,35 @@
         <div class="card h-100">
             <div class="card-header text-bg-dark">Mi Seleccion</div>
             <div class="card-body">
-                <div class="card text-bg-light mb-3">
-                    <div class="card-header">Equipo1/Equipo2</div>
+                <div *ngFor="let bet of bets" class="card text-bg-light mb-3">
+                    <div class="card-header">
+                        <div class="betHeader">
+                            <p class="teams">{{bet.headToHead}}</p>
+                            <p (click)="deleteBet(bet)" class="deleteBtn">X</p>
+                        </div>
+                    </div>
                     <div class="card-body">
-                        <p class="card-text">Nombre de apuesta</p>
-                        <p class="card-text"><b>Valor elegido</b></p>
-                        <p><b>3.0</b></p>
+                        <p class="card-text">{{bet.type}}</p>
+                        <p class="card-text"><b>{{bet.selection}}</b></p>
+                        <p><b>{{bet.benefit}}</b></p>
                     </div>
                     <div class="card-footer">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-secondary">-</button>
-                            <input type="number" class="form">
-                            <button type="button" class="btn btn-secondary">+</button>
-                        </div>
-                        <br>
-                        <div class="benefit">
-                            <p class="ganancia">Ganancia potencial</p>
-                            <p>$importe</p>
+                            $
+                            <input id="betValue{{bet.id}}" type="number" min="50" class="form">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-footer text-bg-dark">
                 <div class="betfinish">
-                    <div class="totalBet">
-                        <p>$Importe total</p>
-                        <p>$Ganancia potencial</p>
-                    </div>
                     <div class="betBtn">
-                        <a href="#" class="btn btn-outline-success">Apostar</a>
+                        <div class="betBtn">
+                            <button type="button" (click)="verifyCart()" class="btn btn-outline-success"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Apostar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

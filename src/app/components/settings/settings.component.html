@@ -1,0 +1,109 @@
+
+<div class="signUpBackGround">
+    <div class="card">
+      <h3><b>¡Actualiza tus datos!</b></h3>
+      <h3><b></b></h3>
+      <br>
+      <form class="logInStyle" [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col">
+            <label for="nameInput" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nameInput" formControlName="firstName">
+            <div *ngIf="settingsForm.get('firstName')?.hasError('required') && (settingsForm.get('firstName')?.touched || settingsForm.get('firstName')?.dirty)"
+            class="error-message" >
+              El nombre es obligatorio.
+            </div>
+            <div *ngIf="settingsForm.get('firstName')?.hasError('onlyLetters') && (settingsForm.get('firstName')?.touched || settingsForm.get('firstName')?.dirty)"
+            class="error-message">
+              Ingresa un nombre válido (solo letras).
+            </div>
+            <div *ngIf="settingsForm.get('firstName')?.hasError('maxlength') && (settingsForm.get('firstName')?.touched || settingsForm.get('firstName')?.dirty)"
+             class="error-message">
+              El nombre no debe tener más de 50 caracteres.
+            </div>
+          </div>
+  
+          <div class="col">
+            <label for="lastNameInput" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="lastNameInput" formControlName="lastName">
+            <div *ngIf="settingsForm.get('lastName')?.hasError('required') && (settingsForm.get('lastName')?.touched || settingsForm.get('lastName')?.dirty)"
+            class="error-message" >
+              El apellido es obligatorio.
+            </div>
+            <div *ngIf="settingsForm.get('lastName')?.hasError('onlyLetters') && (settingsForm.get('lastName')?.touched || settingsForm.get('lastName')?.dirty)"
+            class="error-message">
+              Ingresa un apellido válido (solo letras).
+            </div>
+            <div *ngIf="settingsForm.get('lastName')?.hasError('maxlength') && (settingsForm.get('lastName')?.touched || settingsForm.get('lastName')?.dirty)"
+             class="error-message">
+              El apellido no debe tener más de 50 caracteres.
+            </div>
+          </div>
+          <br>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col" >
+            <label for="phoneInput" class="form-label">Telefono</label>
+            <input type="text" class="form-control" id="phoneInput" formControlName="phone" min=0>
+            <div *ngIf="settingsForm.get('phone')?.hasError('required') && (settingsForm.get('phone')?.touched || settingsForm.get('phone')?.dirty)"class="error-message">
+              El teléfono es obligatorio.
+            </div>
+            <div *ngIf="settingsForm.get('phone')?.hasError('pattern') && (settingsForm.get('phone')?.touched || settingsForm.get('phone')?.dirty)"class="error-message">
+              El teléfono solo puede contener números y el signo más (+).
+            </div>
+            <div *ngIf="settingsForm.get('phone')?.hasError('minlength') && (settingsForm.get('phone')?.touched || settingsForm.get('phone')?.dirty)"class="error-message">
+              El teléfono debe tener al menos 7 caracteres.
+            </div>
+          </div>
+          <div class="col">
+            <label for="inputGender" class="form-label">Genero</label>
+            <select id="inputGender" class="form-select" formControlName="gender">
+              <option selected disabled hidden>Selecciona un género</option>
+              <option value="Hombre">Hombre</option>
+              <option value="Mujer">Mujer</option>
+              <option value="Otro">Otro</option>
+            </select>
+            <div *ngIf="settingsForm.get('gender')?.hasError('required') && (settingsForm.get('gender')?.touched || settingsForm.get('gender')?.dirty)" class="error-message">
+              El género es obligatorio.
+            </div>
+          </div>
+
+        </div>
+        <br>
+        <div class="row">
+
+          <div class="col">
+            <label for="InputPassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="passwordInput" formControlName="password">
+            <div *ngIf="settingsForm.get('password')?.hasError('required') && (settingsForm.get('password')?.touched || settingsForm.get('password')?.dirty)" class="error-message">
+              La contraseña es obligatoria.
+            </div>
+            <div *ngIf="settingsForm.get('password')?.hasError('minlength') && (settingsForm.get('password')?.touched || settingsForm.get('password')?.dirty)" class="error-message">
+              La contraseña debe tener al menos 8 caracteres.
+            </div>
+            <div *ngIf="settingsForm.get('password')?.hasError('pattern') && (settingsForm.get('password')?.touched || settingsForm.get('password')?.dirty)" class="error-message">
+              La contraseña debe contener al menos una mayúscula, una minúscula, un número y un carácter especial.
+            </div>
+          </div>
+          <div class="col">
+            <label for="InputConfirmPassword" class="form-label">Confirmar contraseña</label>
+            <input type="password" class="form-control" id="confirmPasswordInput" formControlName="confirmPassword">
+            <div *ngIf="settingsForm.get('confirmPassword')?.hasError('required') && (settingsForm.get('confirmPassword')?.touched || settingsForm.get('confirmPassword')?.dirty)" class="error-message">
+              La confirmación de contraseña es obligatoria.
+            </div>
+            <div *ngIf="settingsForm.get('confirmPassword')?.hasError('mismatch') && (settingsForm.get('confirmPassword')?.touched || settingsForm.get('confirmPassword')?.dirty)" class="error-message">
+              Las contraseñas no coinciden.
+            </div>
+            <div *ngIf="passwordsMatch && settingsForm.get('confirmPassword')?.value !== '' && (settingsForm.get('confirmPassword')?.touched || settingsForm.get('confirmPassword')?.dirty)" class="success-message">
+              Las contraseñas coinciden.
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-outline-success" [disabled]="!settingsForm.valid">Confirmar</button>
+        <br>
+      </form>
+    </div>
+  </div>

@@ -1,6 +1,37 @@
 <div class="card">
-    <p>Logo Equipo</p>
-    <h2>Nombre de equipo</h2>
-    <h3>Estadisticas</h3>
+    <img class="clubLogo" src="{{Team.team.logo}}" alt="">
+    <h2>{{Team.team.name}}</h2>
+    <h5>Ciudad</h5>
+    <p>{{Team.venue.city}}</p>
+    <h5>Estadio</h5>
+    <p>{{Team.venue.name}}</p>
+    <img class="stadiumImage" src="{{Team.venue.image}}" alt="imagen de estadio">
+    
     <h5>Proximos partidos</h5>
+    <div *ngFor="let fixture of teamNextFixtures" class="card">
+        <div class="card-header text-bg-dark">
+            {{fixture.league.name}} {{fixture.fixture.date}}
+        </div>
+        <div class="betBody">
+            <a class="nav-link active" id="{{fixture.fixture.id}}"
+                [routerLink]="['/mainMenu/defaultMenu/fixture/',fixture.fixture.id]" routerLinkActive="active">
+                <div class="card-body">
+                    <div class="fixture">
+                        <div class="teamsData">
+                            <div class="teamData">
+                                <img class="fixtureTeamLogo" src="{{fixture.teams.home.logo}}" alt="">
+                                <p class="card-text">{{fixture.teams.home.name}}</p>
+                            </div>
+                            <h4 class="vs">VS</h4>
+                            <div class="teamData">
+                                <p class="card-text">{{fixture.teams.away.name}}</p>
+                                <img class="fixtureTeamLogo" src="{{fixture.teams.away.logo}}" alt="">
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
