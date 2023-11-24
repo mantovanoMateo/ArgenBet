@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppModule } from 'src/app/app.module';
 import { Transaction } from 'src/app/models/Transaction';
+import { CustomValidatorsService } from 'src/app/services/custom-validators.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -21,7 +23,19 @@ export class AtmComponent {
     { name: 'Mercado Pago', selected: false }
   ];
 
-  constructor(private userService: UserService, private transactionService: TransactionService) { }
+  constructor(private userService: UserService, private transactionService: TransactionService, private customValidator : CustomValidatorsService) {}
+  depositForm = new FormGroup({
+    numeroTarjeta: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.maxLength(16),Validators.minLength(16)]),
+    titular: new FormControl('', [Validators.required,this.customValidator.onlyLetters()]),
+    fechaVencimiento: new FormControl('', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/)]),
+    cvv: new FormControl('', [Validators.required,Validators.pattern('^[0-9]+$'),Validators.minLength(3),Validators.maxLength(4)]),
+    cantidadDepositar: new FormControl('', [Validators.required, Validators.min(1),Validators.pattern('^[0-9]+$')])
+  });
+  withdrawForm = new FormGroup({
+    cbu:new FormControl('',[Validators.required,Validators.pattern('^[0-9]+$'),Validators.minLength(22),Validators.maxLength(22)]),
+    amount: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.min(1)])
+  })
+
 
   ngOnInit() {
     this.betBalance = this.userService.getUserBetBalance();

@@ -93,4 +93,8 @@ export class TeamsComponent {
   resetTotal(){
     this.cartService.resetTotal();
   }
+
+  setTeams(id : number){
+    this.tournamentService.setCurrentLeagueTeams(id);
+  }
 }

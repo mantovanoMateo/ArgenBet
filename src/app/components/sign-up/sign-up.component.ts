@@ -4,26 +4,64 @@ import { User } from 'src/app/models/User';
 import { CustomValidatorsService } from 'src/app/services/custom-validators.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-
+import { debounceTime,takeUntil,switchMap, Subject } from 'rxjs';
+import { AbstractControl } from '@angular/forms';
+import { ValidationErrors } from '@angular/forms';
+import { of } from 'rxjs';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent {
+  passwordsMatch = false;
+  private destroy$:Subject<void> = new Subject();
   constructor(private userService: UserService, private customvalidator : CustomValidatorsService, private router: Router){}
 
   signUpForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.maxLength(50),this.customvalidator.onlyLetters()]),
     lastName: new FormControl('', [Validators.required, Validators.maxLength(50),this.customvalidator.onlyLetters()]),
-    dni: new FormControl('', [Validators.required,Validators.pattern('^[0-9]+$'),Validators.maxLength(8),Validators.minLength(7)]),
+    dni: new FormControl('', [Validators.required,Validators.pattern('^[0-9]+$'),Validators.maxLength(8),Validators.minLength(7)],this.customvalidator.existingDNIValidator()),
     phone: new FormControl('', [Validators.required,Validators.pattern('[+0-9]+'),Validators.minLength(7)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [Validators.required, Validators.email], this.customvalidator.existingEmailValidator()),
     gender: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required,Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]),
+    confirmPassword: new FormControl('',Validators.required),
     birthDate: new FormControl('', [Validators.required, this.customvalidator.Older18andyounger140Validator(),this.customvalidator.dateOfBirthValidator()]),
   });
+  ngOnInit() {
+    this.signUpForm
+      .get('confirmPassword')
+      ?.setAsyncValidators(this.passwordMatchValidator.bind(this));
 
+    this.signUpForm
+      .get('password')
+      ?.valueChanges.pipe(debounceTime(300), takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.signUpForm.get('confirmPassword')?.updateValueAndValidity({
+          onlySelf: true,
+          emitEvent: false,
+        });
+      });
+  }
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+  private passwordMatchValidator(
+    control: AbstractControl
+  ): Promise<ValidationErrors | null> | import('rxjs').Observable<ValidationErrors | null> {
+    const password = this.signUpForm.get('password')?.value;
+    const confirmPassword = control.value;
+
+    this.passwordsMatch = password === confirmPassword;
+    return of(this.passwordsMatch ? null : { mismatch: true }).pipe(
+      debounceTime(300),
+      takeUntil(this.destroy$)
+    );
+  }
+
+  
   onSubmit() {
     if (this.signUpForm.valid) {
       let user = new User();

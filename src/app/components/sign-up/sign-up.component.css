@@ -2,6 +2,7 @@
     margin: auto;
     max-width: 700px;
     padding: 20px;
+    margin-bottom: 30px;
     background-color: rgb(32, 32, 32);
 }
 
@@ -27,15 +28,23 @@ select{
     border-color: rgb(97, 97, 97);
 }
 
-.signUpBackGround{
+.signUpBackGround {
     padding-top: 50px;
     background-repeat: no-repeat;
     background-image: url(https://wallpapercave.com/wp/wp3972164.jpg);
-    background-position: 50% 50%;
+    background-position: center center;
+    background-size: cover;
     margin: auto;
-    height: 720px;
-}
+    
+    overflow: hidden; /* Evitar que el contenido desborde el contenedor */
+  }
+  
+  
 .error-message {
     font-size: 12px;
     color: orangered;
+  }
+  .success-message {
+    color: green;
+    font-size: 12px;
   }

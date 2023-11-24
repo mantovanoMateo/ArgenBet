@@ -3,6 +3,7 @@
     max-width: 700px;
     padding: 20px;
     background-color: rgb(32, 32, 32);
+    margin-bottom: 30px;
 }
 
 input{
@@ -30,4 +31,8 @@ select{
 .error-message {
     font-size: 12px;
     color: orangered;
+  }
+  .success-message {
+    color: green;
+    font-size: 12px;
   }

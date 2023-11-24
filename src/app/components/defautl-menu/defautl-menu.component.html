@@ -1,5 +1,5 @@
-<!---->
-<div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,18 +10,22 @@
                 <ul *ngIf="cartOK==true && onLine==true">
                     <li *ngFor="let bet of bets">
                         <p>{{bet.type}} -> {{bet.selection}}</p>
-                        <p>${{bet.betValue}} x {{bet.benefit}} (ganancia potencial) = ${{getProfit(bet.betValue,bet.benefit)}}</p> 
+                        <p>${{bet.betValue}} x {{bet.benefit}} (ganancia potencial) =
+                            ${{getProfit(bet.betValue,bet.benefit)}}</p>
                     </li>
                 </ul>
                 <h3 *ngIf="cartOK==false && onLine==true">Por favor ingrese un a valor a todas sus apuestas!</h3>
                 <h3 *ngIf="onLine==false">Usted debe logearse para poder realizar apuestas!</h3>
                 <br>
-                <p *ngIf="cartOK==false && onLine==true">Su saldo es insuficiente, realice un deposito por favor!</p>
+                <p *ngIf="cartOK==false && onLine==true">Su saldo es insuficiente, realice un deposito por favor!
+                </p>
                 <h4 *ngIf="cartOK==true && onLine==true">Total: ${{total}}</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" (click)="resetTotal()" class="btn btn-outline-danger" data-bs-dismiss="modal">Volver</button>
-                <button *ngIf="cartOK==true && onLine==true" (click)="confirmBet()" type="button" class="btn btn-outline-success">Confirmar</button>
+                <button type="button" (click)="resetTotal()" class="btn btn-outline-danger"
+                    data-bs-dismiss="modal">Volver</button>
+                <button *ngIf="cartOK==true && onLine==true" (click)="confirmBet()" type="button"
+                    class="btn btn-outline-success">Confirmar</button>
             </div>
         </div>
     </div>
@@ -32,7 +36,7 @@
             <div class="card-header text-bg-dark">Torneos</div>
             <div class="card-body">
                 <div class="tournament" *ngFor="let tournament of Tournaments">
-                    <a class="nav-link active" (click)="setActualTournament(tournament.id)"
+                    <a class="nav-link active" (click)="setLeague(tournament.id)"
                         [routerLink]="['/mainMenu/defaultMenu/fixtureList']">{{tournament.name}}</a>
                 </div>
             </div>
@@ -73,8 +77,8 @@
             <div class="card-footer text-bg-dark">
                 <div class="betfinish">
                     <div class="betBtn">
-                        <button type="button" (click)="verifyCart()" class="btn btn-success"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" (click)="verifyCart()" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
                             Apostar
                         </button>
                     </div>
