@@ -1,192 +1,227 @@
 <div class="card bg-dark text-white">
-    <div class="card-header">
-        <h2 style="margin-left: 20px">Saldo total ${{balance}}</h2>
-        <div class="buttons">
-            <button type="button" class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#depositModal">
-                Depositar
-            </button>
-            <button type="button" class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#withdrawModal">
-                Retirar
-            </button>
-        </div>
+  <div class="card-header">
+    <h2 style="margin-left: 20px">Saldo total ${{balance}}</h2>
+    <div class="buttons">
+      <button type="button" class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#depositModal">
+        Depositar
+      </button>
+      <button type="button" class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#withdrawModal">
+        Retirar
+      </button>
     </div>
-    <div class="card-body">
-        <div class="cards-container">
-            <div class="card-lg-container">
-                <div class="card card-lg text-white bg-dark mb-3">
-                    <div class="card-header">
-                        <div class="cashier">
-                            <h2>Saldo retirable</h2>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h2 class="balance">${{getWithdrawableBalance()}}</h2>
-                    </div>
-                </div>
+  </div>
+  <div class="card-body">
+    <div class="cards-container">
+      <div class="card-lg-container">
+        <div class="card card-lg text-white bg-dark mb-3">
+          <div class="card-header">
+            <div class="cashier">
+              <h2>Saldo retirable</h2>
             </div>
-            <div class="card-lg-container">
-                <div class="card card-lg text-white bg-dark mb-3">
-                    <div class="card-header">
-                        <div class="cashier">
-                            <h2>Saldo apostado</h2>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h2 class="balance">${{betBalance}}</h2>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="card-body">
+            <h2 class="balance">${{getWithdrawableBalance()}}</h2>
+          </div>
         </div>
+      </div>
+      <div class="card-lg-container">
+        <div class="card card-lg text-white bg-dark mb-3">
+          <div class="card-header">
+            <div class="cashier">
+              <h2>Saldo apostado</h2>
+            </div>
+          </div>
+          <div class="card-body">
+            <h2 class="balance">${{betBalance}}</h2>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="modal fade" id="depositModal" tabindex="-1" aria-labelledby="depositModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content bg-dark text-white">
-            <div class="modal-header">
-                <h5 class="modal-title" id="depositModalLabel">Opciones de depósito</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body bg-dark">
-                <div class="btn-group">
-                    <label *ngFor="let method of paymentMethods" class="btn btn-outline-success"
-                        [class.active]="method.selected">
-                        <input type="radio" name="paymentMethod" [checked]="method.selected"
-                            (change)="updateSelectedPaymentMethod(method)"> {{ method.name }}
-                    </label>
-                </div>
-                <p *ngIf="paymentMethods[2].selected==true">CBU : 1489660611100042937527</p>
-                <p *ngIf="paymentMethods[3].selected==true">Envie dinero a este mail: depositos&commat;argenbet.com</p>
-                <img *ngIf="paymentMethods[4].selected==true"
-                    class="qr" src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Commons_QR_code.png" alt="">
-                <p
-                    *ngIf="paymentMethods[2].selected==true || paymentMethods[3].selected==true || paymentMethods[4].selected==true">
-                    Su deposito sera efectuado dentro de las 24hs</p>
-                    <div *ngIf="paymentMethods[1].selected == true || paymentMethods[0].selected == true">
-                        <form [formGroup]="depositForm">
-                          <input type="text" formControlName="numeroTarjeta" class="form-control bg-dark text-white"
-                            placeholder="Digitos de la tarjeta">
-                            <div *ngIf="depositForm.get('numeroTarjeta')?.hasError('required') && (depositForm.get('numeroTarjeta')?.touched || depositForm.get('numeroTarjeta')?.dirty)" class="error-message">
-                                El numero de tarjeta es obligatorio.
-                              </div>
-                              <div *ngIf="depositForm.get('numeroTarjeta')?.hasError('pattern') && (depositForm.get('numeroTarjeta')?.touched || depositForm.get('numeroTarjeta')?.dirty)"class="error-message">
-                                El numero de tarjeta solo puede contener números.
-                              </div>
-                              <div *ngIf="depositForm.get('numeroTarjeta')?.hasError('maxlength') && (depositForm.get('numeroTarjeta')?.touched || depositForm.get('numeroTarjeta')?.dirty)"class="error-message">
-                                El numero de tarjeta no puede tener más de 16 caracteres.
-                              </div>
-                              <div *ngIf="depositForm.get('numeroTarjeta')?.hasError('minlength') && (depositForm.get('numeroTarjeta')?.touched || depositForm.get('numeroTarjeta')?.dirty)"class="error-message">
-                                El numero de tarjeta debe tener al menos 16 caracteres.
-                              </div>
-                      
-                          <input type="text" formControlName="titular" class="form-control bg-dark text-white"
-                            placeholder="Titular">
-                            <div *ngIf="depositForm.get('titular')?.hasError('required') && (depositForm.get('titular')?.touched || depositForm.get('titular')?.dirty)"
-                            class="error-message" >
-                              El nombre es obligatorio.
-                            </div>
-                            <div *ngIf="depositForm.get('titular')?.hasError('onlyLetters') && (depositForm.get('titular')?.touched || depositForm.get('titular')?.dirty)"
-                            class="error-message">
-                              Ingresa un nombre válido (solo letras).
-                            </div>
-                            <div *ngIf="depositForm.get('titular')?.hasError('maxlength') && (depositForm.get('titular')?.touched || depositForm.get('titular')?.dirty)"
-                             class="error-message">
-                              El titular no debe tener más de 50 caracteres.
-                            </div>
-                          <input type="text" formControlName="fechaVencimiento" class="form-control bg-dark text-white"
-                            placeholder="Fecha de vencimiento MM/AA">
-                            <div *ngIf="depositForm.get('fechaVencimiento')?.hasError('required') && (depositForm.get('fechaVencimiento')?.touched || depositForm.get('fechaVencimiento')?.dirty)"
-                            class="error-message" >
-                              La fecha de vencimiento es obligatoria.
-                            </div>
-                            <div *ngIf="depositForm.get('fechaVencimiento')?.hasError('pattern') && (depositForm.get('fechaVencimiento')?.touched || depositForm.get('fechaVencimiento')?.dirty)"
-                            class="error-message">
-                              Ingresa un vencimiento valido.
-                            </div>
-                          <input type="text" formControlName="cvv" class="form-control bg-dark text-white" placeholder="CVV">
-                            <div *ngIf="depositForm.get('cvv')?.hasError('required') && (depositForm.get('cvv')?.touched || depositForm.get('cvv')?.dirty)"
-                            class="error-message" >
-                              El CVV es obligatorio.
-                            </div>
-                            <div *ngIf="depositForm.get('cvv')?.hasError('pattern') && (depositForm.get('cvv')?.touched || depositForm.get('cvv')?.dirty)"
-                            class="error-message" >
-                              El CVV no es valido.
-                            </div>
-                            <div *ngIf="depositForm.get('cvv')?.hasError('minlength') && (depositForm.get('cvv')?.touched || depositForm.get('cvv')?.dirty)"
-                            class="error-message" >
-                              El CVV debe tener al menos 3 digitos
-                            </div>
-                            <div *ngIf="depositForm.get('cvv')?.hasError('maxlength') && (depositForm.get('cvv')?.touched || depositForm.get('cvv')?.dirty)"
-                            class="error-message" >
-                              El CVV no puede tener mas de 4 digitos.
-                            </div>
-                          <input type="text" formControlName="cantidadDepositar" class="form-control bg-dark text-white"
-                            placeholder="Cantidad a depositar">
-                            <div *ngIf="depositForm.get('cantidadDepositar')?.hasError('required') && (depositForm.get('cantidadDepositar')?.touched || depositForm.get('cantidadDepositar')?.dirty)"
-                            class="error-message" >
-                              Este campo es obligatorio.
-                            </div>
-                            <div *ngIf="depositForm.get('cantidadDepositar')?.hasError('min') && (depositForm.get('cantidadDepositar')?.touched || depositForm.get('cantidadDepositar')?.dirty)"
-                            class="error-message" >
-                              Debes depositar al menos 1 peso.
-                            </div>
-                            <div *ngIf="depositForm.get('cantidadDepositar')?.hasError('pattern') && (depositForm.get('cantidadDepositar')?.touched || depositForm.get('cantidadDepositar')?.dirty)"
-                            class="error-message" >
-                              Solo validos valores numericos.
-                            </div>
-                        </form>
-                      </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button *ngIf="paymentMethods[1].selected==true || paymentMethods[0].selected==true" type="button" [disabled]="!depositForm.valid" (click)="depositMoney()" class="btn btn-success">Depositar</button>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="depositModalLabel">Opciones de depósito</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-dark">
+        <div class="btn-group">
+          <label *ngFor="let method of paymentMethods" class="btn btn-outline-success" [class.active]="method.selected">
+            <input type="radio" name="paymentMethod" [checked]="method.selected"
+              (change)="updateSelectedPaymentMethod(method)"> {{ method.name }}
+          </label>
         </div>
+        <p *ngIf="paymentMethods[2].selected==true">CBU : 1489660611100042937527</p>
+        <p *ngIf="paymentMethods[3].selected==true">Envie dinero a este mail: depositos&commat;argenbet.com</p>
+        <img *ngIf="paymentMethods[4].selected==true" class="qr"
+          src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Commons_QR_code.png" alt="">
+        <p
+          *ngIf="paymentMethods[2].selected==true || paymentMethods[3].selected==true || paymentMethods[4].selected==true">
+          Su deposito sera efectuado dentro de las 24hs</p>
+        <div *ngIf="paymentMethods[1].selected == true || paymentMethods[0].selected == true">
+          <form [formGroup]="depositForm">
+            <input type="text" formControlName="numeroTarjeta" class="form-control bg-dark text-white"
+              placeholder="Digitos de la tarjeta">
+            <div
+              *ngIf="depositForm.get('numeroTarjeta')?.hasError('required') && (depositForm.get('numeroTarjeta')?.touched || depositForm.get('numeroTarjeta')?.dirty)"
+              class="error-message">
+              El numero de tarjeta es obligatorio.
+            </div>
+            <div
+              *ngIf="depositForm.get('numeroTarjeta')?.hasError('pattern') && (depositForm.get('numeroTarjeta')?.touched || depositForm.get('numeroTarjeta')?.dirty)"
+              class="error-message">
+              El numero de tarjeta solo puede contener números.
+            </div>
+            <div
+              *ngIf="depositForm.get('numeroTarjeta')?.hasError('maxlength') && (depositForm.get('numeroTarjeta')?.touched || depositForm.get('numeroTarjeta')?.dirty)"
+              class="error-message">
+              El numero de tarjeta no puede tener más de 16 caracteres.
+            </div>
+            <div
+              *ngIf="depositForm.get('numeroTarjeta')?.hasError('minlength') && (depositForm.get('numeroTarjeta')?.touched || depositForm.get('numeroTarjeta')?.dirty)"
+              class="error-message">
+              El numero de tarjeta debe tener al menos 16 caracteres.
+            </div>
+
+            <input type="text" formControlName="titular" class="form-control bg-dark text-white" placeholder="Titular">
+            <div
+              *ngIf="depositForm.get('titular')?.hasError('required') && (depositForm.get('titular')?.touched || depositForm.get('titular')?.dirty)"
+              class="error-message">
+              El nombre es obligatorio.
+            </div>
+            <div
+              *ngIf="depositForm.get('titular')?.hasError('onlyLetters') && (depositForm.get('titular')?.touched || depositForm.get('titular')?.dirty)"
+              class="error-message">
+              Ingresa un nombre válido (solo letras).
+            </div>
+            <div
+              *ngIf="depositForm.get('titular')?.hasError('maxlength') && (depositForm.get('titular')?.touched || depositForm.get('titular')?.dirty)"
+              class="error-message">
+              El titular no debe tener más de 50 caracteres.
+            </div>
+            <input type="text" formControlName="fechaVencimiento" class="form-control bg-dark text-white"
+              placeholder="Fecha de vencimiento MM/AA">
+            <div
+              *ngIf="depositForm.get('fechaVencimiento')?.hasError('required') && (depositForm.get('fechaVencimiento')?.touched || depositForm.get('fechaVencimiento')?.dirty)"
+              class="error-message">
+              La fecha de vencimiento es obligatoria.
+            </div>
+            <div
+              *ngIf="depositForm.get('fechaVencimiento')?.hasError('pattern') && (depositForm.get('fechaVencimiento')?.touched || depositForm.get('fechaVencimiento')?.dirty)"
+              class="error-message">
+              Ingresa un vencimiento valido.
+            </div>
+            <input type="text" formControlName="cvv" class="form-control bg-dark text-white" placeholder="CVV">
+            <div
+              *ngIf="depositForm.get('cvv')?.hasError('required') && (depositForm.get('cvv')?.touched || depositForm.get('cvv')?.dirty)"
+              class="error-message">
+              El CVV es obligatorio.
+            </div>
+            <div
+              *ngIf="depositForm.get('cvv')?.hasError('pattern') && (depositForm.get('cvv')?.touched || depositForm.get('cvv')?.dirty)"
+              class="error-message">
+              El CVV no es valido.
+            </div>
+            <div
+              *ngIf="depositForm.get('cvv')?.hasError('minlength') && (depositForm.get('cvv')?.touched || depositForm.get('cvv')?.dirty)"
+              class="error-message">
+              El CVV debe tener al menos 3 digitos
+            </div>
+            <div
+              *ngIf="depositForm.get('cvv')?.hasError('maxlength') && (depositForm.get('cvv')?.touched || depositForm.get('cvv')?.dirty)"
+              class="error-message">
+              El CVV no puede tener mas de 4 digitos.
+            </div>
+            <input id="moneyDeposit" type="text" formControlName="cantidadDepositar" class="form-control bg-dark text-white"
+              placeholder="Cantidad a depositar">
+            <div
+              *ngIf="depositForm.get('cantidadDepositar')?.hasError('required') && (depositForm.get('cantidadDepositar')?.touched || depositForm.get('cantidadDepositar')?.dirty)"
+              class="error-message">
+              Este campo es obligatorio.
+            </div>
+            <div
+              *ngIf="depositForm.get('cantidadDepositar')?.hasError('min') && (depositForm.get('cantidadDepositar')?.touched || depositForm.get('cantidadDepositar')?.dirty)"
+              class="error-message">
+              Debes depositar al menos 1 peso.
+            </div>
+            <div
+              *ngIf="depositForm.get('cantidadDepositar')?.hasError('pattern') && (depositForm.get('cantidadDepositar')?.touched || depositForm.get('cantidadDepositar')?.dirty)"
+              class="error-message">
+              Solo validos valores numericos.
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button *ngIf="paymentMethods[1].selected==true || paymentMethods[0].selected==true" type="button"
+          [disabled]="!depositForm.valid" (click)="depositMoney()" class="btn btn-success">Depositar</button>
+      </div>
     </div>
+  </div>
 </div>
 <div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="withdrawModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content bg-dark text-white">
-            <div class="modal-header">
-                <h5 class="modal-title" id="withdrawModalLabel">Retirar dinero</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body bg-dark">
-                <h5>Indique su CBU</h5>
-                <h5>Para poder retirar!</h5>
-                <br>
-                <form [formGroup]="withdrawForm">
-                    <input type="text" class="form-control bg-dark text-white" formControlName="cbu" placeholder="Ingrese su CBU">
-                    <div *ngIf="withdrawForm.get('cbu')?.hasError('required') && (withdrawForm.get('cbu')?.touched || withdrawForm.get('cbu')?.dirty)" class="error-message">
-                        El cbu es obligatorio.
-                      </div>
-                      <div *ngIf="withdrawForm.get('cbu')?.hasError('pattern') && (withdrawForm.get('cbu')?.touched || withdrawForm.get('cbu')?.dirty)"class="error-message">
-                        El cbu solo puede contener números.
-                      </div>
-                      <div *ngIf="withdrawForm.get('cbu')?.hasError('maxlength') && (withdrawForm.get('cbu')?.touched || withdrawForm.get('cbu')?.dirty)"class="error-message">
-                        El cbu no puede tener más de 22 caracteres.
-                      </div>
-                      <div *ngIf="withdrawForm.get('cbu')?.hasError('minlength') && (withdrawForm.get('cbu')?.touched || withdrawForm.get('cbu')?.dirty)"class="error-message">
-                        El cbu debe tener al menos 22 caracteres.
-                      </div>
-                    <input id="withdrawAmount" type="text" class="form-control bg-dark text-white"placeholder="Cantidad a retirar" formControlName="amount" >
-                    <div *ngIf="withdrawForm.get('amount')?.hasError('required') && (withdrawForm.get('amount')?.touched || withdrawForm.get('amount')?.dirty)" class="error-message">
-                        El monto es obligatorio.
-                      </div>
-                      <div *ngIf="withdrawForm.get('amount')?.hasError('pattern') && (withdrawForm.get('amount')?.touched || withdrawForm.get('amount')?.dirty)"class="error-message">
-                        El monto solo puede contener números.
-                      </div>
-                      <div *ngIf="withdrawForm.get('amount')?.hasError('min') && (withdrawForm.get('amount')?.touched || withdrawForm.get('amount')?.dirty)"class="error-message">
-                        El monto ser como minimo 1 peso.
-                      </div>
-                </form>
-                
-            </div>
-            <p *ngIf="withdraw==false" class="warning">Saldo insuficiente</p>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" (click)="withdrawMoney()" [disabled]="!withdrawForm.valid" class="btn btn-success">Retirar</button>
-            </div>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="withdrawModalLabel">Retirar dinero</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-dark">
+        <h5>Indique su CBU</h5>
+        <h5>Para poder retirar!</h5>
+        <br>
+        <form [formGroup]="withdrawForm">
+          <input type="text" class="form-control bg-dark text-white" formControlName="cbu" placeholder="Ingrese su CBU">
+          <div
+            *ngIf="withdrawForm.get('cbu')?.hasError('required') && (withdrawForm.get('cbu')?.touched || withdrawForm.get('cbu')?.dirty)"
+            class="error-message">
+            El cbu es obligatorio.
+          </div>
+          <div
+            *ngIf="withdrawForm.get('cbu')?.hasError('pattern') && (withdrawForm.get('cbu')?.touched || withdrawForm.get('cbu')?.dirty)"
+            class="error-message">
+            El cbu solo puede contener números.
+          </div>
+          <div
+            *ngIf="withdrawForm.get('cbu')?.hasError('maxlength') && (withdrawForm.get('cbu')?.touched || withdrawForm.get('cbu')?.dirty)"
+            class="error-message">
+            El cbu no puede tener más de 22 caracteres.
+          </div>
+          <div
+            *ngIf="withdrawForm.get('cbu')?.hasError('minlength') && (withdrawForm.get('cbu')?.touched || withdrawForm.get('cbu')?.dirty)"
+            class="error-message">
+            El cbu debe tener al menos 22 caracteres.
+          </div>
+          <input id="withdrawAmount" type="text" class="form-control bg-dark text-white"
+            placeholder="Cantidad a retirar" formControlName="amount">
+          <div
+            *ngIf="withdrawForm.get('amount')?.hasError('required') && (withdrawForm.get('amount')?.touched || withdrawForm.get('amount')?.dirty)"
+            class="error-message">
+            El monto es obligatorio.
+          </div>
+          <div
+            *ngIf="withdrawForm.get('amount')?.hasError('pattern') && (withdrawForm.get('amount')?.touched || withdrawForm.get('amount')?.dirty)"
+            class="error-message">
+            El monto solo puede contener números.
+          </div>
+          <div
+            *ngIf="withdrawForm.get('amount')?.hasError('min') && (withdrawForm.get('amount')?.touched || withdrawForm.get('amount')?.dirty)"
+            class="error-message">
+            El monto ser como minimo 1 peso.
+          </div>
+        </form>
+
+      </div>
+      <p *ngIf="withdraw==false" class="warning">Saldo insuficiente</p>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" (click)="withdrawMoney()" [disabled]="!withdrawForm.valid"
+          class="btn btn-success">Retirar</button>
+      </div>
     </div>
+  </div>
 </div>
