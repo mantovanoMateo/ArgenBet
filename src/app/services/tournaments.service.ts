@@ -51,12 +51,22 @@ export class TournamentsService {
     let date= new Date();
     let fromDate='';
     let day='';
+    let month='';
+
     if(date.getDate()<10){
       day='0'+date.getDate();
     }else{
       day=date.getDate().toString();
     }
-    fromDate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+day;
+
+    if((date.getMonth()+1)<10){
+      month='0'+(date.getMonth()+1).toString();
+      console.log(month);
+    }else{
+      month=(date.getMonth()+1).toString();
+    }
+
+    fromDate=date.getFullYear()+'-'+month+'-'+day;
     return fromDate;
   }
 
@@ -65,13 +75,22 @@ export class TournamentsService {
     let date=new Date();
     date.setDate(date.getDate()+13);
     let day='';
+    let month='';
+    
     if(date.getDate()<10){
       day='0'+date.getDate().toString();
     }else{
       day=date.getDate().toString();
     }
 
-    toDate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+day;
+    if((date.getMonth()+1)<10){
+      month='0'+(date.getMonth()+1).toString();
+      console.log(month);
+    }else{
+      month=(date.getMonth()+1).toString();
+    }
+
+    toDate=date.getFullYear()+'-'+month+'-'+day;
     return toDate;
   }
 
@@ -117,6 +136,8 @@ export class TournamentsService {
     this.actualLeague=leagueId;
     this.getTournamentNextFixtures(leagueId)
       .then((response:any)=>{
+        console.log('esto muestra la response')
+        console.log(response);
         this.fixtures=response.response;
         this._fixtures.next(this.fixtures);
       })

@@ -1,7 +1,7 @@
 
 <div *ngFor="let fixture of fixtures" class="card">
     <div class="card-header text-bg-dark">
-        {{fixture.league.name}} {{fixture.fixture.date}}
+        {{fixture.league.name}} {{formatDate(fixture.fixture.date)}}
     </div>
     <div class="betBody">
         <a class="nav-link active" id="{{fixture.fixture.id}}" (click)="setActualFixture(fixture)" [routerLink]="['/mainMenu/defaultMenu/fixture/',fixture.fixture.id]"

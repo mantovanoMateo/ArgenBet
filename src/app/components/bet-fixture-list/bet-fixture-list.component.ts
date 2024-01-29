@@ -24,10 +24,15 @@ export class BetFixtureListComponent {
       */
      this.tournamentService.Fixtures.subscribe(fixtures=>{
       this.fixtures=fixtures;
+      console.log(fixtures);
      })
     }
 
     setActualFixture(fixture: any){
       this.tournamentService.setFixture(fixture);
+    }
+
+    formatDate(date: string){
+      return date.substring(0,10);
     }
 }

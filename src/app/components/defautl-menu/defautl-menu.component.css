@@ -117,3 +117,11 @@
  .btn {
     margin: 5px;
  }
+
+ .tournamentCol{
+    max-height: 470px;
+ }
+
+ .mySelectionCol{
+    min-height: 470px;
+ }
