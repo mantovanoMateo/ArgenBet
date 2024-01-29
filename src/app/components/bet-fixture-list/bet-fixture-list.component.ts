@@ -30,4 +30,8 @@ export class BetFixtureListComponent {
     setActualFixture(fixture: any){
       this.tournamentService.setFixture(fixture);
     }
+
+    getFixtureDateStd(fDate: String){
+      return fDate.slice(0,fDate.indexOf('T'))
+    }
 }
