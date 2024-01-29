@@ -51,12 +51,18 @@ export class TournamentsService {
     let date= new Date();
     let fromDate='';
     let day='';
+    let month='';
     if(date.getDate()<10){
       day='0'+date.getDate();
     }else{
       day=date.getDate().toString();
     }
-    fromDate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+day;
+    if(date.getMonth()<10){
+      month='0'+(date.getMonth()+1);
+    }else{
+      month=(date.getMonth()+1).toString();
+    }
+    fromDate=date.getFullYear()+'-'+month+'-'+day;
     return fromDate;
   }
 
@@ -65,13 +71,20 @@ export class TournamentsService {
     let date=new Date();
     date.setDate(date.getDate()+13);
     let day='';
+    let month='';
     if(date.getDate()<10){
       day='0'+date.getDate().toString();
     }else{
       day=date.getDate().toString();
     }
+    if(date.getMonth()<10){
+      month='0'+(date.getMonth()+1);
+    }else{
+      month=(date.getMonth()+1).toString();
+    }
 
-    toDate=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+day;
+    toDate=date.getFullYear()+'-'+month+'-'+day;
+    console.log(toDate);
     return toDate;
   }
 
@@ -118,6 +131,7 @@ export class TournamentsService {
     this.getTournamentNextFixtures(leagueId)
       .then((response:any)=>{
         this.fixtures=response.response;
+        console.log(response);
         this._fixtures.next(this.fixtures);
       })
   }

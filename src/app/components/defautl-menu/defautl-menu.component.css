@@ -117,3 +117,12 @@
  .btn {
     margin: 5px;
  }
+
+ .col-3{
+    height: 470px;
+ }
+
+ .card-body{
+    background-color: white;
+    border-radius: 5px;
+ }
