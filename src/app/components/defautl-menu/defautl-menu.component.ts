@@ -51,6 +51,7 @@ export class DefautlMenuComponent {
     this.bets.forEach((bet) => {
       input = document.getElementById('betValue' + bet.id) as HTMLInputElement;
       value = parseFloat(input.value);
+      //console.log('estoy antes del if')
       if (!Number.isNaN(value) && this.verifyValue(value.toString())) {
         indexOfObject = this.bets.findIndex((obj) => {
           return obj.id === bet.id;
@@ -63,18 +64,33 @@ export class DefautlMenuComponent {
     if (oneIsNull) {
       //console.log('no debes dejar apuestas sin valores');
       this.cartOK=false;
-    } else if(!oneIsNull /*&& this.userService.getBetableBalance()>=this.total*/){
+    } else if(!oneIsNull){
       this.cartOK=true;
     }else{
       this.cartOK=false; 
     }
   }
 
+  getBetPossible(){
+    return this.userService.getBetableBalance()>=this.total;
+  }
+
   verifyValue(value: string){
     let verify=false;
-    if(!value.indexOf('-') && !value.indexOf('+') &&!value.indexOf('.')){
+    if(value.indexOf('-')==-1 && value.indexOf('+')==-1 &&value.indexOf('.')==-1){
       verify=true;
     }
+    /*
+    console.log('===================================');
+    console.log(verify);
+    console.log('estamos validando el valor => '+ value);
+    console.log('valida -');
+    console.log(value.indexOf('-'));
+    console.log('valida +');
+    console.log(value.indexOf('+'));
+    console.log('valida .');
+    console.log(value.indexOf('.'));
+    */
     return verify;
   }
 

@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <ul *ngIf="cartOK==true && onLine==true">
+                <ul *ngIf="cartOK==true && onLine==true && getBetPossible()==true">
                     <li *ngFor="let bet of bets">
                         <p>{{bet.type}} -> {{bet.selection}}</p>
                         <p>${{bet.betValue}} x {{bet.benefit}} (ganancia potencial) =
@@ -17,15 +17,16 @@
                 <h3 *ngIf="cartOK==false && onLine==true">Por favor ingrese un a valor a todas sus apuestas!</h3>
                 <h3 *ngIf="onLine==false">Usted debe logearse para poder realizar apuestas!</h3>
                 <br>
-                <p *ngIf="cartOK==false && onLine==true">Su saldo es insuficiente, realice un deposito por favor!
+                <p *ngIf="onLine==true && getBetPossible()==false">Su saldo es insuficiente, realice un deposito por
+                    favor!
                 </p>
                 <h4 *ngIf="cartOK==true && onLine==true">Total: ${{total}}</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" (click)="resetTotal()" class="btn btn-outline-danger"
                     data-bs-dismiss="modal">Volver</button>
-                <button *ngIf="cartOK==true && onLine==true" (click)="confirmBet()" type="button"
-                    class="btn btn-outline-success">Confirmar</button>
+                <button *ngIf="cartOK==true && onLine==true && getBetPossible()==true" (click)="confirmBet()"
+                    type="button" class="btn btn-outline-success">Confirmar</button>
             </div>
         </div>
     </div>

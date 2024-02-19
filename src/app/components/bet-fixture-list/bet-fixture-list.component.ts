@@ -32,7 +32,7 @@ export class BetFixtureListComponent {
       this.tournamentService.setFixture(fixture);
     }
 
-    formatDate(date: string){
-      return date.substring(0,10);
+    getFixtureDateStd(fDate: String){
+      return fDate.slice(0,fDate.indexOf('T'))
     }
 }
