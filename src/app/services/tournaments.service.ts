@@ -71,6 +71,7 @@ export class TournamentsService {
     let date=new Date();
     date.setDate(date.getDate()+13);
     let day='';
+    let month='';
     if(date.getDate()<10){
       day='0'+date.getDate().toString();
     }else{
@@ -132,6 +133,7 @@ export class TournamentsService {
         console.log('esto muestra la response')
         console.log(response);
         this.fixtures=response.response;
+        console.log(response);
         console.log(response);
         this._fixtures.next(this.fixtures);
       })

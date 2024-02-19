@@ -118,20 +118,3 @@
  .btn {
     margin: 5px;
  }
-
- .tournamentCol{
-    max-height: 470px;
- }
-
- .mySelectionCol{
-    min-height: 470px;
- }
-
- .col-3{
-    height: 470px;
- }
-
- .card-body{
-    background-color: white;
-    border-radius: 5px;
- }
